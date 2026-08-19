@@ -10,37 +10,233 @@
   justify-content: center;
   font-size: 1.5rem;
   margin-bottom: 20px;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .service-hub-card {
   background-color: #ffffff;
   border: 1px solid var(--border-color);
-  border-radius: 12px;
+  border-radius: 16px;
   padding: 35px 30px;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   height: 100%;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+.service-hub-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-emerald), #34d399);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 2;
 }
 .service-hub-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(15, 23, 42, 0.06);
-  border-color: var(--primary-emerald-light);
+  transform: translateY(-8px);
+  box-shadow:
+    0 20px 40px rgba(16, 185, 129, 0.08),
+    0 1px 3px rgba(0, 0, 0, 0.02);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+.service-hub-card:hover::before {
+  transform: scaleX(1);
 }
 .service-hub-card:hover .service-icon-box {
   background-color: var(--primary-emerald);
   color: #ffffff;
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.2);
+}
+.service-hub-card .text-emerald i {
+  transition: transform 0.3s ease;
+}
+.service-hub-card:hover .text-emerald i {
+  transform: translateX(5px);
 }
 
 /* Onboarding checklist styles */
 .checklist-item {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
+  gap: 12px;
+  padding: 16px 20px;
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   margin-bottom: 12px;
-  font-size: 0.95rem;
+}
+.checklist-item:hover {
+  transform: translateX(6px);
+  background-color: rgba(16, 185, 129, 0.03);
+  border-color: rgba(16, 185, 129, 0.3);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.04);
 }
 .checklist-item i {
   color: var(--primary-emerald);
-  margin-top: 4px;
+  margin-top: 3px;
+  font-size: 1.1rem;
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease;
+}
+.checklist-item:hover i {
+  transform: scale(1.2);
+  color: var(--primary-emerald-hover);
+}
+
+/* Onboarding Roadmap Card Hover Effects */
+.roadmap-step-card {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 30px 24px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+.roadmap-step-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 30px rgba(15, 23, 42, 0.05);
+  border-color: var(--primary-emerald);
+}
+.roadmap-step-card .process-step-num {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-bottom: 20px !important;
+}
+.roadmap-step-card:hover .process-step-num {
+  background-color: var(--primary-emerald) !important;
+  color: #ffffff;
+  transform: scale(1.15);
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+}
+
+/* Specialized Advisor Card Styling & Hover Effects */
+.advisor-card {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 30px 24px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  height: 100%;
+}
+.advisor-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: linear-gradient(
+    180deg,
+    rgba(16, 185, 129, 0.04) 0%,
+    rgba(16, 185, 129, 0) 100%
+  );
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
+}
+.advisor-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--primary-emerald);
+  box-shadow: 0 16px 28px rgba(16, 185, 129, 0.08);
+}
+.advisor-card:hover::before {
+  height: 100%;
+}
+.advisor-card h6 {
+  transition: color 0.3s ease;
+}
+.advisor-card:hover h6 {
+  color: var(--primary-emerald-hover);
+}
+.advisor-avatar {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background-color: var(--primary-emerald-light);
+  color: var(--primary-emerald);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.advisor-card:hover .advisor-avatar {
+  background-color: var(--primary-emerald);
+  color: #ffffff !important;
+  transform: scale(1.1);
+  box-shadow: 0 6px 15px rgba(16, 185, 129, 0.25);
+}
+
+/* Key Component Cards in Subpages */
+.key-component-card {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 24px;
+  height: 100%;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.key-component-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary-emerald);
+  box-shadow: 0 10px 20px rgba(16, 185, 129, 0.05);
+}
+.key-component-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background-color: var(--primary-emerald-light);
+  color: var(--primary-emerald);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+.key-component-card:hover .key-component-icon {
+  background-color: var(--primary-emerald);
+  color: #ffffff;
+  transform: scale(1.08);
+}
+
+/* Methodology Card Styling in Subpages */
+.methodology-card {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 24px;
+  height: 100%;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: center;
+}
+.methodology-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary-emerald);
+  box-shadow: 0 12px 24px rgba(16, 185, 129, 0.05);
+}
+.methodology-card .process-step-num {
+  transition: all 0.3s ease;
+}
+.methodology-card:hover .process-step-num {
+  background-color: var(--primary-emerald) !important;
+  color: #ffffff;
+  transform: scale(1.1);
+  box-shadow: 0 6px 15px rgba(16, 185, 129, 0.2);
 }
 
 /* Plan Selection Table Styling */
@@ -70,6 +266,7 @@
   border-top: none;
   text-align: center;
   vertical-align: middle;
+  transition: background-color 0.2s ease;
 }
 .services-table td:first-child {
   text-align: left;
@@ -94,23 +291,31 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 18px;
+  padding: 14px 20px;
   border-radius: 8px;
   color: var(--secondary-slate);
   text-decoration: none;
   font-weight: 600;
   font-family: var(--font-heading);
   font-size: 0.9rem;
-  transition: all 0.2s ease;
-  margin-bottom: 5px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-bottom: 6px;
+  border: 1px solid transparent;
 }
 .services-sidebar-link:last-child {
   margin-bottom: 0;
 }
 .services-sidebar-link:hover,
 .services-sidebar-link.active {
+  background-color: #ffffff;
+  color: var(--primary-emerald);
+  border-color: rgba(16, 185, 129, 0.2);
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.08);
+}
+.services-sidebar-link.active {
   background-color: var(--primary-emerald);
   color: #ffffff;
+  border-color: var(--primary-emerald);
 }
 .services-sidebar-link i {
   font-size: 0.8rem;
@@ -131,6 +336,11 @@
   text-align: center;
   position: relative;
   overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.sidebar-cta-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(30, 41, 59, 0.15);
 }
 .sidebar-cta-box::after {
   content: "";

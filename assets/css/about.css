@@ -1,19 +1,62 @@
-/* Philosophy & Values section */
-.value-box {
-  background-color: #ffffff;
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-  padding: 35px 25px;
+/* Section 2: WHO WE ARE (MISSION & VISION) */
+.mission-vision-box {
+  border-left: 3px solid var(--primary-emerald);
+  padding-left: 15px;
   transition: all 0.3s ease;
-  height: 100%;
+  border-radius: 0 8px 8px 0;
 }
-.value-box:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.05);
-  border-color: var(--primary-emerald-light);
+.mission-vision-box:hover {
+  background-color: var(--primary-emerald-light);
+  transform: translateX(5px);
+  padding-left: 20px;
+}
+.about-image-wrapper {
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+}
+.about-image-wrapper img {
+  transition: transform 0.5s ease;
+}
+.about-image-wrapper:hover img {
+  transform: scale(1.05);
 }
 
-/* Timeline/Milestones Style */
+/* Section 3: INVESTMENT PHILOSOPHY */
+.philosophy-card {
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  border: 1px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+.philosophy-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 4px;
+  background-color: var(--primary-emerald);
+  transition: width 0.4s ease;
+}
+.philosophy-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(16, 185, 129, 0.08) !important;
+  border-color: var(--border-color);
+}
+.philosophy-card:hover::after {
+  width: 100%;
+}
+.philosophy-card:hover .icon-circle-emerald {
+  background-color: var(--primary-emerald) !important;
+  color: #ffffff !important;
+  transform: scale(1.1) rotate(360deg);
+}
+.philosophy-card .icon-circle-emerald {
+  transition: all 0.4s ease;
+}
+
+/* Section 4: TIMELINE / MILESTONES Style */
 .timeline-container {
   position: relative;
   padding-left: 30px;
@@ -26,6 +69,20 @@
   width: 2px;
   height: 100%;
   background-color: var(--border-color);
+}
+.badge-year {
+  background-color: var(--primary-emerald-light);
+  color: var(--primary-emerald);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+.timeline-item:hover .badge-year {
+  background-color: var(--primary-emerald);
+  color: #ffffff;
 }
 .timeline-item {
   position: relative;
@@ -45,12 +102,52 @@
   border: 3px solid #ffffff;
   box-shadow: 0 0 0 3px var(--primary-emerald-light);
   z-index: 2;
+  transition: all 0.3s ease;
+}
+.timeline-item:hover .timeline-marker {
+  background-color: #ffffff;
+  border-color: var(--primary-emerald);
+  transform: scale(1.3);
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.3);
 }
 .timeline-content {
   background-color: var(--bg-light);
   padding: 20px 25px;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(15, 23, 42, 0.02);
+  border-left: 3px solid transparent;
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.timeline-item:hover .timeline-content {
+  transform: translateX(8px);
+  background-color: #ffffff;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+  border-left: 3px solid var(--primary-emerald);
+}
+
+/* Section 5: OUR CORE VALUES */
+.value-box {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-top: 3px solid transparent;
+  border-radius: 12px;
+  padding: 35px 25px;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  height: 100%;
+  position: relative;
+}
+.value-box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(16, 185, 129, 0.1);
+  border-color: var(--border-color);
+  border-top-color: var(--primary-emerald);
+}
+.value-box i {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: inline-block;
+}
+.value-box:hover i {
+  transform: scale(1.25) translateY(-5px);
 }
 
 /* Leadership Team Grid Overlay */
@@ -114,4 +211,29 @@
 .accreditation-card:hover {
   border-color: var(--primary-emerald);
   box-shadow: 0 8px 25px rgba(16, 185, 129, 0.08);
+}
+
+/* Section 8: CLIENT TESTIMONIALS */
+.testimonial-hover-card {
+  transition: all 0.4s ease;
+  border: 1px solid transparent !important;
+}
+.testimonial-hover-card:hover {
+  background-color: #ffffff !important;
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(15, 23, 42, 0.08) !important;
+  border-color: var(--border-color) !important;
+}
+.testimonial-quote-icon {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  font-size: 3rem;
+  color: rgba(16, 185, 129, 0.04);
+  transition: all 0.4s ease;
+  pointer-events: none;
+}
+.testimonial-hover-card:hover .testimonial-quote-icon {
+  color: rgba(16, 185, 129, 0.12);
+  transform: rotate(-10deg) scale(1.1);
 }
