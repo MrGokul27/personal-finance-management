@@ -32,7 +32,40 @@
     <!-- Custom Theme Stylesheet -->
     <link rel="stylesheet" href="assets/css/styles.css" />
   </head>
-  <body>
+  <body class="preloader-active">
+    <!-- Preloader -->
+    <div id="preloader">
+      <div class="preloader-content">
+        <img
+          src="assets/images/logoStackly.webp"
+          alt="Personal Finance Management Logo"
+          height="45"
+          id="navbarLogoImg"
+          style="
+            filter: invert(58%) sepia(72%) saturate(400%) hue-rotate(115deg)
+              brightness(95%) contrast(90%);
+            margin-bottom: 20px;
+          "
+        />
+        <div class="coin-container">
+          <div class="coin-glow"></div>
+          <div class="coin-outer-ring"></div>
+          <div class="coin-3d">
+            <span>₹</span>
+            <div class="coin-inner-shadow"></div>
+          </div>
+        </div>
+        <div class="preloader-brand">Stackly<span>Wealth</span></div>
+        <div class="preloader-status" id="preloader-status-text">
+          Initializing secure interface...
+        </div>
+        <div class="preloader-progress-bg">
+          <div class="preloader-progress-bar"></div>
+        </div>
+        <div class="preloader-percentage-wrap" id="preloader-percent">0%</div>
+      </div>
+    </div>
+
     <!-- Header Placeholder (Injected via script.js) -->
     <div id="header-placeholder"></div>
 
@@ -120,7 +153,7 @@
                       Growth
                     </h5>
                     <span
-                      class="badge bg-emerald rounded-pill px-2 py-1 text-white"
+                      class="badge bg-emerald rounded-pill px-2 py-1 text-white badge-pulse"
                       style="font-size: 0.7rem; font-weight: 400"
                       >+18.4% YTD</span
                     >
@@ -228,7 +261,9 @@
                       ></i
                       >Retirement Tracker
                     </h5>
-                    <span class="text-emerald small" style="font-size: 0.8rem"
+                    <span
+                      class="text-emerald small badge-pulse"
+                      style="font-size: 0.8rem"
                       ><i class="fa-solid fa-heart me-1"></i>Secure</span
                     >
                   </div>
@@ -328,7 +363,7 @@
                       >Fiduciary Promise
                     </h5>
                     <span
-                      class="badge bg-gold text-light rounded-pill px-2 py-1 fw-bold"
+                      class="badge bg-gold text-light rounded-pill px-2 py-1 fw-bold badge-pulse-gold"
                       style="font-size: 0.7rem"
                       ><i class="fa-solid fa-star me-1 text-light"></i
                       >Conflict-Free</span
@@ -486,7 +521,7 @@
     </section>
 
     <!-- SECTION 3: CORE STATISTICS COUNTER -->
-    <section class="py-5 bg-slate text-white text-center">
+    <section class="py-5 bg-slate premium-glow-dark text-white text-center">
       <div class="container">
         <div class="row g-4">
           <div class="col-lg-3 col-sm-6">
@@ -735,6 +770,15 @@
                   >
                 </div>
               </div>
+
+              <!-- Dynamic Financial Advisory Insight -->
+              <div id="calcInsightCard" class="calc-insight-card d-none">
+                <h6 class="insight-title" id="insightTitle">Insight Title</h6>
+                <p class="insight-text" id="insightText">
+                  Insight description goes here.
+                </p>
+              </div>
+
               <a href="#" class="btn btn-emerald w-100 py-2 mt-3"
                 ><i class="fa-solid fa-bullseye me-2"></i>Schedule Advisory
                 Meeting</a
@@ -963,7 +1007,7 @@
     </section>
 
     <!-- SECTION 8: CASE STUDIES / SUCCESS PORTFOLIOS -->
-    <section class="py-5 bg-slate cs-section">
+    <section class="py-5 bg-slate cs-section premium-glow-dark">
       <div class="container">
         <div class="text-center mb-5">
           <span
@@ -1757,7 +1801,9 @@
     </section>
 
     <!-- SECTION 14: TRUST BANNER & NEWSLETTER CTA -->
-    <section class="py-5 bg-slate text-white text-center newsletter-input">
+    <section
+      class="py-5 bg-slate premium-glow-dark text-white text-center newsletter-input"
+    >
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-8">

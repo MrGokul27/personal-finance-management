@@ -1087,3 +1087,362 @@ footer .form-control::placeholder,
 .blog-card:hover .read-more-link i {
   transform: translateX(4px);
 }
+
+/* ==========================================================================
+   7. PRELOADER & PREMIUM UI FACELIFT
+   ========================================================================== */
+
+/* Preloader Wrapper */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #080c14; /* Extremely deep, premium navy slate */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Lock scrolling while preloader active */
+body.preloader-active {
+  overflow: hidden !important;
+  height: 100vh;
+}
+
+.preloader-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 320px;
+}
+
+/* Rotating Coin Animation */
+.coin-container {
+  perspective: 1000px;
+  margin-bottom: 25px;
+  position: relative;
+  width: 90px;
+  height: 90px;
+}
+
+.coin-outer-ring {
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+  border: 2px dashed rgba(16, 185, 129, 0.3);
+  border-radius: 50%;
+  animation: rotateCounter 8s linear infinite;
+}
+
+.coin-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(16, 185, 129, 0.25) 0%,
+    transparent 70%
+  );
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+.coin-3d {
+  width: 90px;
+  height: 90px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 50%, #047857 100%);
+  border: 4px solid #10b981;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
+  transform-style: preserve-3d;
+  animation: spin3d 2.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.coin-inner-shadow {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  bottom: 4px;
+  border-radius: 50%;
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+  pointer-events: none;
+}
+
+/* Brand Text in Preloader */
+.preloader-brand {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.15em;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.preloader-brand span {
+  color: var(--primary-emerald);
+}
+
+.preloader-status {
+  font-size: 0.78rem;
+  color: #64748b;
+  letter-spacing: 0.05em;
+  margin-bottom: 20px;
+  height: 18px;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+}
+
+/* Modern Progress Bar */
+.preloader-progress-bg {
+  width: 240px;
+  height: 5px;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 30px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.preloader-progress-bar {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #10b981 0%, #34d399 100%);
+  border-radius: 30px;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+  transition: width 0.1s linear;
+}
+
+.preloader-percentage-wrap {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #10b981;
+}
+
+/* Keyframe Animations */
+@keyframes spin3d {
+  0% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(180deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+@keyframes rotateCounter {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+}
+
+/* Fade-out State */
+#preloader.preloader-fade-out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Premium Visual Glows (UI Facelift) */
+.premium-glow-dark {
+  background-image:
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(16, 185, 129, 0.07) 0%,
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 15% 85%,
+      rgba(245, 158, 11, 0.03) 0%,
+      transparent 40%
+    ),
+    linear-gradient(180deg, #0f172a 0%, #080c14 100%) !important;
+}
+
+.premium-glow-light {
+  background-image:
+    radial-gradient(
+      circle at 90% 10%,
+      rgba(16, 185, 129, 0.03) 0%,
+      transparent 35%
+    ),
+    linear-gradient(180deg, #ffffff 0%, #f8fafc 100%) !important;
+}
+
+/* Custom interactive styling for home page sliders */
+.form-range {
+  height: 6px;
+  padding: 0;
+  background-color: #e2e8f0;
+  border-radius: 10px;
+}
+
+.form-range::-webkit-slider-thumb {
+  width: 18px;
+  height: 18px;
+  margin-top: -6px;
+  background: #10b981;
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(16, 185, 129, 0.4);
+  transition:
+    transform 0.1s ease,
+    background-color 0.1s ease;
+  cursor: pointer;
+}
+
+.form-range::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  background: #059669;
+  box-shadow: 0 4px 10px rgba(16, 185, 129, 0.5);
+}
+
+.form-range:focus::-webkit-slider-thumb {
+  box-shadow:
+    0 0 0 1px #fff,
+    0 0 0 0.25rem rgba(16, 185, 129, 0.25);
+}
+
+/* Dynamic insight card */
+.calc-insight-card {
+  border-radius: 12px;
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  padding: 16px;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+  animation: fadeIn 0.4s ease forwards;
+}
+
+.calc-insight-card.warning-insight {
+  background: rgba(245, 158, 11, 0.08);
+  border-color: rgba(245, 158, 11, 0.2);
+}
+
+.calc-insight-card.warning-insight .insight-icon {
+  color: #f59e0b;
+}
+
+.insight-icon {
+  font-size: 1.1rem;
+  color: #10b981;
+}
+
+.insight-title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.insight-text {
+  font-size: 0.76rem;
+  line-height: 1.45;
+  color: #cbd5e1;
+  margin-bottom: 0;
+}
+
+/* Glow badge animation for cards */
+.badge-pulse {
+  animation: softBadgePulse 2.5s ease-in-out infinite;
+}
+
+@keyframes softBadgePulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 2px 6px rgba(16, 185, 129, 0.2);
+  }
+  50% {
+    transform: scale(1.04);
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
+  }
+}
+
+.badge-pulse-gold {
+  animation: softBadgePulseGold 2.5s ease-in-out infinite;
+}
+
+@keyframes softBadgePulseGold {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 2px 6px rgba(245, 158, 11, 0.2);
+  }
+  50% {
+    transform: scale(1.04);
+    box-shadow: 0 4px 14px rgba(245, 158, 11, 0.4);
+  }
+}
+
+/* Hover Shine Animation for Buttons */
+.btn-emerald,
+.btn-outline-light {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-emerald::before,
+.btn-outline-light::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.25) 100%
+  );
+  transform: skewX(-25deg);
+  transition: 0.75s;
+  pointer-events: none;
+}
+
+.btn-emerald:hover::before,
+.btn-outline-light:hover::before {
+  left: 125%;
+  transition: 0.75s;
+}

@@ -1,4 +1,58 @@
 document.addEventListener("DOMContentLoaded", function () {
+  // 0. PRELOADER CONTROLLER (Runs for exactly 2 seconds)
+  const preloader = document.getElementById("preloader");
+  if (preloader) {
+    document.body.classList.add("preloader-active");
+
+    const progressBar = document.querySelector(".preloader-progress-bar");
+    const percentText = document.getElementById("preloader-percent");
+    const statusText = document.getElementById("preloader-status-text");
+
+    const statuses = [
+      { pct: 0, text: "Locking secure advisory connection..." },
+      { pct: 25, text: "Analyzing real-time asset indices..." },
+      { pct: 50, text: "Optimizing tax-efficient pipelines..." },
+      { pct: 75, text: "Structuring wealth projection models..." },
+      { pct: 95, text: "Decryption complete. Initializing dashboard..." },
+    ];
+
+    let duration = 2000; // 2 seconds
+    let startTime = performance.now();
+
+    function updatePreloader(timestamp) {
+      let elapsed = timestamp - startTime;
+      let progress = Math.min(elapsed / duration, 1);
+      let percentage = Math.floor(progress * 100);
+
+      if (progressBar) progressBar.style.width = percentage + "%";
+      if (percentText) percentText.innerText = percentage + "%";
+
+      let currentStatus = statuses[0].text;
+      for (let i = 0; i < statuses.length; i++) {
+        if (percentage >= statuses[i].pct) {
+          currentStatus = statuses[i].text;
+        }
+      }
+      if (statusText && statusText.innerText !== currentStatus) {
+        statusText.innerText = currentStatus;
+      }
+
+      if (progress < 1) {
+        requestAnimationFrame(updatePreloader);
+      } else {
+        setTimeout(() => {
+          preloader.classList.add("preloader-fade-out");
+          document.body.classList.remove("preloader-active");
+          setTimeout(() => {
+            preloader.style.display = "none";
+          }, 500);
+        }, 200);
+      }
+    }
+
+    requestAnimationFrame(updatePreloader);
+  }
+
   // 1. DYNAMIC COMPONENT LOADER
   const pathname = window.location.pathname;
   let depth = 0; // Default: root index.html
@@ -262,6 +316,16 @@ function initCalculator() {
       "₹" + Math.round(projection10Yr).toLocaleString("en-IN");
     wealth20YrText.innerText =
       "₹" + Math.round(projection20Yr).toLocaleString("en-IN");
+
+    // Update dynamic advisory insights based on values
+    updateCalculatorInsights(
+      income,
+      expenses,
+      investRate,
+      monthlySavings,
+      monthlyInvested,
+      projection20Yr,
+    );
   }
 
   function calculateCompound(monthlyContribution, monthlyRate, totalMonths) {
@@ -281,6 +345,61 @@ function initCalculator() {
 
   // Run once on load
   updateCalculator();
+}
+
+/**
+ * 5a. DYNAMIC ADVISORY INSIGHTS
+ */
+function updateCalculatorInsights(
+  income,
+  expenses,
+  investRate,
+  monthlySavings,
+  monthlyInvested,
+  corpus20Yr,
+) {
+  const insightCard = document.getElementById("calcInsightCard");
+  const insightTitle = document.getElementById("insightTitle");
+  const insightText = document.getElementById("insightText");
+  if (!insightCard || !insightTitle || !insightText) return;
+
+  const savingsRate = income > 0 ? (monthlySavings / income) * 100 : 0;
+
+  insightCard.classList.remove("d-none", "warning-insight");
+
+  if (savingsRate <= 0) {
+    insightCard.classList.add("warning-insight");
+    insightTitle.innerHTML =
+      '<i class="fa-solid fa-triangle-exclamation me-1"></i> Budget Alert: Zero Savings';
+    insightText.innerHTML =
+      "Your expenses match or exceed your income. Auditing variables will help recover financial liquidity.";
+  } else if (savingsRate < 25) {
+    insightCard.classList.add("warning-insight");
+    insightTitle.innerHTML =
+      '<i class="fa-solid fa-triangle-exclamation me-1"></i> Advisory Tip: Increase Savings';
+    insightText.innerHTML =
+      "Savings rate is " +
+      Math.round(savingsRate) +
+      "%. Aiming for 25%+ savings rate by reducing variable costs accelerates compounding.";
+  } else if (investRate < 50) {
+    insightTitle.innerHTML =
+      '<i class="fa-solid fa-lightbulb text-gold me-1"></i> Advisory Tip: Deploy Savings';
+    insightText.innerHTML =
+      "Good savings rate (" +
+      Math.round(savingsRate) +
+      "%). But you only invest " +
+      investRate +
+      "% of it. Moving to 60%+ will grow your 20-year corpus significantly.";
+  } else {
+    insightTitle.innerHTML =
+      '<i class="fa-solid fa-circle-check text-emerald me-1"></i> Status: Master Accumulator';
+    insightText.innerHTML =
+      "Stellar behavior! Investing " +
+      investRate +
+      "% of a " +
+      Math.round(savingsRate) +
+      "% savings rate sets you up for rapid compounding success.";
+  }
 }
 
 /**
