@@ -374,3 +374,53 @@ function initProjectFilters() {
     });
   });
 }
+
+/**
+ * 7. INTERCEPT EMPTY LINKS AND REDIRECT TO 404
+ */
+document.addEventListener("click", function (event) {
+  // If user holds Ctrl/Cmd/Shift/Alt to open in new tab/window, don't intercept
+  if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) {
+    return;
+  }
+
+  const link = event.target.closest("a");
+  if (!link) return;
+
+  const href = link.getAttribute("href");
+
+  // Intercept empty or "#" href links
+  if (href === "" || href === "#" || (href && href.trim() === "#")) {
+    // Skip Bootstrap interactive toggles and elements meant to open modals/dropdowns/carousels
+    if (
+      link.hasAttribute("data-bs-toggle") ||
+      link.hasAttribute("data-bs-slide") ||
+      link.classList.contains("dropdown-toggle") ||
+      link.classList.contains("carousel-control-prev") ||
+      link.classList.contains("carousel-control-next")
+    ) {
+      return;
+    }
+
+    event.preventDefault();
+
+    // Determine the page depth to resolve correct path to pages/404.html
+    const pathname = window.location.pathname;
+    let depth = 0; // Default: root directory (index.html)
+
+    if (pathname.includes("/pages/services/")) {
+      depth = 2; // Inside pages/services/
+    } else if (pathname.includes("/pages/")) {
+      depth = 1; // Inside pages/
+    }
+
+    let redirectUrl = "pages/404.html";
+    if (depth === 1) {
+      redirectUrl = "404.html";
+    } else if (depth === 2) {
+      redirectUrl = "../404.html";
+    }
+
+    window.location.href = redirectUrl;
+  }
+});
