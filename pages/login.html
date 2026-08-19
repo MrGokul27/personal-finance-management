@@ -413,8 +413,11 @@
                 role +
                 ". Redirecting to dashboard...",
             );
+            localStorage.setItem("userRole", role);
+            localStorage.setItem("userEmail", email);
+            localStorage.setItem("userLoggedIn", "true");
             setTimeout(() => {
-              window.location.href = "../index.html";
+              window.location.href = "dashboard.html";
             }, 1500);
           }, 1000);
         });

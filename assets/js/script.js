@@ -35,6 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
         headerPlaceholder.innerHTML = html;
         adjustPaths(headerPlaceholder, depth);
         highlightActiveNav(headerPlaceholder, depth);
+        updateHeaderAuth(headerPlaceholder, depth);
         fixHeaderPositions();
       })
       .catch((err) => console.error("Error loading header:", err));
@@ -424,3 +425,21 @@ document.addEventListener("click", function (event) {
     window.location.href = redirectUrl;
   }
 });
+
+/* Update Header CTA Button based on auth state */
+function updateHeaderAuth(container, depth) {
+  const isLoggedIn = localStorage.getItem("userLoggedIn");
+  if (isLoggedIn === "true") {
+    const ctaBtn = container.querySelector("#nav-cta-btn");
+    if (ctaBtn) {
+      let dashboardPath = "pages/dashboard.html";
+      if (depth === 1) {
+        dashboardPath = "dashboard.html";
+      } else if (depth === 2) {
+        dashboardPath = "../dashboard.html";
+      }
+      ctaBtn.setAttribute("href", dashboardPath);
+      ctaBtn.innerHTML = '<i class="fa-solid fa-gauge me-2"></i>Dashboard';
+    }
+  }
+}

@@ -1,0 +1,3352 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Personal Finance Management</title>
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/webp"
+      href="../assets/images/logoStackly.webp"
+    />
+
+    <!-- Bootstrap 5.3 CSS CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome 6 CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Shared Stylesheets -->
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+
+    <style>
+      /* ── Custom Theme Colors Override ── */
+      :root {
+        --primary-emerald: #10b981;
+        --primary-emerald-hover: #059669;
+        --primary-emerald-light: rgba(16, 185, 129, 0.1);
+        --secondary-slate: #1e293b;
+        --secondary-slate-hover: #0f172a;
+        --accent-gold: #f59e0b;
+        --bg-dark: #0f172a;
+        --bg-darker: #090d16;
+        --bg-light: #f8fafc;
+        --text-muted: #64748b;
+        --border-color: #cbd5e1;
+      }
+
+      body {
+        font-family: "Open Sans", sans-serif;
+        background-color: var(--bg-light);
+        color: var(--secondary-slate);
+        overflow-x: hidden;
+      }
+
+      /* ── Responsive Sidebar Layout ── */
+      .sidebar {
+        min-height: 100vh;
+        z-index: 1040;
+        box-shadow: 4px 0 15px rgba(0, 0, 0, 0.08);
+        background-color: var(--bg-dark);
+        border-right: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .offcanvas-backdrop.show {
+        opacity: 0;
+      }
+
+      @media (min-width: 992px) {
+        .sidebar {
+          position: fixed;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          height: 100vh;
+          overflow-y: auto;
+          overflow-x: hidden;
+        }
+        .main-content-wrapper {
+          margin-left: 260px;
+          width: calc(100% - 260px);
+        }
+      }
+
+      /* ── Themed Scrollbar ── */
+      ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: rgba(15, 23, 42, 0.05);
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: linear-gradient(
+          180deg,
+          var(--primary-emerald),
+          var(--primary-emerald-hover)
+        );
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--primary-emerald-hover);
+      }
+      * {
+        scrollbar-width: thin;
+        scrollbar-color: var(--primary-emerald) rgba(15, 23, 42, 0.05);
+      }
+
+      /* ── Sidebar scrolls only when content overflows ── */
+      .sidebar .offcanvas-body {
+        overflow-y: auto;
+        overflow-x: hidden;
+        height: calc(100vh - 70px);
+      }
+
+      /* Width fix for sidebar on desktop */
+      @media (min-width: 992px) {
+        .sidebar-desktop-width {
+          width: 260px;
+        }
+      }
+
+      .sidebar-brand {
+        background-color: var(--bg-darker);
+        padding: 1.5rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .sidebar .nav-link {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 500;
+        color: #94a3b8;
+        padding: 0.8rem 1.5rem;
+        border-left: 3px solid transparent;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .sidebar .nav-link:hover {
+        color: #ffffff;
+        background-color: rgba(255, 255, 255, 0.05);
+        border-left-color: rgba(16, 185, 129, 0.5);
+      }
+
+      .sidebar .nav-link.active {
+        color: #ffffff;
+        background-color: rgba(16, 185, 129, 0.12);
+        border-left-color: var(--primary-emerald);
+        font-weight: 600;
+      }
+
+      .sidebar .nav-link i {
+        width: 20px;
+        text-align: center;
+        font-size: 1.1rem;
+      }
+
+      /* ── Top Navbar Custom Styling ── */
+      .top-navbar {
+        background-color: #ffffff;
+        border-bottom: 1px solid #e2e8f0;
+        padding: 1rem 1.5rem;
+      }
+
+      /* ── Metric Cards ── */
+      .metric-card {
+        border-radius: 12px;
+        border: 1px solid rgba(0, 0, 0, 0.04);
+        background-color: #ffffff;
+        padding: 1.5rem;
+        box-shadow:
+          0 4px 6px -1px rgba(0, 0, 0, 0.02),
+          0 2px 4px -1px rgba(0, 0, 0, 0.02);
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+
+      .metric-card:hover {
+        transform: translateY(-3px);
+        box-shadow:
+          0 10px 15px -3px rgba(0, 0, 0, 0.05),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+
+      .metric-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+      }
+
+      .bg-emerald-light {
+        background-color: rgba(16, 185, 129, 0.1);
+        color: var(--primary-emerald) !important;
+      }
+
+      .bg-gold-light {
+        background-color: rgba(245, 158, 11, 0.1);
+        color: var(--accent-gold) !important;
+      }
+
+      .bg-blue-light {
+        background-color: rgba(59, 130, 246, 0.1);
+        color: #3b82f6 !important;
+      }
+
+      .bg-danger-light {
+        background-color: rgba(239, 68, 68, 0.1);
+        color: #ef4444 !important;
+      }
+
+      /* ── Form Inputs Contrast & Styling ── */
+      .form-control,
+      .form-select {
+        border: 1px solid #cbd5e1;
+        padding: 0.6rem 0.9rem;
+        font-size: 0.95rem;
+        color: var(--secondary-slate);
+        border-radius: 8px;
+        transition:
+          border-color 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .form-control:focus,
+      .form-select:focus {
+        border-color: var(--primary-emerald);
+        box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+      }
+
+      /* ── Table Customizations ── */
+      .table-custom {
+        background-color: #ffffff;
+        border-radius: 10px;
+        overflow: hidden;
+        border: 1px solid #e2e8f0;
+      }
+
+      .table-custom th {
+        background-color: #f8fafc;
+        font-family: "Montserrat", sans-serif;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        letter-spacing: 0.05em;
+        font-weight: 700;
+        color: var(--text-muted);
+        border-bottom: 2px solid #e2e8f0;
+        padding: 1rem;
+      }
+
+      .table-custom td {
+        vertical-align: middle;
+        font-size: 0.9rem;
+        padding: 1rem;
+        border-bottom: 1px solid #f1f5f9;
+        color: var(--secondary-slate);
+      }
+
+      /* ── Badge & Tag Overrides ── */
+      .badge-custom {
+        font-weight: 600;
+        font-size: 0.75rem;
+        padding: 0.35em 0.75em;
+        border-radius: 50px;
+      }
+
+      /* ── Active Role Pill ── */
+      .role-indicator {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 600;
+        font-size: 0.8rem;
+        letter-spacing: 0.05em;
+        background-color: var(--primary-emerald-light);
+        color: var(--primary-emerald);
+        border: 1px solid rgba(16, 185, 129, 0.2);
+        padding: 0.35rem 0.85rem;
+        border-radius: 50px;
+      }
+
+      /* ── Dashboard Cards ── */
+      .dashboard-card {
+        background-color: #ffffff;
+        border-radius: 12px;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+        padding: 1.5rem;
+      }
+
+      /* ── Button Customizations ── */
+      .btn-emerald-custom {
+        background-color: var(--primary-emerald);
+        color: #ffffff;
+        border: none;
+        padding: 0.6rem 1.2rem;
+        border-radius: 8px;
+        font-weight: 600;
+        font-family: "Montserrat", sans-serif;
+        transition: all 0.3s ease;
+      }
+      .btn-emerald-custom:hover {
+        background-color: var(--primary-emerald-hover);
+        color: #ffffff;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 10px rgba(16, 185, 129, 0.2);
+      }
+
+      .btn-outline-slate-custom {
+        background-color: transparent;
+        color: var(--secondary-slate);
+        border: 1px solid var(--border-color);
+        padding: 0.6rem 1.2rem;
+        border-radius: 8px;
+        font-weight: 600;
+        font-family: "Montserrat", sans-serif;
+        transition: all 0.3s ease;
+      }
+      .btn-outline-slate-custom:hover {
+        background-color: var(--bg-light);
+        border-color: var(--secondary-slate);
+        color: var(--secondary-slate);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Main Shell Layout -->
+    <div class="container-fluid p-0">
+      <div class="row g-0">
+        <!-- ==========================================
+             1. SIDEBAR COMPONENT (Responsive Offcanvas)
+             ========================================== -->
+        <div
+          class="col-lg-3 col-xl-2 bg-dark text-white sidebar sidebar-desktop-width offcanvas-lg offcanvas-start"
+          tabindex="-1"
+          id="sidebarMenu"
+          aria-labelledby="sidebarMenuLabel"
+        >
+          <!-- Sidebar Brand Header -->
+          <div
+            class="sidebar-brand d-flex align-items-center justify-content-between"
+          >
+            <a
+              href="../index.html"
+              class="d-flex align-items-center gap-2 text-decoration-none"
+            >
+              <img
+                src="../assets/images/logoStackly.webp"
+                alt="Logo"
+                height="35"
+                style="
+                  filter: invert(58%) sepia(72%) saturate(400%)
+                    hue-rotate(115deg) brightness(95%) contrast(90%);
+                "
+              />
+            </a>
+            <!-- Offcanvas Close Button on Mobile -->
+            <button
+              type="button"
+              class="btn-close btn-close-white d-lg-none"
+              data-bs-dismiss="offcanvas"
+              data-bs-target="#sidebarMenu"
+              aria-label="Close"
+            ></button>
+          </div>
+
+          <!-- Dynamic Role-Based Sidebar Navigation Menus -->
+          <div
+            class="offcanvas-body d-flex flex-column justify-content-between p-0"
+          >
+            <div>
+              <!-- Client Sidebar Options -->
+              <div id="sidebar-Client" class="role-sidebar d-none">
+                <div
+                  class="px-3 py-2 text-uppercase text-secondary font-montserrat small"
+                  style="
+                    font-size: 0.7rem;
+                    font-weight: 700;
+                    letter-spacing: 0.1em;
+                  "
+                >
+                  Client Services
+                </div>
+                <nav class="nav flex-column">
+                  <a class="nav-link active" data-tab="client-overview">
+                    <i class="fa-solid fa-chart-line text-emerald"></i> Overview
+                  </a>
+                  <a class="nav-link" data-tab="client-investments">
+                    <i class="fa-solid fa-wallet"></i> My Investments
+                  </a>
+                  <a class="nav-link" data-tab="client-budget">
+                    <i class="fa-solid fa-calculator"></i> Budget Tracker
+                  </a>
+                  <a class="nav-link" data-tab="client-goals">
+                    <i class="fa-solid fa-bullseye"></i> Financial Goals
+                  </a>
+                  <a class="nav-link" data-tab="client-consultation">
+                    <i class="fa-solid fa-calendar-check"></i> Book Advisor
+                  </a>
+                  <a class="nav-link" data-tab="client-vault">
+                    <i class="fa-solid fa-shield-halved"></i> Document Vault
+                  </a>
+                </nav>
+              </div>
+
+              <!-- Advisor Sidebar Options -->
+              <div id="sidebar-Advisor" class="role-sidebar d-none">
+                <div
+                  class="px-3 py-2 text-uppercase text-secondary font-montserrat small"
+                  style="
+                    font-size: 0.7rem;
+                    font-weight: 700;
+                    letter-spacing: 0.1em;
+                  "
+                >
+                  Advisor Management
+                </div>
+                <nav class="nav flex-column">
+                  <a class="nav-link active" data-tab="advisor-overview">
+                    <i class="fa-solid fa-gauge text-emerald"></i> Advisor
+                    Dashboard
+                  </a>
+                  <a class="nav-link" data-tab="advisor-clients">
+                    <i class="fa-solid fa-users"></i> Client Portfolios
+                  </a>
+                  <a class="nav-link" data-tab="advisor-meetings">
+                    <i class="fa-solid fa-calendar-days"></i> Meeting Slots
+                  </a>
+                  <a class="nav-link" data-tab="advisor-recommendations">
+                    <i class="fa-solid fa-hand-holding-dollar"></i>
+                    Recommendation Engine
+                  </a>
+                  <a class="nav-link" data-tab="advisor-markets">
+                    <i class="fa-solid fa-chart-area"></i> Market Insights
+                  </a>
+                </nav>
+              </div>
+
+              <!-- Admin Sidebar Options -->
+              <div id="sidebar-Admin" class="role-sidebar d-none">
+                <div
+                  class="px-3 py-2 text-uppercase text-secondary font-montserrat small"
+                  style="
+                    font-size: 0.7rem;
+                    font-weight: 700;
+                    letter-spacing: 0.1em;
+                  "
+                >
+                  Administration
+                </div>
+                <nav class="nav flex-column">
+                  <a class="nav-link active" data-tab="admin-overview">
+                    <i class="fa-solid fa-shield-halved text-emerald"></i>
+                    Platform Overview
+                  </a>
+                  <a class="nav-link" data-tab="admin-users">
+                    <i class="fa-solid fa-user-gear"></i> User Management
+                  </a>
+                  <a class="nav-link" data-tab="admin-compliance">
+                    <i class="fa-solid fa-file-shield"></i> Compliance Audit
+                  </a>
+                  <a class="nav-link" data-tab="admin-settings">
+                    <i class="fa-solid fa-sliders"></i> System Settings
+                  </a>
+                </nav>
+              </div>
+            </div>
+
+            <!-- Sidebar Footer User Profile -->
+            <div
+              class="p-3 bg-darker border-top border-secondary border-opacity-10"
+            >
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <div
+                  class="rounded-circle bg-emerald text-white d-flex align-items-center justify-content-center fw-bold"
+                  style="width: 32px; height: 32px; font-size: 0.9rem"
+                  id="userInitials"
+                >
+                  U
+                </div>
+                <div class="overflow-hidden">
+                  <div
+                    class="text-white text-truncate fw-semibold small"
+                    id="sidebarEmail"
+                  >
+                    user@example.com
+                  </div>
+                  <div
+                    class="text-emerald text-truncate fw-medium"
+                    style="font-size: 0.75rem"
+                    id="sidebarRole"
+                  >
+                    Client
+                  </div>
+                </div>
+              </div>
+              <button
+                class="btn btn-outline-danger btn-sm w-100 mt-2 rounded"
+                id="logoutBtn"
+              >
+                <i class="fa-solid fa-right-from-bracket me-1"></i> Log Out
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==========================================
+             2. MAIN VIEW CONTENT SECTION
+             ========================================== -->
+        <div class="col-lg-9 col-xl-10 ms-lg-auto main-content-wrapper p-0">
+          <!-- Top Sticky Navbar -->
+          <nav class="navbar navbar-expand bg-white top-navbar sticky-top">
+            <div class="container-fluid p-0">
+              <div class="d-flex align-items-center">
+                <!-- Mobile Sidebar Menu Toggle Button -->
+                <button
+                  class="btn btn-outline-secondary d-lg-none me-3"
+                  type="button"
+                  data-bs-toggle="offcanvas"
+                  data-bs-target="#sidebarMenu"
+                  aria-controls="sidebarMenu"
+                >
+                  <i class="fa-solid fa-bars"></i>
+                </button>
+                <h4
+                  class="mb-0 font-montserrat fw-bold text-slate d-none d-sm-block"
+                >
+                  Strategic Workspace
+                </h4>
+              </div>
+
+              <!-- Header Navbar Stats and Controls -->
+              <div class="d-flex align-items-center gap-3">
+                <span class="role-indicator d-flex align-items-center gap-1">
+                  <i class="fa-solid fa-circle-user text-emerald"></i>
+                  <span id="headerRole">Client Portal</span>
+                </span>
+
+                <div
+                  class="d-none d-md-flex flex-column align-items-end font-sans"
+                >
+                  <span class="small fw-semibold text-slate" id="headerEmail"
+                    >user@example.com</span
+                  >
+                  <span class="text-muted" style="font-size: 0.75rem"
+                    >Verified Session</span
+                  >
+                </div>
+
+                <!-- Direct Log Out Shortcut -->
+                <!-- <button
+                  class="btn btn-emerald-custom rounded-pill btn-sm px-3"
+                  onclick="handleLogout()"
+                >
+                  <i class="fa-solid fa-right-from-bracket me-1"></i> Log Out
+                </button> -->
+              </div>
+            </div>
+          </nav>
+
+          <!-- Core Page Body Area -->
+          <div class="container-fluid p-4">
+            <div class="row">
+              <div class="col-12">
+                <!-- Dynamic Content Container -->
+                <div id="content-container">
+                  <!-- ==========================================
+                       3. CLIENT ROLE VIEWS
+                       ========================================== -->
+                  <div id="views-Client" class="role-views d-none">
+                    <!-- View A: Client Overview -->
+                    <div id="client-overview" class="view-pane">
+                      <div
+                        class="alert alert-success d-flex align-items-center border-0 shadow-sm mb-4"
+                        role="alert"
+                        style="
+                          background-color: rgba(16, 185, 129, 0.08);
+                          color: var(--secondary-slate);
+                        "
+                      >
+                        <i
+                          class="fa-solid fa-circle-check text-emerald fs-4 me-3"
+                        ></i>
+                        <div>
+                          <strong
+                            >Welcome back,
+                            <span class="client-email-placeholder">Client</span
+                            >!</strong
+                          >
+                          Your financial blueprint is running cleanly. You've
+                          met 70% of your current goals.
+                        </div>
+                      </div>
+
+                      <!-- Metric Stats Cards Row -->
+                      <div class="row g-4 mb-4">
+                        <div class="col-md-4">
+                          <div class="metric-card">
+                            <div
+                              class="d-flex justify-content-between align-items-center mb-3"
+                            >
+                              <span
+                                class="text-muted fw-semibold small text-uppercase"
+                                >Net Worth</span
+                              >
+                              <div class="metric-icon bg-emerald-light">
+                                <i class="fa-solid fa-wallet"></i>
+                              </div>
+                            </div>
+                            <h3 class="fw-bold font-montserrat mb-1">
+                              ₹84,52,000
+                            </h3>
+                            <span class="text-emerald small fw-semibold"
+                              ><i class="fa-solid fa-arrow-trend-up me-1"></i
+                              >+18.4% YTD Growth</span
+                            >
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="metric-card">
+                            <div
+                              class="d-flex justify-content-between align-items-center mb-3"
+                            >
+                              <span
+                                class="text-muted fw-semibold small text-uppercase"
+                                >Monthly Savings Rate</span
+                              >
+                              <div class="metric-icon bg-blue-light">
+                                <i class="fa-solid fa-calculator"></i>
+                              </div>
+                            </div>
+                            <h3 class="fw-bold font-montserrat mb-1">52.3%</h3>
+                            <span class="text-muted small"
+                              >Budgeted: ₹45K | Actual: ₹52K</span
+                            >
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="metric-card">
+                            <div
+                              class="d-flex justify-content-between align-items-center mb-3"
+                            >
+                              <span
+                                class="text-muted fw-semibold small text-uppercase"
+                                >Active Auto-SIPs</span
+                              >
+                              <div class="metric-icon bg-gold-light">
+                                <i class="fa-solid fa-rotate"></i>
+                              </div>
+                            </div>
+                            <h3 class="fw-bold font-montserrat mb-1">
+                              ₹15,000
+                              <span class="fs-6 fw-normal text-muted"
+                                >/ mo</span
+                              >
+                            </h3>
+                            <span class="text-emerald small fw-semibold"
+                              >Next debit: Aug 25, 2026</span
+                            >
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Client Overview Visual Row -->
+                      <div class="row g-4">
+                        <div class="col-lg-8">
+                          <div class="dashboard-card mb-4">
+                            <h5 class="font-montserrat fw-bold text-slate mb-4">
+                              Recent Cashflows
+                            </h5>
+                            <div class="table-responsive">
+                              <table
+                                class="table table-custom table-hover mb-0"
+                              >
+                                <thead>
+                                  <tr>
+                                    <th>Date</th>
+                                    <th>Category</th>
+                                    <th>Account / Gateway</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>18-08-2026</td>
+                                    <td>Mutual Fund SIP</td>
+                                    <td>HDFC Savings Link</td>
+                                    <td class="text-danger fw-semibold">
+                                      - ₹10,000
+                                    </td>
+                                    <td>
+                                      <span
+                                        class="badge bg-success text-white badge-custom"
+                                        >Completed</span
+                                      >
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>15-08-2026</td>
+                                    <td>Salary Credit</td>
+                                    <td>ICICI Corporate</td>
+                                    <td class="text-emerald fw-semibold">
+                                      + ₹1,20,000
+                                    </td>
+                                    <td>
+                                      <span
+                                        class="badge bg-success text-white badge-custom"
+                                        >Completed</span
+                                      >
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>12-08-2026</td>
+                                    <td>Credit Card Bill</td>
+                                    <td>SBI Card Pay</td>
+                                    <td class="text-danger fw-semibold">
+                                      - ₹12,450
+                                    </td>
+                                    <td>
+                                      <span
+                                        class="badge bg-success text-white badge-custom"
+                                        >Completed</span
+                                      >
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>05-08-2026</td>
+                                    <td>SIP Auto-Debit</td>
+                                    <td>Zerodha Coin</td>
+                                    <td class="text-danger fw-semibold">
+                                      - ₹5,000
+                                    </td>
+                                    <td>
+                                      <span
+                                        class="badge bg-success text-white badge-custom"
+                                        >Completed</span
+                                      >
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-4">
+                          <div class="dashboard-card h-100">
+                            <h5 class="font-montserrat fw-bold text-slate mb-3">
+                              Portfolio Split
+                            </h5>
+                            <div
+                              class="p-3 text-center border rounded mb-3 bg-light"
+                            >
+                              <i
+                                class="fa-solid fa-chart-pie text-emerald fs-1 mb-2"
+                              ></i>
+                              <div class="fw-bold font-montserrat">
+                                Equities dominates
+                              </div>
+                              <span class="text-muted small"
+                                >65% Equity | 25% Debt | 10% Gold</span
+                              >
+                            </div>
+                            <ul class="list-group list-group-flush">
+                              <li
+                                class="list-group-item d-flex justify-content-between align-items-center px-0"
+                              >
+                                <span
+                                  ><i
+                                    class="fa-solid fa-circle text-emerald me-2"
+                                    style="font-size: 0.75rem"
+                                  ></i
+                                  >Equities</span
+                                >
+                                <span class="fw-semibold">₹54,93,800</span>
+                              </li>
+                              <li
+                                class="list-group-item d-flex justify-content-between align-items-center px-0"
+                              >
+                                <span
+                                  ><i
+                                    class="fa-solid fa-circle text-primary me-2"
+                                    style="font-size: 0.75rem"
+                                  ></i
+                                  >Debt & Bonds</span
+                                >
+                                <span class="fw-semibold">₹19,58,200</span>
+                              </li>
+                              <li
+                                class="list-group-item d-flex justify-content-between align-items-center px-0"
+                              >
+                                <span
+                                  ><i
+                                    class="fa-solid fa-circle text-warning me-2"
+                                    style="font-size: 0.75rem"
+                                  ></i
+                                  >Sovereign Gold</span
+                                >
+                                <span class="fw-semibold">₹10,00,000</span>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- View B: Client Investments -->
+                    <div id="client-investments" class="view-pane d-none">
+                      <div
+                        class="d-flex justify-content-between align-items-center flex-wrap mb-4"
+                      >
+                        <div>
+                          <h4 class="font-montserrat fw-bold text-slate">
+                            Investment Schemes
+                          </h4>
+                          <p class="text-muted mb-0">
+                            Track and manage your compound interest products
+                          </p>
+                        </div>
+                        <button class="btn btn-emerald-custom mt-2 mt-sm-0">
+                          <i class="fa-solid fa-plus me-1"></i> Add Investment
+                        </button>
+                      </div>
+
+                      <!-- Investment allocation status cards -->
+                      <div class="row g-4 mb-4">
+                        <div class="col-sm-6 col-md-4">
+                          <div class="metric-card">
+                            <span class="text-muted small"
+                              >Equity Growth Fund</span
+                            >
+                            <h4 class="fw-bold text-slate mt-1">₹54,93,800</h4>
+                            <span class="text-emerald small"
+                              ><i class="fa-solid fa-caret-up me-1"></i>+16.2%
+                              return</span
+                            >
+                          </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                          <div class="metric-card">
+                            <span class="text-muted small"
+                              >Debt & Fixed Income</span
+                            >
+                            <h4 class="fw-bold text-slate mt-1">₹19,58,200</h4>
+                            <span class="text-emerald small"
+                              ><i class="fa-solid fa-caret-up me-1"></i>+7.1%
+                              return</span
+                            >
+                          </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                          <div class="metric-card">
+                            <span class="text-muted small"
+                              >Precious Metals (Gold)</span
+                            >
+                            <h4 class="fw-bold text-slate mt-1">₹10,00,000</h4>
+                            <span class="text-emerald small"
+                              ><i class="fa-solid fa-caret-up me-1"></i>+12.4%
+                              return</span
+                            >
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="dashboard-card mb-4">
+                        <h5 class="font-montserrat fw-bold text-slate mb-3">
+                          Portfolio Details
+                        </h5>
+                        <div class="table-responsive">
+                          <table class="table table-custom table-hover mb-0">
+                            <thead>
+                              <tr>
+                                <th>Scheme Name</th>
+                                <th>Asset Class</th>
+                                <th>Invested Value</th>
+                                <th>Current Valuation</th>
+                                <th>Absolute Return</th>
+                                <th>XIRR</th>
+                                <th>Action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td class="fw-semibold">
+                                  Parag Parikh Flexi Cap Fund
+                                </td>
+                                <td>
+                                  <span
+                                    class="badge bg-emerald-light px-2 py-1"
+                                    style="font-size: 0.75rem"
+                                    >Equity</span
+                                  >
+                                </td>
+                                <td>₹12,00,000</td>
+                                <td>₹15,45,000</td>
+                                <td class="text-emerald fw-semibold">
+                                  +28.75%
+                                </td>
+                                <td class="text-emerald fw-semibold">18.2%</td>
+                                <td>
+                                  <button
+                                    class="btn btn-sm btn-outline-success"
+                                  >
+                                    Invest More
+                                  </button>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="fw-semibold">
+                                  SBI Bluechip Equity Mutual Fund
+                                </td>
+                                <td>
+                                  <span
+                                    class="badge bg-emerald-light px-2 py-1"
+                                    style="font-size: 0.75rem"
+                                    >Equity</span
+                                  >
+                                </td>
+                                <td>₹15,00,000</td>
+                                <td>₹17,80,000</td>
+                                <td class="text-emerald fw-semibold">
+                                  +18.67%
+                                </td>
+                                <td class="text-emerald fw-semibold">14.5%</td>
+                                <td>
+                                  <button
+                                    class="btn btn-sm btn-outline-success"
+                                  >
+                                    Invest More
+                                  </button>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="fw-semibold">
+                                  Axis Small Cap Mutual Fund
+                                </td>
+                                <td>
+                                  <span
+                                    class="badge bg-emerald-light px-2 py-1"
+                                    style="font-size: 0.75rem"
+                                    >Equity</span
+                                  >
+                                </td>
+                                <td>₹8,00,000</td>
+                                <td>₹10,12,000</td>
+                                <td class="text-emerald fw-semibold">
+                                  +26.50%
+                                </td>
+                                <td class="text-emerald fw-semibold">21.3%</td>
+                                <td>
+                                  <button
+                                    class="btn btn-sm btn-outline-success"
+                                  >
+                                    Invest More
+                                  </button>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="fw-semibold">
+                                  ICICI Prudential Debt Bond Fund
+                                </td>
+                                <td>
+                                  <span
+                                    class="badge bg-blue-light px-2 py-1"
+                                    style="font-size: 0.75rem"
+                                    >Debt</span
+                                  >
+                                </td>
+                                <td>₹15,00,000</td>
+                                <td>₹16,50,000</td>
+                                <td class="text-emerald fw-semibold">
+                                  +10.00%
+                                </td>
+                                <td class="text-emerald fw-semibold">7.8%</td>
+                                <td>
+                                  <button
+                                    class="btn btn-sm btn-outline-success"
+                                  >
+                                    Invest More
+                                  </button>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="fw-semibold">
+                                  Sovereign Gold Bond (SGB 2021)
+                                </td>
+                                <td>
+                                  <span
+                                    class="badge bg-gold-light px-2 py-1"
+                                    style="font-size: 0.75rem"
+                                    >Gold</span
+                                  >
+                                </td>
+                                <td>₹8,00,000</td>
+                                <td>₹10,00,000</td>
+                                <td class="text-emerald fw-semibold">
+                                  +25.00%
+                                </td>
+                                <td class="text-emerald fw-semibold">11.5%</td>
+                                <td>
+                                  <button
+                                    class="btn btn-sm btn-outline-success"
+                                  >
+                                    Invest More
+                                  </button>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- View C: Client Budget -->
+                    <div id="client-budget" class="view-pane d-none">
+                      <h4 class="font-montserrat fw-bold text-slate mb-2">
+                        Budgeting & Expense Sheet
+                      </h4>
+                      <p class="text-muted mb-4">
+                        Dynamically log and analyze your spending profiles
+                      </p>
+
+                      <div class="row g-4 mb-4">
+                        <div class="col-lg-8">
+                          <div class="dashboard-card mb-4">
+                            <h5 class="font-montserrat fw-bold text-slate mb-4">
+                              Category Allocations
+                            </h5>
+
+                            <!-- Category progress -->
+                            <div class="mb-4">
+                              <div class="d-flex justify-content-between mb-1">
+                                <span class="fw-medium">Rent & Utilities</span>
+                                <span class="text-muted"
+                                  >₹20,000 / ₹20,000 (100% Used)</span
+                                >
+                              </div>
+                              <div class="progress" style="height: 10px">
+                                <div
+                                  class="progress-bar bg-danger"
+                                  role="progressbar"
+                                  style="width: 100%"
+                                  aria-valuenow="100"
+                                  aria-valuemin="0"
+                                  aria-valuemax="100"
+                                ></div>
+                              </div>
+                            </div>
+
+                            <div class="mb-4">
+                              <div class="d-flex justify-content-between mb-1">
+                                <span class="fw-medium"
+                                  >Groceries & Food Delivery</span
+                                >
+                                <span class="text-muted"
+                                  >₹11,400 / ₹15,000 (76% Used)</span
+                                >
+                              </div>
+                              <div class="progress" style="height: 10px">
+                                <div
+                                  class="progress-bar bg-emerald"
+                                  role="progressbar"
+                                  style="width: 76%"
+                                  aria-valuenow="76"
+                                  aria-valuemin="0"
+                                  aria-valuemax="100"
+                                ></div>
+                              </div>
+                            </div>
+
+                            <div class="mb-4">
+                              <div class="d-flex justify-content-between mb-1">
+                                <span class="fw-medium"
+                                  >Telecom & Household Bills</span
+                                >
+                                <span class="text-muted"
+                                  >₹6,800 / ₹8,000 (85% Used)</span
+                                >
+                              </div>
+                              <div class="progress" style="height: 10px">
+                                <div
+                                  class="progress-bar bg-warning"
+                                  role="progressbar"
+                                  style="width: 85%"
+                                  aria-valuenow="85"
+                                  aria-valuemin="0"
+                                  aria-valuemax="100"
+                                ></div>
+                              </div>
+                            </div>
+
+                            <div class="mb-2">
+                              <div class="d-flex justify-content-between mb-1">
+                                <span class="fw-medium"
+                                  >Entertainment & Lifestyle</span
+                                >
+                                <span class="text-muted"
+                                  >₹4,800 / ₹7,000 (68% Used)</span
+                                >
+                              </div>
+                              <div class="progress" style="height: 10px">
+                                <div
+                                  class="progress-bar bg-emerald"
+                                  role="progressbar"
+                                  style="width: 68%"
+                                  aria-valuenow="68"
+                                  aria-valuemin="0"
+                                  aria-valuemax="100"
+                                ></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                          <div class="dashboard-card">
+                            <h5 class="font-montserrat fw-bold text-slate mb-3">
+                              Add Custom Expense
+                            </h5>
+                            <form id="expenseForm">
+                              <div class="mb-3">
+                                <label
+                                  for="expCategory"
+                                  class="form-label small fw-semibold"
+                                  >Expense Category</label
+                                >
+                                <select
+                                  class="form-select"
+                                  id="expCategory"
+                                  required
+                                >
+                                  <option value="">Choose category...</option>
+                                  <option value="groceries">
+                                    Groceries & Food
+                                  </option>
+                                  <option value="entertainment">
+                                    Entertainment
+                                  </option>
+                                  <option value="bills">
+                                    Utilities & Bills
+                                  </option>
+                                  <option value="other">Miscellaneous</option>
+                                </select>
+                              </div>
+                              <div class="mb-3">
+                                <label
+                                  for="expAmount"
+                                  class="form-label small fw-semibold"
+                                  >Amount (₹)</label
+                                >
+                                <input
+                                  type="number"
+                                  class="form-control"
+                                  id="expAmount"
+                                  placeholder="e.g. 1500"
+                                  required
+                                />
+                              </div>
+                              <div class="mb-3">
+                                <label
+                                  for="expDate"
+                                  class="form-label small fw-semibold"
+                                  >Date</label
+                                >
+                                <input
+                                  type="date"
+                                  class="form-control"
+                                  id="expDate"
+                                  required
+                                />
+                              </div>
+                              <button
+                                type="submit"
+                                class="btn btn-emerald-custom w-100"
+                              >
+                                <i class="fa-solid fa-receipt me-1"></i> Log
+                                Expense
+                              </button>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- View D: Client Goals -->
+                    <div id="client-goals" class="view-pane d-none">
+                      <div
+                        class="d-flex justify-content-between align-items-center flex-wrap mb-4"
+                      >
+                        <div>
+                          <h4 class="font-montserrat fw-bold text-slate">
+                            Wealth Goal Planner
+                          </h4>
+                          <p class="text-muted mb-0">
+                            Project and map targets to support inflation
+                            adjusted growth
+                          </p>
+                        </div>
+                        <button class="btn btn-emerald-custom mt-2 mt-sm-0">
+                          <i class="fa-solid fa-bullseye me-1"></i> Create Goal
+                        </button>
+                      </div>
+
+                      <div class="row g-4">
+                        <div class="col-md-4">
+                          <div class="dashboard-card text-center py-4">
+                            <div
+                              class="metric-icon bg-emerald-light mx-auto mb-3"
+                              style="width: 60px; height: 60px"
+                            >
+                              <i
+                                class="fa-solid fa-umbrella-beach fs-4 text-emerald"
+                              ></i>
+                            </div>
+                            <h6 class="font-montserrat fw-bold mb-1">
+                              Early Retirement
+                            </h6>
+                            <p class="text-muted small">
+                              Target: ₹3.50 Crore (2038)
+                            </p>
+                            <div class="progress mb-2" style="height: 8px">
+                              <div
+                                class="progress-bar bg-emerald"
+                                style="width: 64%"
+                              ></div>
+                            </div>
+                            <span class="small fw-semibold text-slate"
+                              >64% Achieved (₹2.24 Cr)</span
+                            >
+                          </div>
+                        </div>
+
+                        <div class="col-md-4">
+                          <div class="dashboard-card text-center py-4">
+                            <div
+                              class="metric-icon bg-blue-light mx-auto mb-3"
+                              style="width: 60px; height: 60px"
+                            >
+                              <i
+                                class="fa-solid fa-graduation-cap fs-4 text-primary"
+                              ></i>
+                            </div>
+                            <h6 class="font-montserrat fw-bold mb-1">
+                              Child's Education
+                            </h6>
+                            <p class="text-muted small">
+                              Target: ₹50.00 Lakhs (2032)
+                            </p>
+                            <div class="progress mb-2" style="height: 8px">
+                              <div
+                                class="progress-bar bg-primary"
+                                style="width: 40%"
+                              ></div>
+                            </div>
+                            <span class="small fw-semibold text-slate"
+                              >40% Achieved (₹20.0 L)</span
+                            >
+                          </div>
+                        </div>
+
+                        <div class="col-md-4">
+                          <div class="dashboard-card text-center py-4">
+                            <div
+                              class="metric-icon bg-gold-light mx-auto mb-3"
+                              style="width: 60px; height: 60px"
+                            >
+                              <i
+                                class="fa-solid fa-house-chimney fs-4 text-warning"
+                              ></i>
+                            </div>
+                            <h6 class="font-montserrat fw-bold mb-1">
+                              Dream Home Purchase
+                            </h6>
+                            <p class="text-muted small">
+                              Target: ₹1.20 Crore (2028)
+                            </p>
+                            <div class="progress mb-2" style="height: 8px">
+                              <div
+                                class="progress-bar bg-warning"
+                                style="width: 70.4%"
+                              ></div>
+                            </div>
+                            <span class="small fw-semibold text-slate"
+                              >70.4% Achieved (₹84.5 L)</span
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- View E: Client Consultation -->
+                    <div id="client-consultation" class="view-pane d-none">
+                      <h4 class="font-montserrat fw-bold text-slate mb-2">
+                        Book Financial Consultation
+                      </h4>
+                      <p class="text-muted mb-4">
+                        Secure certified fee-only advice with our aligned
+                        advisory desk
+                      </p>
+
+                      <div class="row g-4">
+                        <div class="col-lg-6">
+                          <div class="dashboard-card">
+                            <h5 class="font-montserrat fw-bold text-slate mb-4">
+                              Request Consultation Slot
+                            </h5>
+                            <form id="consultationForm">
+                              <div class="mb-3">
+                                <label
+                                  for="advisorSelect"
+                                  class="form-label small fw-semibold"
+                                  >Select Advisor</label
+                                >
+                                <select
+                                  class="form-select"
+                                  id="advisorSelect"
+                                  required
+                                >
+                                  <option value="">Select advisor...</option>
+                                  <option value="akash">
+                                    Advisor Akash Mehta (AUM: 12.4 Cr)
+                                  </option>
+                                  <option value="swetha">
+                                    Advisor Swetha Rao (AUM: 10.2 Cr)
+                                  </option>
+                                  <option value="karthik">
+                                    Advisor Karthik Iyer (Specialist: Taxes)
+                                  </option>
+                                </select>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-6 mb-3">
+                                  <label
+                                    for="meetDate"
+                                    class="form-label small fw-semibold"
+                                    >Requested Date</label
+                                  >
+                                  <input
+                                    type="date"
+                                    class="form-control"
+                                    id="meetDate"
+                                    required
+                                  />
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                  <label
+                                    for="meetSlot"
+                                    class="form-label small fw-semibold"
+                                    >Select Time Slot</label
+                                  >
+                                  <select
+                                    class="form-select"
+                                    id="meetSlot"
+                                    required
+                                  >
+                                    <option value="">Select time...</option>
+                                    <option value="10:00">
+                                      10:00 AM - 11:00 AM
+                                    </option>
+                                    <option value="14:00">
+                                      02:00 PM - 03:00 PM
+                                    </option>
+                                    <option value="16:00">
+                                      04:00 PM - 05:00 PM
+                                    </option>
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="mb-3">
+                                <label
+                                  for="meetType"
+                                  class="form-label small fw-semibold"
+                                  >Meeting Type</label
+                                >
+                                <select
+                                  class="form-select"
+                                  id="meetType"
+                                  required
+                                >
+                                  <option value="video">
+                                    Virtual Video Call (Zoom)
+                                  </option>
+                                  <option value="phone">
+                                    Audio Phone Call
+                                  </option>
+                                  <option value="office">
+                                    In-person Office Visit
+                                  </option>
+                                </select>
+                              </div>
+                              <div class="mb-3">
+                                <label
+                                  for="meetNotes"
+                                  class="form-label small fw-semibold"
+                                  >Brief discussion topic</label
+                                >
+                                <textarea
+                                  class="form-control"
+                                  id="meetNotes"
+                                  rows="3"
+                                  placeholder="e.g. portfolio review, tax queries..."
+                                ></textarea>
+                              </div>
+                              <button
+                                type="submit"
+                                class="btn btn-emerald-custom w-100"
+                              >
+                                <i class="fa-solid fa-envelope me-1"></i> Submit
+                                Booking Request
+                              </button>
+                            </form>
+                          </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                          <div class="dashboard-card h-100">
+                            <h5 class="font-montserrat fw-bold text-slate mb-4">
+                              Your Advisory Aligned Specialists
+                            </h5>
+                            <div class="d-flex gap-3 mb-4 align-items-center">
+                              <div
+                                class="rounded-circle bg-emerald text-white d-flex align-items-center justify-content-center fw-bold"
+                                style="
+                                  width: 50px;
+                                  height: 50px;
+                                  flex-shrink: 0;
+                                "
+                              >
+                                AM
+                              </div>
+                              <div>
+                                <h6 class="font-montserrat fw-bold mb-0">
+                                  Akash Mehta
+                                </h6>
+                                <span class="text-emerald small fw-semibold"
+                                  >Senior Portfolio Strategist</span
+                                >
+                                <p class="text-muted mb-0 small">
+                                  12+ years experience in compound capital
+                                  allocations.
+                                </p>
+                              </div>
+                            </div>
+
+                            <div class="d-flex gap-3 mb-4 align-items-center">
+                              <div
+                                class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center fw-bold"
+                                style="
+                                  width: 50px;
+                                  height: 50px;
+                                  flex-shrink: 0;
+                                "
+                              >
+                                SR
+                              </div>
+                              <div>
+                                <h6 class="font-montserrat fw-bold mb-0">
+                                  Swetha Rao
+                                </h6>
+                                <span class="text-emerald small fw-semibold"
+                                  >Fiduciary Wealth Advisor</span
+                                >
+                                <p class="text-muted mb-0 small">
+                                  Specialized in retirement blueprints & life
+                                  planning.
+                                </p>
+                              </div>
+                            </div>
+
+                            <div class="d-flex gap-3 align-items-center">
+                              <div
+                                class="rounded-circle bg-warning text-white d-flex align-items-center justify-content-center fw-bold"
+                                style="
+                                  width: 50px;
+                                  height: 50px;
+                                  flex-shrink: 0;
+                                "
+                              >
+                                KI
+                              </div>
+                              <div>
+                                <h6 class="font-montserrat fw-bold mb-0">
+                                  Karthik Iyer
+                                </h6>
+                                <span class="text-emerald small fw-semibold"
+                                  >Certified Tax & Estate Advocate</span
+                                >
+                                <p class="text-muted mb-0 small">
+                                  Guiding clients on tax re-evaluations under
+                                  the finance code.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- View F: Client Vault -->
+                    <div id="client-vault" class="view-pane d-none">
+                      <div
+                        class="d-flex justify-content-between align-items-center flex-wrap mb-4"
+                      >
+                        <div>
+                          <h4 class="font-montserrat fw-bold text-slate">
+                            Personal Document Vault
+                          </h4>
+                          <p class="text-muted mb-0">
+                            Encrypted bank-grade storage for files, deeds and
+                            certificates
+                          </p>
+                        </div>
+                        <button class="btn btn-emerald-custom mt-2 mt-sm-0">
+                          <i class="fa-solid fa-cloud-arrow-up me-1"></i> Upload
+                          File
+                        </button>
+                      </div>
+
+                      <div class="dashboard-card mb-4">
+                        <h5 class="font-montserrat fw-bold text-slate mb-3">
+                          Stored Financial Documents
+                        </h5>
+                        <div class="table-responsive">
+                          <table class="table table-custom table-hover mb-0">
+                            <thead>
+                              <tr>
+                                <th>File Name</th>
+                                <th>Date Uploaded</th>
+                                <th>Size</th>
+                                <th>Category</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td class="fw-semibold text-slate">
+                                  <i
+                                    class="fa-regular fa-file-pdf text-danger me-2"
+                                  ></i>
+                                  Form16_FY2025-26.pdf
+                                </td>
+                                <td>15-06-2026</td>
+                                <td>1.2 MB</td>
+                                <td>Tax Statements</td>
+                                <td>
+                                  <span
+                                    class="badge bg-success text-white badge-custom"
+                                    >Verified</span
+                                  >
+                                </td>
+                                <td>
+                                  <button
+                                    class="btn btn-sm btn-outline-secondary"
+                                  >
+                                    <i class="fa-solid fa-download"></i>
+                                  </button>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="fw-semibold text-slate">
+                                  <i
+                                    class="fa-regular fa-file-pdf text-danger me-2"
+                                  ></i>
+                                  Zerodha_Tax_P&L_FY25.pdf
+                                </td>
+                                <td>10-06-2026</td>
+                                <td>845 KB</td>
+                                <td>Capital Gains</td>
+                                <td>
+                                  <span
+                                    class="badge bg-success text-white badge-custom"
+                                    >Verified</span
+                                  >
+                                </td>
+                                <td>
+                                  <button
+                                    class="btn btn-sm btn-outline-secondary"
+                                  >
+                                    <i class="fa-solid fa-download"></i>
+                                  </button>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="fw-semibold text-slate">
+                                  <i
+                                    class="fa-regular fa-file-pdf text-danger me-2"
+                                  ></i>
+                                  SBI_Savings_Passbook.pdf
+                                </td>
+                                <td>19-08-2026</td>
+                                <td>2.4 MB</td>
+                                <td>Bank Statements</td>
+                                <td>
+                                  <span
+                                    class="badge bg-warning text-dark badge-custom"
+                                    >Pending Review</span
+                                  >
+                                </td>
+                                <td>
+                                  <button
+                                    class="btn btn-sm btn-outline-secondary"
+                                  >
+                                    <i class="fa-solid fa-download"></i>
+                                  </button>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- ==========================================
+                       4. FINANCIAL ADVISOR ROLE VIEWS
+                       ========================================== -->
+                  <div id="views-Advisor" class="role-views d-none">
+                    <!-- View A: Advisor Dashboard Overview -->
+                    <div id="advisor-overview" class="view-pane">
+                      <div
+                        class="alert alert-primary border-0 shadow-sm mb-4"
+                        role="alert"
+                        style="
+                          background-color: rgba(59, 130, 246, 0.08);
+                          color: var(--secondary-slate);
+                        "
+                      >
+                        <i
+                          class="fa-solid fa-user-tie text-primary fs-4 me-2 vertical-middle"
+                        ></i>
+                        <strong>Advisor Desk Active.</strong> Currently advising
+                        38 portfolios totaling ₹24.8 Crore. You have 3 pending
+                        calendar bookings.
+                      </div>
+
+                      <div class="row g-4 mb-4">
+                        <div class="col-md-3">
+                          <div class="metric-card">
+                            <span
+                              class="text-muted fw-semibold small text-uppercase"
+                              >Total AUM</span
+                            >
+                            <h3
+                              class="fw-bold font-montserrat mt-2 mb-1 text-slate"
+                            >
+                              ₹24.8 Cr
+                            </h3>
+                            <span class="text-emerald small fw-semibold"
+                              ><i class="fa-solid fa-chart-line me-1"></i>+12.4%
+                              Q3 Growth</span
+                            >
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="metric-card">
+                            <span
+                              class="text-muted fw-semibold small text-uppercase"
+                              >Managed Clients</span
+                            >
+                            <h3
+                              class="fw-bold font-montserrat mt-2 mb-1 text-slate"
+                            >
+                              38
+                            </h3>
+                            <span class="text-muted small"
+                              >Target allocation active</span
+                            >
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="metric-card">
+                            <span
+                              class="text-muted fw-semibold small text-uppercase"
+                              >Pending Reviews</span
+                            >
+                            <h3
+                              class="fw-bold font-montserrat mt-2 mb-1 text-slate"
+                            >
+                              5
+                            </h3>
+                            <span class="text-warning small fw-semibold"
+                              ><i
+                                class="fa-solid fa-triangle-exclamation me-1"
+                              ></i
+                              >Action required</span
+                            >
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="metric-card">
+                            <span
+                              class="text-muted fw-semibold small text-uppercase"
+                              >Next Slot Booking</span
+                            >
+                            <h3
+                              class="fw-bold font-montserrat mt-2 mb-1 text-slate"
+                            >
+                              4:00 PM
+                            </h3>
+                            <span class="text-muted small"
+                              >with Amit Sharma</span
+                            >
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row g-4">
+                        <div class="col-lg-8">
+                          <div class="dashboard-card mb-4">
+                            <h5 class="font-montserrat fw-bold text-slate mb-4">
+                              Upcoming Client Bookings
+                            </h5>
+                            <div class="table-responsive">
+                              <table
+                                class="table table-custom table-hover mb-0"
+                              >
+                                <thead>
+                                  <tr>
+                                    <th>Client Name</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Meeting Mode</th>
+                                    <th>Review Status</th>
+                                    <th>Action</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td class="fw-semibold">Amit Sharma</td>
+                                    <td>19-08-2026</td>
+                                    <td>4:00 PM</td>
+                                    <td>Virtual Zoom</td>
+                                    <td>
+                                      <span
+                                        class="badge bg-success text-white badge-custom"
+                                        >Confirmed</span
+                                      >
+                                    </td>
+                                    <td>
+                                      <button
+                                        class="btn btn-sm btn-emerald-custom"
+                                      >
+                                        Start Consultation
+                                      </button>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="fw-semibold">Rakesh Verma</td>
+                                    <td>20-08-2026</td>
+                                    <td>11:30 AM</td>
+                                    <td>Audio Call</td>
+                                    <td>
+                                      <span
+                                        class="badge bg-success text-white badge-custom"
+                                        >Confirmed</span
+                                      >
+                                    </td>
+                                    <td>
+                                      <button
+                                        class="btn btn-sm btn-emerald-custom"
+                                      >
+                                        Launch Call
+                                      </button>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="fw-semibold">Sneha Patel</td>
+                                    <td>21-08-2026</td>
+                                    <td>3:00 PM</td>
+                                    <td>Virtual Zoom</td>
+                                    <td>
+                                      <span
+                                        class="badge bg-warning text-dark badge-custom"
+                                        >Pending</span
+                                      >
+                                    </td>
+                                    <td>
+                                      <button
+                                        class="btn btn-sm btn-outline-success"
+                                      >
+                                        Accept Meeting
+                                      </button>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                          <div class="dashboard-card">
+                            <h5 class="font-montserrat fw-bold text-slate mb-3">
+                              Platform Notifications
+                            </h5>
+                            <ul class="list-group list-group-flush small">
+                              <li class="list-group-item px-0 py-3">
+                                <div class="fw-semibold text-danger">
+                                  <i
+                                    class="fa-solid fa-triangle-exclamation me-1"
+                                  ></i
+                                  >Risk Threshold Flag
+                                </div>
+                                <span class="text-muted"
+                                  >Client Priya Sen's small-cap allocation
+                                  exceeded 30%. Rebalancing advised.</span
+                                >
+                              </li>
+                              <li class="list-group-item px-0 py-3">
+                                <div class="fw-semibold text-emerald">
+                                  <i class="fa-solid fa-circle-check me-1"></i
+                                  >Rebalancing Confirmed
+                                </div>
+                                <span class="text-muted"
+                                  >Rakesh Verma approved your Balanced model
+                                  recommendation.</span
+                                >
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- View B: Advisor Clients -->
+                    <div id="advisor-clients" class="view-pane d-none">
+                      <div
+                        class="d-flex justify-content-between align-items-center flex-wrap mb-4"
+                      >
+                        <div>
+                          <h4 class="font-montserrat fw-bold text-slate">
+                            Client Portfolio Management
+                          </h4>
+                          <p class="text-muted mb-0">
+                            Evaluate client capital allocations, risk appetites,
+                            and performance curves
+                          </p>
+                        </div>
+                        <button class="btn btn-emerald-custom mt-2 mt-sm-0">
+                          <i class="fa-solid fa-user-plus me-1"></i> Onboard
+                          Client
+                        </button>
+                      </div>
+
+                      <div class="dashboard-card mb-4">
+                        <h5 class="font-montserrat fw-bold text-slate mb-3">
+                          Active Advisory Clients
+                        </h5>
+                        <div class="table-responsive">
+                          <table class="table table-custom table-hover mb-0">
+                            <thead>
+                              <tr>
+                                <th>Client ID</th>
+                                <th>Client Name</th>
+                                <th>Email Address</th>
+                                <th>Risk Profile</th>
+                                <th>Total Assets (AUM)</th>
+                                <th>Last Review Date</th>
+                                <th>Health Score</th>
+                                <th>Action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td class="fw-bold">C101</td>
+                                <td class="fw-semibold">Amit Sharma</td>
+                                <td>amit@example.com</td>
+                                <td>
+                                  <span
+                                    class="badge bg-danger-light px-2 py-1 text-danger"
+                                    style="font-size: 0.75rem"
+                                    >Aggressive</span
+                                  >
+                                </td>
+                                <td>₹1,24,50,000</td>
+                                <td>15-07-2026</td>
+                                <td>
+                                  <span class="text-emerald fw-bold">92%</span>
+                                </td>
+                                <td>
+                                  <button
+                                    class="btn btn-sm btn-outline-success"
+                                  >
+                                    Manage
+                                  </button>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="fw-bold">C102</td>
+                                <td class="fw-semibold">Rakesh Verma</td>
+                                <td>rakesh@example.com</td>
+                                <td>
+                                  <span
+                                    class="badge bg-blue-light px-2 py-1 text-primary"
+                                    style="font-size: 0.75rem"
+                                    >Balanced</span
+                                  >
+                                </td>
+                                <td>₹84,52,000</td>
+                                <td>12-08-2026</td>
+                                <td>
+                                  <span class="text-emerald fw-bold">85%</span>
+                                </td>
+                                <td>
+                                  <button
+                                    class="btn btn-sm btn-outline-success"
+                                  >
+                                    Manage
+                                  </button>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="fw-bold">C103</td>
+                                <td class="fw-semibold">Sneha Patel</td>
+                                <td>sneha@example.com</td>
+                                <td>
+                                  <span
+                                    class="badge bg-gold-light px-2 py-1 text-warning"
+                                    style="font-size: 0.75rem"
+                                    >Conservative</span
+                                  >
+                                </td>
+                                <td>₹42,00,000</td>
+                                <td>24-06-2026</td>
+                                <td>
+                                  <span class="text-warning fw-bold">74%</span>
+                                </td>
+                                <td>
+                                  <button
+                                    class="btn btn-sm btn-outline-success"
+                                  >
+                                    Manage
+                                  </button>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="fw-bold">C104</td>
+                                <td class="fw-semibold">Priya Sen</td>
+                                <td>priya@example.com</td>
+                                <td>
+                                  <span
+                                    class="badge bg-danger-light px-2 py-1 text-danger"
+                                    style="font-size: 0.75rem"
+                                    >Very Aggressive</span
+                                  >
+                                </td>
+                                <td>₹1,85,00,000</td>
+                                <td>02-08-2026</td>
+                                <td>
+                                  <span class="text-emerald fw-bold">98%</span>
+                                </td>
+                                <td>
+                                  <button
+                                    class="btn btn-sm btn-outline-success"
+                                  >
+                                    Manage
+                                  </button>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- View C: Advisor Meetings -->
+                    <div id="advisor-meetings" class="view-pane d-none">
+                      <div
+                        class="d-flex justify-content-between align-items-center flex-wrap mb-4"
+                      >
+                        <div>
+                          <h4 class="font-montserrat fw-bold text-slate">
+                            Open Consultation Slots
+                          </h4>
+                          <p class="text-muted mb-0">
+                            Publish booking intervals for client rebalancing
+                            calls
+                          </p>
+                        </div>
+                        <button class="btn btn-emerald-custom mt-2 mt-sm-0">
+                          <i class="fa-solid fa-plus me-1"></i> Add Availability
+                        </button>
+                      </div>
+
+                      <div class="row g-4">
+                        <div class="col-lg-5">
+                          <div class="dashboard-card">
+                            <h5 class="font-montserrat fw-bold text-slate mb-4">
+                              Add Open Availability Slot
+                            </h5>
+                            <form id="openSlotForm">
+                              <div class="mb-3">
+                                <label
+                                  for="slotDate"
+                                  class="form-label small fw-semibold"
+                                  >Date</label
+                                >
+                                <input
+                                  type="date"
+                                  class="form-control"
+                                  id="slotDate"
+                                  required
+                                />
+                              </div>
+                              <div class="mb-3">
+                                <label
+                                  for="slotTime"
+                                  class="form-label small fw-semibold"
+                                  >Time Slot</label
+                                >
+                                <select
+                                  class="form-select"
+                                  id="slotTime"
+                                  required
+                                >
+                                  <option value="">Select hour...</option>
+                                  <option value="09:00">
+                                    09:00 AM - 10:00 AM
+                                  </option>
+                                  <option value="11:00">
+                                    11:00 AM - 12:00 PM
+                                  </option>
+                                  <option value="15:00">
+                                    03:00 PM - 04:00 PM
+                                  </option>
+                                  <option value="17:00">
+                                    05:00 PM - 06:00 PM
+                                  </option>
+                                </select>
+                              </div>
+                              <div class="mb-3">
+                                <label
+                                  for="slotMode"
+                                  class="form-label small fw-semibold"
+                                  >Preferred Meeting Mode</label
+                                >
+                                <select
+                                  class="form-select"
+                                  id="slotMode"
+                                  required
+                                >
+                                  <option value="video">
+                                    Zoom Video Conference
+                                  </option>
+                                  <option value="audio">Phone Dial-In</option>
+                                </select>
+                              </div>
+                              <button
+                                type="submit"
+                                class="btn btn-emerald-custom w-100"
+                              >
+                                <i class="fa-solid fa-calendar-plus me-1"></i>
+                                Publish Slot
+                              </button>
+                            </form>
+                          </div>
+                        </div>
+
+                        <div class="col-lg-7">
+                          <div class="dashboard-card h-100">
+                            <h5 class="font-montserrat fw-bold text-slate mb-3">
+                              Published Consultation Calendar
+                            </h5>
+                            <div class="table-responsive">
+                              <table
+                                class="table table-custom table-hover mb-0"
+                              >
+                                <thead>
+                                  <tr>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Mode</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>19-08-2026</td>
+                                    <td>04:00 PM - 05:00 PM</td>
+                                    <td>Zoom Call</td>
+                                    <td>
+                                      <span
+                                        class="badge bg-danger text-white badge-custom"
+                                        >Booked (Amit Sharma)</span
+                                      >
+                                    </td>
+                                    <td>
+                                      <button
+                                        class="btn btn-sm btn-outline-secondary"
+                                      >
+                                        Details
+                                      </button>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>20-08-2026</td>
+                                    <td>11:30 AM - 12:30 PM</td>
+                                    <td>Phone Call</td>
+                                    <td>
+                                      <span
+                                        class="badge bg-danger text-white badge-custom"
+                                        >Booked (Rakesh Verma)</span
+                                      >
+                                    </td>
+                                    <td>
+                                      <button
+                                        class="btn btn-sm btn-outline-secondary"
+                                      >
+                                        Details
+                                      </button>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>21-08-2026</td>
+                                    <td>03:00 PM - 04:00 PM</td>
+                                    <td>Zoom Call</td>
+                                    <td>
+                                      <span
+                                        class="badge bg-warning text-dark badge-custom"
+                                        >Pending Approval</span
+                                      >
+                                    </td>
+                                    <td>
+                                      <button
+                                        class="btn btn-sm btn-outline-secondary"
+                                      >
+                                        Review
+                                      </button>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>22-08-2026</td>
+                                    <td>09:00 AM - 10:00 AM</td>
+                                    <td>Zoom Call</td>
+                                    <td>
+                                      <span
+                                        class="badge bg-success text-white badge-custom"
+                                        >Open (Unbooked)</span
+                                      >
+                                    </td>
+                                    <td>
+                                      <button
+                                        class="btn btn-sm btn-outline-danger"
+                                      >
+                                        Cancel Slot
+                                      </button>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- View D: Advisor Recommendations -->
+                    <div id="advisor-recommendations" class="view-pane d-none">
+                      <h4 class="font-montserrat fw-bold text-slate mb-2">
+                        Recommendation Engine
+                      </h4>
+                      <p class="text-muted mb-4">
+                        Deploy model portfolios or adjust specific asset
+                        allocations for client approval
+                      </p>
+
+                      <div class="row g-4">
+                        <div class="col-lg-6">
+                          <div class="dashboard-card">
+                            <h5 class="font-montserrat fw-bold text-slate mb-4">
+                              Configure Allocation Guidance
+                            </h5>
+                            <form id="recommendationForm">
+                              <div class="mb-3">
+                                <label
+                                  for="recClient"
+                                  class="form-label small fw-semibold"
+                                  >Select Target Client</label
+                                >
+                                <select
+                                  class="form-select"
+                                  id="recClient"
+                                  required
+                                >
+                                  <option value="">Choose client...</option>
+                                  <option value="amit">
+                                    Amit Sharma (Risk: Aggressive)
+                                  </option>
+                                  <option value="rakesh">
+                                    Rakesh Verma (Risk: Balanced)
+                                  </option>
+                                  <option value="sneha">
+                                    Sneha Patel (Risk: Conservative)
+                                  </option>
+                                </select>
+                              </div>
+                              <div class="mb-3">
+                                <label
+                                  for="modelSelect"
+                                  class="form-label small fw-semibold"
+                                  >Model Portfolio Template</label
+                                >
+                                <select
+                                  class="form-select"
+                                  id="modelSelect"
+                                  required
+                                >
+                                  <option value="">Select template...</option>
+                                  <option value="growth">
+                                    Aggressive Growth (85% Equity | 15% Debt)
+                                  </option>
+                                  <option value="balanced">
+                                    Balanced Wealth (60% Equity | 30% Debt | 10%
+                                    Gold)
+                                  </option>
+                                  <option value="defensive">
+                                    Conservative Income (20% Equity | 70% Debt |
+                                    10% Gold)
+                                  </option>
+                                </select>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-4 mb-3">
+                                  <label
+                                    for="weightEquity"
+                                    class="form-label small fw-semibold"
+                                    >Equity Weight (%)</label
+                                  >
+                                  <input
+                                    type="number"
+                                    class="form-control"
+                                    id="weightEquity"
+                                    placeholder="60"
+                                    required
+                                  />
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                  <label
+                                    for="weightDebt"
+                                    class="form-label small fw-semibold"
+                                    >Debt Weight (%)</label
+                                  >
+                                  <input
+                                    type="number"
+                                    class="form-control"
+                                    id="weightDebt"
+                                    placeholder="30"
+                                    required
+                                  />
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                  <label
+                                    for="weightGold"
+                                    class="form-label small fw-semibold"
+                                    >Gold Weight (%)</label
+                                  >
+                                  <input
+                                    type="number"
+                                    class="form-control"
+                                    id="weightGold"
+                                    placeholder="10"
+                                    required
+                                  />
+                                </div>
+                              </div>
+                              <div class="mb-3">
+                                <label
+                                  for="recNotes"
+                                  class="form-label small fw-semibold"
+                                  >Advisor Strategy Rationale</label
+                                >
+                                <textarea
+                                  class="form-control"
+                                  id="recNotes"
+                                  rows="3"
+                                  placeholder="Explain the reasons behind this rebalancing..."
+                                ></textarea>
+                              </div>
+                              <button
+                                type="submit"
+                                class="btn btn-emerald-custom w-100"
+                              >
+                                <i class="fa-solid fa-circle-check me-1"></i>
+                                Send to Client for Approval
+                              </button>
+                            </form>
+                          </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                          <div class="dashboard-card h-100">
+                            <h5 class="font-montserrat fw-bold text-slate mb-4">
+                              Model Allocations Reference
+                            </h5>
+                            <div class="p-3 border rounded mb-3 bg-light">
+                              <h6
+                                class="fw-bold font-montserrat text-emerald mb-2"
+                              >
+                                <i class="fa-solid fa-chart-pie me-2"></i
+                                >Aggressive Growth Model
+                              </h6>
+                              <p class="small text-muted mb-0">
+                                Designed for clients with 10+ year horizons.
+                                Target annual return benchmark: 14.5% XIRR.
+                              </p>
+                            </div>
+                            <div class="p-3 border rounded mb-3 bg-light">
+                              <h6
+                                class="fw-bold font-montserrat text-primary mb-2"
+                              >
+                                <i class="fa-solid fa-chart-pie me-2"></i
+                                >Balanced Wealth Model
+                              </h6>
+                              <p class="small text-muted mb-0">
+                                Designed to absorb stock market contractions
+                                while capturing long term indices growth.
+                              </p>
+                            </div>
+                            <div class="p-3 border rounded bg-light">
+                              <h6
+                                class="fw-bold font-montserrat text-warning mb-2"
+                              >
+                                <i class="fa-solid fa-chart-pie me-2"></i
+                                >Conservative Capital Model
+                              </h6>
+                              <p class="small text-muted mb-0">
+                                Focuses primarily on preserving raw capital from
+                                inflation using Sovereign and high-grade
+                                corporate bonds.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- View E: Advisor Market Insights -->
+                    <div id="advisor-markets" class="view-pane d-none">
+                      <h4 class="font-montserrat fw-bold text-slate mb-2">
+                        Market & Research Insights
+                      </h4>
+                      <p class="text-muted mb-4">
+                        Track dynamic macroeconomic trends, index rates, and
+                        regulatory updates
+                      </p>
+
+                      <div class="row g-4 mb-4">
+                        <div class="col-md-4">
+                          <div class="metric-card text-center">
+                            <span class="text-muted small text-uppercase"
+                              >Nifty 50 Index</span
+                            >
+                            <h3
+                              class="fw-bold text-emerald font-montserrat mt-2 mb-0"
+                            >
+                              24,150.20
+                            </h3>
+                            <span class="text-emerald small fw-semibold"
+                              ><i class="fa-solid fa-caret-up me-1"></i>+0.45%
+                              Today</span
+                            >
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="metric-card text-center">
+                            <span class="text-muted small text-uppercase"
+                              >Sensex Index</span
+                            >
+                            <h3
+                              class="fw-bold text-emerald font-montserrat mt-2 mb-0"
+                            >
+                              79,240.50
+                            </h3>
+                            <span class="text-emerald small fw-semibold"
+                              ><i class="fa-solid fa-caret-up me-1"></i>+0.38%
+                              Today</span
+                            >
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="metric-card text-center">
+                            <span class="text-muted small text-uppercase"
+                              >10Yr G-Sec Bond Yield</span
+                            >
+                            <h3
+                              class="fw-bold text-slate font-montserrat mt-2 mb-0"
+                            >
+                              6.98%
+                            </h3>
+                            <span class="text-success small fw-semibold"
+                              ><i class="fa-solid fa-caret-down me-1"></i>-0.02%
+                              Yield Drop</span
+                            >
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="dashboard-card">
+                        <h5 class="font-montserrat fw-bold text-slate mb-4">
+                          Curated Advisory Articles & Bulletins
+                        </h5>
+                        <div class="row g-4">
+                          <div class="col-md-6">
+                            <div
+                              class="card h-100 border border-secondary border-opacity-10"
+                            >
+                              <div class="card-body">
+                                <span
+                                  class="badge bg-emerald text-white mb-2 badge-custom"
+                                  >Regulatory</span
+                                >
+                                <h6 class="font-montserrat fw-bold text-slate">
+                                  RBI Interest Rate Policy Update - August 2026
+                                </h6>
+                                <p class="small text-muted">
+                                  A detailed analysis of the MPC decision to
+                                  hold rates at 6.50% and its impact on debt
+                                  mutual fund portfolios.
+                                </p>
+                                <a
+                                  href="#"
+                                  class="text-emerald text-decoration-none small fw-semibold"
+                                  >Read Analysis
+                                  <i class="fa-solid fa-arrow-right ms-1"></i
+                                ></a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div
+                              class="card h-100 border border-secondary border-opacity-10"
+                            >
+                              <div class="card-body">
+                                <span
+                                  class="badge bg-emerald text-white mb-2 badge-custom"
+                                  >Tax Planning</span
+                                >
+                                <h6 class="font-montserrat fw-bold text-slate">
+                                  Tax Re-evaluations under the New Budget Code
+                                </h6>
+                                <p class="small text-muted">
+                                  Review of new capital gains tax rates (12.5%
+                                  for LTCG on equities) and updated
+                                  recommendations for clients.
+                                </p>
+                                <a
+                                  href="#"
+                                  class="text-emerald text-decoration-none small fw-semibold"
+                                  >Read Analysis
+                                  <i class="fa-solid fa-arrow-right ms-1"></i
+                                ></a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- ==========================================
+                       5. ADMINISTRATOR ROLE VIEWS
+                       ========================================== -->
+                  <div id="views-Admin" class="role-views d-none">
+                    <!-- View A: Admin Dashboard Platform Overview -->
+                    <div id="admin-overview" class="view-pane">
+                      <div
+                        class="alert alert-danger border-0 shadow-sm mb-4"
+                        role="alert"
+                        style="
+                          background-color: rgba(239, 68, 68, 0.08);
+                          color: var(--secondary-slate);
+                        "
+                      >
+                        <i
+                          class="fa-solid fa-user-shield text-danger fs-4 me-2 vertical-middle"
+                        ></i>
+                        <strong>Administrator Console Connected.</strong> The
+                        platform is performing optimally. All endpoints are
+                        reporting 99.98% uptime.
+                      </div>
+
+                      <div class="row g-4 mb-4">
+                        <div class="col-md-3">
+                          <div class="metric-card">
+                            <span
+                              class="text-muted fw-semibold small text-uppercase"
+                              >Platform AUM</span
+                            >
+                            <h3
+                              class="fw-bold font-montserrat mt-2 mb-1 text-slate"
+                            >
+                              ₹142.6 Cr
+                            </h3>
+                            <span class="text-emerald small fw-semibold"
+                              ><i class="fa-solid fa-arrow-trend-up me-1"></i
+                              >+24.1% YoY</span
+                            >
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="metric-card">
+                            <span
+                              class="text-muted fw-semibold small text-uppercase"
+                              >Registered Users</span
+                            >
+                            <h3
+                              class="fw-bold font-montserrat mt-2 mb-1 text-slate"
+                            >
+                              1,248
+                            </h3>
+                            <span class="text-muted small"
+                              >Active: 1,180 | Inactive: 68</span
+                            >
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="metric-card">
+                            <span
+                              class="text-muted fw-semibold small text-uppercase"
+                              >Active Advisors</span
+                            >
+                            <h3
+                              class="fw-bold font-montserrat mt-2 mb-1 text-slate"
+                            >
+                              14
+                            </h3>
+                            <span class="text-muted small"
+                              >Advisor-Client Ratio: 1:84</span
+                            >
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="metric-card">
+                            <span
+                              class="text-muted fw-semibold small text-uppercase"
+                              >System Status</span
+                            >
+                            <h3
+                              class="fw-bold font-montserrat mt-2 mb-1 text-emerald"
+                            >
+                              99.98%
+                            </h3>
+                            <span class="text-emerald small fw-semibold"
+                              ><i class="fa-solid fa-circle-check me-1"></i>API
+                              Gateways Normal</span
+                            >
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row g-4">
+                        <div class="col-lg-8">
+                          <div class="dashboard-card mb-4">
+                            <h5 class="font-montserrat fw-bold text-slate mb-4">
+                              Recent Security Logs
+                            </h5>
+                            <div class="table-responsive">
+                              <table
+                                class="table table-custom table-hover mb-0"
+                              >
+                                <thead>
+                                  <tr>
+                                    <th>Timestamp</th>
+                                    <th>User</th>
+                                    <th>Action Log</th>
+                                    <th>Risk Level</th>
+                                    <th>Diagnostic Code</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>19-08-2026 15:42:01</td>
+                                    <td>Advisor Akash</td>
+                                    <td>Approved rebalancing for C101</td>
+                                    <td>
+                                      <span
+                                        class="badge bg-success text-white badge-custom"
+                                        >Low</span
+                                      >
+                                    </td>
+                                    <td
+                                      class="font-monospace text-muted"
+                                      style="font-size: 0.8rem"
+                                    >
+                                      SEC_REC_APPROVE_902
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>19-08-2026 14:15:33</td>
+                                    <td>Admin Console</td>
+                                    <td>Database system backup compiled</td>
+                                    <td>
+                                      <span
+                                        class="badge bg-success text-white badge-custom"
+                                        >Low</span
+                                      >
+                                    </td>
+                                    <td
+                                      class="font-monospace text-muted"
+                                      style="font-size: 0.8rem"
+                                    >
+                                      SYS_BACKUP_S3_845
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>19-08-2026 11:02:12</td>
+                                    <td>System Cron</td>
+                                    <td>
+                                      Auto-valuation of mutual funds completed
+                                    </td>
+                                    <td>
+                                      <span
+                                        class="badge bg-success text-white badge-custom"
+                                        >Low</span
+                                      >
+                                    </td>
+                                    <td
+                                      class="font-monospace text-muted"
+                                      style="font-size: 0.8rem"
+                                    >
+                                      SYS_CRON_REVAL_002
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                          <div class="dashboard-card h-100">
+                            <h5 class="font-montserrat fw-bold text-slate mb-3">
+                              API Gateway Statuses
+                            </h5>
+                            <ul class="list-group list-group-flush small">
+                              <li
+                                class="list-group-item d-flex justify-content-between align-items-center px-0 py-3"
+                              >
+                                <span
+                                  ><i
+                                    class="fa-solid fa-circle text-emerald me-2"
+                                  ></i
+                                  >AMFI Mutual Funds Feed</span
+                                >
+                                <span class="fw-semibold text-emerald"
+                                  >Active</span
+                                >
+                              </li>
+                              <li
+                                class="list-group-item d-flex justify-content-between align-items-center px-0 py-3"
+                              >
+                                <span
+                                  ><i
+                                    class="fa-solid fa-circle text-emerald me-2"
+                                  ></i
+                                  >BSE Index Quote Feeder</span
+                                >
+                                <span class="fw-semibold text-emerald"
+                                  >Active</span
+                                >
+                              </li>
+                              <li
+                                class="list-group-item d-flex justify-content-between align-items-center px-0 py-3"
+                              >
+                                <span
+                                  ><i
+                                    class="fa-solid fa-circle text-emerald me-2"
+                                  ></i
+                                  >Payment Gateway (Razorpay)</span
+                                >
+                                <span class="fw-semibold text-emerald"
+                                  >Active</span
+                                >
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- View B: Admin Users -->
+                    <div id="admin-users" class="view-pane d-none">
+                      <div
+                        class="d-flex justify-content-between align-items-center flex-wrap mb-4"
+                      >
+                        <div>
+                          <h4 class="font-montserrat fw-bold text-slate">
+                            User Accounts Management
+                          </h4>
+                          <p class="text-muted mb-0">
+                            Create, modify, and audit accounts for Advisors and
+                            Clients
+                          </p>
+                        </div>
+                        <button class="btn btn-emerald-custom mt-2 mt-sm-0">
+                          <i class="fa-solid fa-user-plus me-1"></i> Register
+                          New User
+                        </button>
+                      </div>
+
+                      <div class="row g-4">
+                        <div class="col-lg-8">
+                          <div class="dashboard-card">
+                            <h5 class="font-montserrat fw-bold text-slate mb-3">
+                              Platform User List
+                            </h5>
+                            <div class="table-responsive">
+                              <table
+                                class="table table-custom table-hover mb-0"
+                              >
+                                <thead>
+                                  <tr>
+                                    <th>User ID</th>
+                                    <th>Name</th>
+                                    <th>Email Address</th>
+                                    <th>User Role</th>
+                                    <th>Date Joined</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td class="fw-bold">U901</td>
+                                    <td class="fw-semibold">Akash Mehta</td>
+                                    <td>akash.advisor@personalfinance.com</td>
+                                    <td>
+                                      <span
+                                        class="badge bg-blue-light px-2 py-1 text-primary"
+                                        style="font-size: 0.75rem"
+                                        >Advisor</span
+                                      >
+                                    </td>
+                                    <td>12-01-2024</td>
+                                    <td>
+                                      <span
+                                        class="badge bg-success text-white badge-custom"
+                                        >Active</span
+                                      >
+                                    </td>
+                                    <td>
+                                      <button
+                                        class="btn btn-sm btn-outline-secondary"
+                                      >
+                                        Edit
+                                      </button>
+                                      <button
+                                        class="btn btn-sm btn-outline-danger"
+                                      >
+                                        Suspend
+                                      </button>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="fw-bold">U902</td>
+                                    <td class="fw-semibold">Swetha Rao</td>
+                                    <td>swetha.advisor@personalfinance.com</td>
+                                    <td>
+                                      <span
+                                        class="badge bg-blue-light px-2 py-1 text-primary"
+                                        style="font-size: 0.75rem"
+                                        >Advisor</span
+                                      >
+                                    </td>
+                                    <td>08-03-2024</td>
+                                    <td>
+                                      <span
+                                        class="badge bg-success text-white badge-custom"
+                                        >Active</span
+                                      >
+                                    </td>
+                                    <td>
+                                      <button
+                                        class="btn btn-sm btn-outline-secondary"
+                                      >
+                                        Edit
+                                      </button>
+                                      <button
+                                        class="btn btn-sm btn-outline-danger"
+                                      >
+                                        Suspend
+                                      </button>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="fw-bold">U903</td>
+                                    <td class="fw-semibold">Gokul Sharma</td>
+                                    <td>gokul@example.com</td>
+                                    <td>
+                                      <span
+                                        class="badge bg-emerald-light px-2 py-1 text-emerald"
+                                        style="font-size: 0.75rem"
+                                        >Client</span
+                                      >
+                                    </td>
+                                    <td>19-08-2026</td>
+                                    <td>
+                                      <span
+                                        class="badge bg-success text-white badge-custom"
+                                        >Active</span
+                                      >
+                                    </td>
+                                    <td>
+                                      <button
+                                        class="btn btn-sm btn-outline-secondary"
+                                      >
+                                        Edit
+                                      </button>
+                                      <button
+                                        class="btn btn-sm btn-outline-danger"
+                                      >
+                                        Suspend
+                                      </button>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="fw-bold">U904</td>
+                                    <td class="fw-semibold">Rahul Gupta</td>
+                                    <td>rahul@example.com</td>
+                                    <td>
+                                      <span
+                                        class="badge bg-emerald-light px-2 py-1 text-emerald"
+                                        style="font-size: 0.75rem"
+                                        >Client</span
+                                      >
+                                    </td>
+                                    <td>18-08-2026</td>
+                                    <td>
+                                      <span
+                                        class="badge bg-warning text-dark badge-custom"
+                                        >Pending</span
+                                      >
+                                    </td>
+                                    <td>
+                                      <button
+                                        class="btn btn-sm btn-outline-success"
+                                      >
+                                        Approve
+                                      </button>
+                                      <button
+                                        class="btn btn-sm btn-outline-danger"
+                                      >
+                                        Reject
+                                      </button>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                          <div class="dashboard-card">
+                            <h5 class="font-montserrat fw-bold text-slate mb-3">
+                              Add Custom User
+                            </h5>
+                            <form id="addUserForm">
+                              <div class="mb-3">
+                                <label
+                                  for="newUserName"
+                                  class="form-label small fw-semibold"
+                                  >Full Name</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="newUserName"
+                                  placeholder="e.g. John Doe"
+                                  required
+                                />
+                              </div>
+                              <div class="mb-3">
+                                <label
+                                  for="newUserEmail"
+                                  class="form-label small fw-semibold"
+                                  >Email Address</label
+                                >
+                                <input
+                                  type="email"
+                                  class="form-control"
+                                  id="newUserEmail"
+                                  placeholder="name@example.com"
+                                  required
+                                />
+                              </div>
+                              <div class="mb-3">
+                                <label
+                                  for="newUserRole"
+                                  class="form-label small fw-semibold"
+                                  >Select System Role</label
+                                >
+                                <select
+                                  class="form-select"
+                                  id="newUserRole"
+                                  required
+                                >
+                                  <option value="">Select role...</option>
+                                  <option value="Client">Client</option>
+                                  <option value="Advisor">Advisor</option>
+                                  <option value="Admin">Administrator</option>
+                                </select>
+                              </div>
+                              <div class="mb-3">
+                                <label
+                                  for="newUserPassword"
+                                  class="form-label small fw-semibold"
+                                  >Temporary Password</label
+                                >
+                                <input
+                                  type="password"
+                                  class="form-control"
+                                  id="newUserPassword"
+                                  placeholder="Minimum 8 characters"
+                                  required
+                                />
+                              </div>
+                              <button
+                                type="submit"
+                                class="btn btn-emerald-custom w-100"
+                              >
+                                <i class="fa-solid fa-user-plus me-1"></i>
+                                Register Account
+                              </button>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- View C: Admin Compliance -->
+                    <div id="admin-compliance" class="view-pane d-none">
+                      <h4 class="font-montserrat fw-bold text-slate mb-2">
+                        Compliance & Audit Trails
+                      </h4>
+                      <p class="text-muted mb-4">
+                        Validate system compliance checks, advisor guidelines
+                        and transactions records
+                      </p>
+
+                      <div class="dashboard-card mb-4">
+                        <h5 class="font-montserrat fw-bold text-slate mb-3">
+                          Audit Logs
+                        </h5>
+                        <div class="table-responsive">
+                          <table class="table table-custom table-hover mb-0">
+                            <thead>
+                              <tr>
+                                <th>Timestamp</th>
+                                <th>Action Performed</th>
+                                <th>Initiator</th>
+                                <th>IP Address</th>
+                                <th>System Flags</th>
+                                <th>Verify</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>19-08-2026 15:42:01</td>
+                                <td>
+                                  Approved Mutual Fund Rebalancing for Amit
+                                  Sharma
+                                </td>
+                                <td>Advisor Akash</td>
+                                <td class="font-monospace">192.168.1.104</td>
+                                <td>
+                                  <span
+                                    class="badge bg-success text-white badge-custom"
+                                    >Clean</span
+                                  >
+                                </td>
+                                <td>
+                                  <button
+                                    class="btn btn-sm btn-outline-secondary"
+                                  >
+                                    Review Log
+                                  </button>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>19-08-2026 14:15:33</td>
+                                <td>Database backup compiled</td>
+                                <td>Admin Admin</td>
+                                <td class="font-monospace">192.168.1.100</td>
+                                <td>
+                                  <span
+                                    class="badge bg-success text-white badge-custom"
+                                    >Clean</span
+                                  >
+                                </td>
+                                <td>
+                                  <button
+                                    class="btn btn-sm btn-outline-secondary"
+                                  >
+                                    Review Log
+                                  </button>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>19-08-2026 11:02:12</td>
+                                <td>Portfolios auto-revaluation run</td>
+                                <td>System Daemon</td>
+                                <td class="font-monospace">Localhost</td>
+                                <td>
+                                  <span
+                                    class="badge bg-success text-white badge-custom"
+                                    >Clean</span
+                                  >
+                                </td>
+                                <td>
+                                  <button
+                                    class="btn btn-sm btn-outline-secondary"
+                                  >
+                                    Review Log
+                                  </button>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>19-08-2026 09:44:11</td>
+                                <td>
+                                  Registered client account (Gokul Sharma)
+                                </td>
+                                <td>Advisor Swetha</td>
+                                <td class="font-monospace">192.168.1.112</td>
+                                <td>
+                                  <span
+                                    class="badge bg-success text-white badge-custom"
+                                    >Clean</span
+                                  >
+                                </td>
+                                <td>
+                                  <button
+                                    class="btn btn-sm btn-outline-secondary"
+                                  >
+                                    Review Log
+                                  </button>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- View D: Admin Settings -->
+                    <div id="admin-settings" class="view-pane d-none">
+                      <h4 class="font-montserrat fw-bold text-slate mb-2">
+                        Global System Configurations
+                      </h4>
+                      <p class="text-muted mb-4">
+                        Adjust platform-wide settings, transaction rules, and
+                        backup frequencies
+                      </p>
+
+                      <div class="row g-4">
+                        <div class="col-lg-6">
+                          <div class="dashboard-card">
+                            <h5 class="font-montserrat fw-bold text-slate mb-4">
+                              Platform Fee Configurations
+                            </h5>
+                            <form id="settingsForm">
+                              <div class="mb-3">
+                                <label
+                                  for="advisoryFee"
+                                  class="form-label small fw-semibold"
+                                  >Default Advisory Commission Rate (%)</label
+                                >
+                                <input
+                                  type="number"
+                                  step="0.01"
+                                  class="form-control"
+                                  id="advisoryFee"
+                                  placeholder="0.75"
+                                  value="0.75"
+                                  required
+                                />
+                              </div>
+                              <div class="mb-3">
+                                <label
+                                  for="backupInterval"
+                                  class="form-label small fw-semibold"
+                                  >Automated DB Backup Frequency</label
+                                >
+                                <select
+                                  class="form-select"
+                                  id="backupInterval"
+                                  required
+                                >
+                                  <option value="6">Every 6 Hours</option>
+                                  <option value="12">Every 12 Hours</option>
+                                  <option value="24" selected>
+                                    Every 24 Hours
+                                  </option>
+                                </select>
+                              </div>
+                              <div class="mb-3">
+                                <label
+                                  for="securityPolicy"
+                                  class="form-label small fw-semibold"
+                                  >Global Password Strength Check Policy</label
+                                >
+                                <select
+                                  class="form-select"
+                                  id="securityPolicy"
+                                  required
+                                >
+                                  <option value="strict" selected>
+                                    Strict (Min 8 chars, uppercase, lowercase,
+                                    numbers, symbols)
+                                  </option>
+                                  <option value="medium">
+                                    Medium (Min 6 chars, letters, numbers)
+                                  </option>
+                                </select>
+                              </div>
+                              <div class="mb-3">
+                                <label class="custom-checkbox-label">
+                                  <input
+                                    type="checkbox"
+                                    class="custom-checkbox-input"
+                                    id="enableAutoRebalance"
+                                    checked
+                                  />
+                                  Enable portfolio drift automated emails
+                                </label>
+                              </div>
+                              <button
+                                type="submit"
+                                class="btn btn-emerald-custom w-100"
+                              >
+                                <i class="fa-solid fa-floppy-disk me-1"></i>
+                                Save Platform Configurations
+                              </button>
+                            </form>
+                          </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                          <div class="dashboard-card h-100">
+                            <h5 class="font-montserrat fw-bold text-slate mb-4">
+                              Active System Gateways
+                            </h5>
+                            <div
+                              class="alert alert-secondary d-flex align-items-center mb-3"
+                            >
+                              <i
+                                class="fa-solid fa-server text-emerald me-3 fs-4"
+                              ></i>
+                              <div>
+                                <h6 class="fw-bold mb-0">
+                                  Production Server: AWS EC2 (Mumbai-a)
+                                </h6>
+                                <span class="small text-muted"
+                                  >Load: 12% | Temperature: Normal | Latency:
+                                  24ms</span
+                                >
+                              </div>
+                            </div>
+                            <div
+                              class="alert alert-secondary d-flex align-items-center"
+                            >
+                              <i
+                                class="fa-solid fa-database text-emerald me-3 fs-4"
+                              ></i>
+                              <div>
+                                <h6 class="fw-bold mb-0">
+                                  Database Cluster: PostgreSQL Multi-AZ
+                                </h6>
+                                <span class="small text-muted"
+                                  >Status: Syncing Normal | Active Connections:
+                                  184</span
+                                >
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- End Dynamic Content Container -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Main View Content Section -->
+      </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JS Bundle CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Page Specific Script -->
+    <script>
+      // ── AUTHENTICATION AND ROLE LOADING ──
+      const isLoggedIn = localStorage.getItem("userLoggedIn");
+      const userRole = localStorage.getItem("userRole");
+      const userEmail = localStorage.getItem("userEmail");
+
+      // Verify Session - Redirect back to login if missing
+      if (isLoggedIn !== "true" || !userRole || !userEmail) {
+        window.location.href = "login.html";
+      } else {
+        // Populate profile placeholder data
+        document.getElementById("sidebarEmail").innerText = userEmail;
+        document.getElementById("sidebarRole").innerText =
+          userRole + " Account";
+        document.getElementById("headerEmail").innerText = userEmail;
+        document.getElementById("headerRole").innerText = userRole + " Portal";
+
+        // Display user initials (first letter of email upper cased)
+        const initial = userEmail.charAt(0).toUpperCase();
+        document.getElementById("userInitials").innerText = initial;
+
+        // Set placeholders inside pages
+        const placeholders = document.querySelectorAll(
+          ".client-email-placeholder",
+        );
+        placeholders.forEach((el) => (el.innerText = userEmail));
+
+        // Show the active role-based sidebar and layouts
+        const activeSidebar = document.getElementById("sidebar-" + userRole);
+        const activeViews = document.getElementById("views-" + userRole);
+
+        if (activeSidebar && activeViews) {
+          activeSidebar.classList.remove("d-none");
+          activeViews.classList.remove("d-none");
+        } else {
+          // Fallback if role is undefined
+          window.location.href = "login.html";
+        }
+      }
+
+      // ── LOGOUT FLOW handler ──
+      function handleLogout() {
+        localStorage.removeItem("userLoggedIn");
+        localStorage.removeItem("userRole");
+        localStorage.removeItem("userEmail");
+        window.location.href = "login.html";
+      }
+
+      document
+        .getElementById("logoutBtn")
+        .addEventListener("click", handleLogout);
+
+      // ── DYNAMIC TAB NAVIGATION WITHIN THE DASHBOARD ──
+      const sidebarLinks = document.querySelectorAll(".sidebar .nav-link");
+
+      sidebarLinks.forEach((link) => {
+        link.addEventListener("click", function () {
+          sidebarLinks.forEach((l) => l.classList.remove("active"));
+          this.classList.add("active");
+
+          const targetTabId = this.getAttribute("data-tab");
+          const roleViewsContainer = document.getElementById("views-" + userRole);
+          roleViewsContainer.querySelectorAll(".view-pane").forEach((pane) => {
+            pane.classList.add("d-none");
+          });
+
+          const targetPane = document.getElementById(targetTabId);
+          if (targetPane) targetPane.classList.remove("d-none");
+
+          // Auto-close offcanvas on mobile
+          const offcanvasElement = document.getElementById("sidebarMenu");
+          const bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvasElement);
+          if (bsOffcanvas) bsOffcanvas.hide();
+        });
+      });
+
+      // ── Form Submissions ──
+      ["expenseForm", "consultationForm", "openSlotForm", "recommendationForm", "addUserForm", "settingsForm"]
+        .forEach((formId) => {
+          const form = document.getElementById(formId);
+          if (form) {
+            form.addEventListener("submit", function (e) {
+              e.preventDefault();
+              alert("Data saved successfully!");
+              form.reset();
+            });
+          }
+        });
+
+      // ── EMPTY LINK & PLACEHOLDER INTERCEPTOR REDIRECTING TO 404.html ──
+      document.addEventListener("click", function (e) {
+        const target = e.target.closest("a, button");
+        if (!target) return;
+
+        // Skip sidebar nav-links — they are handled by data-tab tab switching
+        if (target.tagName === "A" && target.hasAttribute("data-tab")) return;
+
+        // Anchor Link Interception
+        if (target.tagName === "A") {
+          const href = target.getAttribute("href");
+          if (
+            !href ||
+            href === "#" ||
+            href.trim() === "" ||
+            href.startsWith("javascript:void(0)")
+          ) {
+            e.preventDefault();
+            window.location.href = "404.html";
+          }
+          return;
+        }
+
+        // Button Click Interception
+        if (target.tagName === "BUTTON") {
+          // Identify if the button is functional (part of layout, switching tabs, logging out, submitting real forms, etc.)
+          const isSidebarToggle =
+            target.hasAttribute("data-bs-toggle") &&
+            target.getAttribute("data-bs-toggle") === "offcanvas";
+          const isDismiss = target.hasAttribute("data-bs-dismiss");
+          const isSubmit = target.type === "submit";
+          const isTabButton =
+            target.classList.contains("tab-btn") ||
+            target.closest(".nav-tabs") ||
+            target.classList.contains("nav-link");
+          const isLogout =
+            target.id === "logoutBtn" ||
+            target.getAttribute("onclick") === "handleLogout()";
+          const isCloseBtn = target.classList.contains("btn-close");
+
+          // If the button clicked is not one of our functional UI components, redirect to 404.html
+          if (
+            !isSidebarToggle &&
+            !isDismiss &&
+            !isSubmit &&
+            !isTabButton &&
+            !isLogout &&
+            !isCloseBtn
+          ) {
+            e.preventDefault();
+            window.location.href = "404.html";
+          }
+        }
+
+      });
+    </script>
+  </body>
+</html>
