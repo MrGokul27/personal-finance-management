@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Log In - Personal Finance Management</title>
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/webp"
+      href="../assets/images/logoStackly.webp"
+    />
+
+    <!-- Bootstrap 5.3 CSS CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome 6 CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Shared Stylesheets -->
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+    <!-- Auth Specific Stylesheet -->
+    <link rel="stylesheet" href="../assets/css/auth.css" />
+  </head>
+  <body class="auth-page">
+    <div class="auth-container">
+      <!-- Left Sidebar: Visual Brand Details (Hidden on Mobile) -->
+      <div class="auth-visual">
+        <div class="auth-visual-content">
+          <div class="auth-brand">
+            <a href="../index.html">
+              <img
+                src="../assets/images/logoStackly.webp"
+                alt="Logo"
+                height="45"
+              />
+            </a>
+          </div>
+
+          <div class="auth-visual-features">
+            <h3 class="fw-bold mb-4 text-white font-montserrat">
+              Navigate Your Wealth Journey
+            </h3>
+
+            <div
+              class="auth-feature-item animate-fade-in"
+              style="animation-delay: 0.1s"
+            >
+              <div class="auth-feature-icon">
+                <i class="fa-solid fa-chart-pie"></i>
+              </div>
+              <div class="auth-feature-text">
+                <h5>Structured Investment Plans</h5>
+                <p>
+                  Tailored blueprints that dynamically shift to build
+                  sustainable compound returns.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="auth-feature-item animate-fade-in"
+              style="animation-delay: 0.2s"
+            >
+              <div class="auth-feature-icon">
+                <i class="fa-solid fa-shield-halved"></i>
+              </div>
+              <div class="auth-feature-text">
+                <h5>Bank-Grade Security</h5>
+                <p>
+                  Encryption protocols keeping your financial goals, accounts,
+                  and plans fully protected.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="auth-feature-item animate-fade-in"
+              style="animation-delay: 0.3s"
+            >
+              <div class="auth-feature-icon">
+                <i class="fa-solid fa-user-check"></i>
+              </div>
+              <div class="auth-feature-text">
+                <h5>Fee-Only Advisory</h5>
+                <p>
+                  Consult with certified specialists operating under pure
+                  fiduciary alignment.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="auth-visual-footer">
+            <p class="mb-0">
+              &copy; 2026 Personal Finance Management. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Interactive Login Form -->
+      <div class="auth-form-section">
+        <!-- Back To Home Button -->
+        <a href="../index.html" class="btn-back-home">
+          <i class="fa-solid fa-arrow-left"></i> Home
+        </a>
+
+        <div class="auth-header">
+          <h2>Welcome Back</h2>
+          <p>Sign in to continue monitoring your wealth assets.</p>
+        </div>
+
+        <!-- Custom Validation Alerts -->
+        <div id="validation-alert" class="validation-alert"></div>
+
+        <form id="loginForm" novalidate>
+          <!-- Role Select Field -->
+          <div class="form-group-custom">
+            <label for="role">Select Your Role</label>
+            <div class="input-icon-wrapper">
+              <select class="form-select" id="role" name="role" required>
+                <option value="" disabled selected>Choose a role...</option>
+                <option value="Client">Client</option>
+                <option value="Advisor">Financial Advisor</option>
+                <option value="Admin">Administrator</option>
+              </select>
+              <i class="fa-solid fa-user-tag input-icon"></i>
+            </div>
+          </div>
+
+          <!-- Email Field -->
+          <div class="form-group-custom">
+            <label for="email">Email Address</label>
+            <div class="input-icon-wrapper">
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                placeholder="name@example.com"
+                required
+              />
+              <i class="fa-solid fa-envelope input-icon"></i>
+            </div>
+          </div>
+
+          <!-- Password Field -->
+          <div class="form-group-custom mb-2">
+            <label for="password">Password</label>
+            <div class="input-icon-wrapper">
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                name="password"
+                placeholder="Enter password"
+                required
+              />
+              <i class="fa-solid fa-lock input-icon"></i>
+              <button
+                type="button"
+                id="togglePassword"
+                class="btn-toggle-password"
+                aria-label="Toggle password visibility"
+              >
+                <i class="fa-solid fa-eye"></i>
+              </button>
+            </div>
+
+            <!-- Strength Indicator -->
+            <div class="strength-container">
+              <div class="strength-meter-bar">
+                <div id="strength-meter-fill" class="strength-meter-fill"></div>
+              </div>
+              <div
+                class="d-flex justify-content-between align-items-center mb-2"
+              >
+                <span id="strength-text" class="strength-text"
+                  >Password Strength</span
+                >
+              </div>
+
+              <!-- Checklist of Rules -->
+              <ul class="password-checklist">
+                <li id="rule-length">
+                  <i class="fa-regular fa-circle-dot"></i> Min 8 chars
+                </li>
+                <li id="rule-uppercase">
+                  <i class="fa-regular fa-circle-dot"></i> Uppercase
+                </li>
+                <li id="rule-lowercase">
+                  <i class="fa-regular fa-circle-dot"></i> Lowercase
+                </li>
+                <li id="rule-number">
+                  <i class="fa-regular fa-circle-dot"></i> Number
+                </li>
+                <li id="rule-special">
+                  <i class="fa-regular fa-circle-dot"></i> Special char
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Remember Me Checkbox -->
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <label class="custom-checkbox-label">
+              <input
+                type="checkbox"
+                class="custom-checkbox-input"
+                id="rememberMe"
+                name="rememberMe"
+                required
+              />
+              Remember me
+            </label>
+            <a
+              href="#"
+              class="text-emerald text-decoration-none small fw-semibold"
+              >Forgot Password?</a
+            >
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn-auth-submit" id="submitBtn">
+            <i class="fa-solid fa-arrow-right-to-bracket me-1"></i> Log In
+          </button>
+        </form>
+
+        <!-- Footer Redirect -->
+        <div class="auth-footer-link">
+          Don't have an account? <a href="register.html">Register here</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JS Bundle CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Page Specific Script -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const loginForm = document.getElementById("loginForm");
+        const passwordInput = document.getElementById("password");
+        const togglePassword = document.getElementById("togglePassword");
+        const strengthMeterFill = document.getElementById(
+          "strength-meter-fill",
+        );
+        const strengthText = document.getElementById("strength-text");
+        const alertBox = document.getElementById("validation-alert");
+        const submitBtn = document.getElementById("submitBtn");
+
+        // Helper icons
+        const circleDotIcon = "fa-regular fa-circle-dot";
+        const checkIcon = "fa-solid fa-circle-check text-emerald";
+
+        const rules = {
+          length: false,
+          uppercase: false,
+          lowercase: false,
+          number: false,
+          special: false,
+        };
+
+        // Initialize elements
+        updateChecklistItem("rule-length", false);
+        updateChecklistItem("rule-uppercase", false);
+        updateChecklistItem("rule-lowercase", false);
+        updateChecklistItem("rule-number", false);
+        updateChecklistItem("rule-special", false);
+
+        // Toggle password visibility
+        togglePassword.addEventListener("click", function () {
+          const type =
+            passwordInput.getAttribute("type") === "password"
+              ? "text"
+              : "password";
+          passwordInput.setAttribute("type", type);
+
+          const icon = this.querySelector("i");
+          if (type === "text") {
+            icon.classList.remove("fa-eye");
+            icon.classList.add("fa-eye-slash");
+          } else {
+            icon.classList.remove("fa-eye-slash");
+            icon.classList.add("fa-eye");
+          }
+        });
+
+        // Live validation check for password
+        passwordInput.addEventListener("input", function () {
+          const password = this.value;
+
+          rules.length = password.length >= 8;
+          rules.uppercase = /[A-Z]/.test(password);
+          rules.lowercase = /[a-z]/.test(password);
+          rules.number = /[0-9]/.test(password);
+          rules.special = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+          updateChecklistItem("rule-length", rules.length);
+          updateChecklistItem("rule-uppercase", rules.uppercase);
+          updateChecklistItem("rule-lowercase", rules.lowercase);
+          updateChecklistItem("rule-number", rules.number);
+          updateChecklistItem("rule-special", rules.special);
+
+          // Calculate strength progress
+          const totalRules = Object.keys(rules).length;
+          const passedRules = Object.values(rules).filter(Boolean).length;
+
+          let percent = 0;
+          let color = "#ef4444";
+          let label = "Strength: ";
+
+          if (password.length > 0) {
+            percent = (passedRules / totalRules) * 100;
+
+            if (passedRules <= 2) {
+              color = "#ef4444"; // Red
+              label +=
+                "Weak (Needs " + (totalRules - passedRules) + " more rules)";
+            } else if (passedRules <= 4) {
+              color = "#f59e0b"; // Orange / Yellow
+              label +=
+                "Medium (Needs " + (totalRules - passedRules) + " more rules)";
+            } else {
+              color = "#10b981"; // Emerald Green
+              label += "Strong";
+            }
+          } else {
+            percent = 0;
+            label = "Password Strength";
+          }
+
+          strengthMeterFill.style.width = percent + "%";
+          strengthMeterFill.style.backgroundColor = color;
+          strengthText.innerText = label;
+        });
+
+        // Helper to update individual rule checkbox state
+        function updateChecklistItem(elementId, isValid) {
+          const item = document.getElementById(elementId);
+          if (!item) return;
+
+          const icon = item.querySelector("i");
+          if (isValid) {
+            item.classList.add("valid");
+            if (icon) {
+              icon.className = checkIcon;
+            }
+          } else {
+            item.classList.remove("valid");
+            if (icon) {
+              icon.className = circleDotIcon;
+            }
+          }
+        }
+
+        // Form Submit Validation
+        loginForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Clear previous alert
+          alertBox.style.display = "none";
+          alertBox.className = "validation-alert";
+
+          const role = document.getElementById("role").value;
+          const email = document.getElementById("email").value;
+          const password = passwordInput.value;
+          const rememberMe = document.getElementById("rememberMe").checked;
+
+          // 1. Check all required fields
+          if (!role || !email || !password || !rememberMe) {
+            showAlert(
+              "error",
+              "All fields are required, including 'Remember me' consent.",
+            );
+            return;
+          }
+
+          // 2. Validate password strength
+          const isStrong = Object.values(rules).every(Boolean);
+          if (!isStrong) {
+            showAlert(
+              "error",
+              "Access denied: The entered password is weak. It must be at least 8 characters long, containing uppercase, lowercase, numbers, and special symbols.",
+            );
+            return;
+          }
+
+          // 3. Show Success & Proceed
+          submitBtn.disabled = true;
+          submitBtn.innerHTML =
+            '<i class="fa-solid fa-circle-notch fa-spin me-1"></i> Authenticating...';
+
+          setTimeout(() => {
+            showAlert(
+              "success",
+              "Success! Login authenticated for " +
+                role +
+                ". Redirecting to dashboard...",
+            );
+            setTimeout(() => {
+              window.location.href = "../index.html";
+            }, 1500);
+          }, 1000);
+        });
+
+        // Function to display nice banners
+        function showAlert(type, message) {
+          alertBox.style.display = "flex";
+          alertBox.innerText = "";
+
+          const icon = document.createElement("i");
+          if (type === "error") {
+            alertBox.classList.add("validation-alert-error");
+            icon.className = "fa-solid fa-triangle-exclamation me-2";
+          } else {
+            alertBox.classList.add("validation-alert-success");
+            icon.className = "fa-solid fa-circle-check me-2";
+          }
+
+          alertBox.appendChild(icon);
+          alertBox.appendChild(document.createTextNode(message));
+
+          // Scroll alert into view
+          alertBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }
+      });
+    </script>
+  </body>
+</html>

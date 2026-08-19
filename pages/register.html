@@ -1,0 +1,607 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register - Personal Finance Management</title>
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/webp"
+      href="../assets/images/logoStackly.webp"
+    />
+
+    <!-- Bootstrap 5.3 CSS CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome 6 CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Shared Stylesheets -->
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+    <!-- Auth Specific Stylesheet -->
+    <link rel="stylesheet" href="../assets/css/auth.css" />
+  </head>
+  <body class="auth-page">
+    <div class="auth-container">
+      <!-- Left Sidebar: Visual Brand Details (Hidden on Mobile) -->
+      <div class="auth-visual">
+        <div class="auth-visual-content">
+          <div class="auth-brand">
+            <a href="../index.html">
+              <img
+                src="../assets/images/logoStackly.webp"
+                alt="Logo"
+                height="45"
+              />
+            </a>
+          </div>
+
+          <div class="auth-visual-features">
+            <h3 class="fw-bold mb-4 text-white font-montserrat">
+              Start Building Wealth Today
+            </h3>
+
+            <div
+              class="auth-feature-item animate-fade-in"
+              style="animation-delay: 0.1s"
+            >
+              <div class="auth-feature-icon">
+                <i class="fa-solid fa-chart-line"></i>
+              </div>
+              <div class="auth-feature-text">
+                <h5>Goal Projections</h5>
+                <p>
+                  Simulate compounding pathways for retirement, education, and
+                  savings goals.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="auth-feature-item animate-fade-in"
+              style="animation-delay: 0.2s"
+            >
+              <div class="auth-feature-icon">
+                <i class="fa-solid fa-file-invoice-dollar"></i>
+              </div>
+              <div class="auth-feature-text">
+                <h5>Tax Optimizations</h5>
+                <p>
+                  Maximize annual deductions and design tax-efficient portfolio
+                  strategies.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="auth-feature-item animate-fade-in"
+              style="animation-delay: 0.3s"
+            >
+              <div class="auth-feature-icon">
+                <i class="fa-solid fa-user-lock"></i>
+              </div>
+              <div class="auth-feature-text">
+                <h5>Fiduciary Alignment</h5>
+                <p>
+                  No commissions. No products pushes. Simply clean planning
+                  built for your benefit.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="auth-visual-footer">
+            <p class="mb-0">
+              &copy; 2026 Personal Finance Management. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Interactive Registration Form -->
+      <div class="auth-form-section">
+        <!-- Back To Home Button -->
+        <a href="../index.html" class="btn-back-home">
+          <i class="fa-solid fa-arrow-left"></i> Home
+        </a>
+
+        <div class="auth-header">
+          <h2>Create Account</h2>
+          <p>Join us today to construct your financial blueprint.</p>
+        </div>
+
+        <!-- Custom Validation Alerts -->
+        <div id="validation-alert" class="validation-alert"></div>
+
+        <form id="registerForm" novalidate>
+          <!-- Username Field (Alphabetical characters only) -->
+          <div class="form-group-custom">
+            <label for="username">Full Name / Username</label>
+            <div class="input-icon-wrapper">
+              <input
+                type="text"
+                class="form-control"
+                id="username"
+                name="username"
+                maxlength="16"
+                placeholder="Enter letters only (e.g. John Doe)"
+                required
+              />
+              <i class="fa-solid fa-user input-icon"></i>
+            </div>
+            <div
+              class="form-text text-muted"
+              style="font-size: 0.75rem; margin-top: 0.25rem"
+            >
+              Numbers or special characters are prevented from being typed.
+            </div>
+          </div>
+
+          <!-- Role Select Field -->
+          <div class="form-group-custom">
+            <label for="role">Select Your Role</label>
+            <div class="input-icon-wrapper">
+              <select class="form-select" id="role" name="role" required>
+                <option value="" disabled selected>Choose a role...</option>
+                <option value="Client">Client</option>
+                <option value="Advisor">Financial Advisor</option>
+                <option value="Admin">Administrator</option>
+              </select>
+              <i class="fa-solid fa-user-tag input-icon"></i>
+            </div>
+          </div>
+
+          <!-- Email Field -->
+          <div class="form-group-custom">
+            <label for="email">Email Address</label>
+            <div class="input-icon-wrapper">
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                placeholder="name@example.com"
+                required
+              />
+              <i class="fa-solid fa-envelope input-icon"></i>
+            </div>
+          </div>
+
+          <!-- Password Field -->
+          <div class="form-group-custom mb-3">
+            <label for="password">Password</label>
+            <div class="input-icon-wrapper">
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                name="password"
+                placeholder="Create password"
+                required
+              />
+              <i class="fa-solid fa-lock input-icon"></i>
+              <button
+                type="button"
+                id="togglePassword"
+                class="btn-toggle-password"
+                aria-label="Toggle password visibility"
+              >
+                <i class="fa-solid fa-eye"></i>
+              </button>
+            </div>
+
+            <!-- Strength Indicator -->
+            <div class="strength-container">
+              <div class="strength-meter-bar">
+                <div id="strength-meter-fill" class="strength-meter-fill"></div>
+              </div>
+              <div
+                class="d-flex justify-content-between align-items-center mb-2"
+              >
+                <span id="strength-text" class="strength-text"
+                  >Password Strength</span
+                >
+              </div>
+
+              <!-- Checklist of Rules -->
+              <ul class="password-checklist">
+                <li id="rule-length">
+                  <i class="fa-regular fa-circle-dot"></i> Min 8 chars
+                </li>
+                <li id="rule-uppercase">
+                  <i class="fa-regular fa-circle-dot"></i> Uppercase
+                </li>
+                <li id="rule-lowercase">
+                  <i class="fa-regular fa-circle-dot"></i> Lowercase
+                </li>
+                <li id="rule-number">
+                  <i class="fa-regular fa-circle-dot"></i> Number
+                </li>
+                <li id="rule-special">
+                  <i class="fa-regular fa-circle-dot"></i> Special char
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Confirm Password Field -->
+          <div class="form-group-custom mb-3">
+            <label for="confirmPassword">Confirm Password</label>
+            <div class="input-icon-wrapper">
+              <input
+                type="password"
+                class="form-control"
+                id="confirmPassword"
+                name="confirmPassword"
+                placeholder="Re-enter password"
+                required
+              />
+              <i class="fa-solid fa-shield-halved input-icon"></i>
+              <button
+                type="button"
+                id="toggleConfirmPassword"
+                class="btn-toggle-password"
+                aria-label="Toggle confirm password visibility"
+              >
+                <i class="fa-solid fa-eye"></i>
+              </button>
+            </div>
+            <div
+              id="passwordMatchText"
+              class="form-text fw-semibold"
+              style="font-size: 0.75rem; margin-top: 0.25rem"
+            ></div>
+          </div>
+
+          <!-- Terms & Conditions Checkbox -->
+          <div class="mb-4">
+            <label class="custom-checkbox-label">
+              <input
+                type="checkbox"
+                class="custom-checkbox-input"
+                id="terms"
+                name="terms"
+                required
+              />
+              I agree to the
+              <a href="#" class="text-emerald text-decoration-none fw-semibold"
+                >Terms & Conditions</a
+              >
+              and privacy policies.
+            </label>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn-auth-submit" id="submitBtn">
+            <i class="fa-solid fa-user-plus me-1"></i> Register
+          </button>
+        </form>
+
+        <!-- Footer Redirect -->
+        <div class="auth-footer-link">
+          Already have an account? <a href="login.html">Log in here</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JS Bundle CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Page Specific Script -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const registerForm = document.getElementById("registerForm");
+        const usernameInput = document.getElementById("username");
+        const passwordInput = document.getElementById("password");
+        const confirmPasswordInput = document.getElementById("confirmPassword");
+        const togglePassword = document.getElementById("togglePassword");
+        const toggleConfirmPassword = document.getElementById(
+          "toggleConfirmPassword",
+        );
+        const strengthMeterFill = document.getElementById(
+          "strength-meter-fill",
+        );
+        const strengthText = document.getElementById("strength-text");
+        const passwordMatchText = document.getElementById("passwordMatchText");
+        const alertBox = document.getElementById("validation-alert");
+        const submitBtn = document.getElementById("submitBtn");
+
+        // Helper icons
+        const circleDotIcon = "fa-regular fa-circle-dot";
+        const checkIcon = "fa-solid fa-circle-check text-emerald";
+
+        const rules = {
+          length: false,
+          uppercase: false,
+          lowercase: false,
+          number: false,
+          special: false,
+        };
+
+        // Initialize elements
+        updateChecklistItem("rule-length", false);
+        updateChecklistItem("rule-uppercase", false);
+        updateChecklistItem("rule-lowercase", false);
+        updateChecklistItem("rule-number", false);
+        updateChecklistItem("rule-special", false);
+
+        /* --------------------------------------------------------------------------
+           1. USERNAME FIELD FILTERS: PREVENT NUMBERS OR SPECIAL CHARACTERS
+           -------------------------------------------------------------------------- */
+
+        // Prevent keypresses that are numbers or symbols
+        usernameInput.addEventListener("keypress", function (e) {
+          const charCode = e.charCode || e.keyCode;
+
+          // Allow functional control keys like Backspace, Delete, Tab, Arrow keys
+          // Control characters (like Ctrl+C, Ctrl+V, etc.) have charCode 0 in some browsers
+          if (e.ctrlKey || e.altKey || e.metaKey || charCode < 32) {
+            return;
+          }
+
+          const charStr = String.fromCharCode(charCode);
+          // Only allow letters (a-z, A-Z) and space
+          if (!/^[a-zA-Z\s]+$/.test(charStr)) {
+            e.preventDefault();
+          }
+        });
+
+        // Strip characters on paste, drop, or typing (mobile keyboards or drag & drop support)
+        usernameInput.addEventListener("input", function () {
+          const original = this.value;
+          const filtered = original.replace(/[^a-zA-Z\s]/g, "");
+          if (original !== filtered) {
+            this.value = filtered;
+          }
+        });
+
+        /* --------------------------------------------------------------------------
+           2. PASSWORD VISIBILITY TOGGLES
+           -------------------------------------------------------------------------- */
+
+        togglePassword.addEventListener("click", function () {
+          const type =
+            passwordInput.getAttribute("type") === "password"
+              ? "text"
+              : "password";
+          passwordInput.setAttribute("type", type);
+          const icon = this.querySelector("i");
+          if (type === "text") {
+            icon.classList.remove("fa-eye");
+            icon.classList.add("fa-eye-slash");
+          } else {
+            icon.classList.remove("fa-eye-slash");
+            icon.classList.add("fa-eye");
+          }
+        });
+
+        toggleConfirmPassword.addEventListener("click", function () {
+          const type =
+            confirmPasswordInput.getAttribute("type") === "password"
+              ? "text"
+              : "password";
+          confirmPasswordInput.setAttribute("type", type);
+          const icon = this.querySelector("i");
+          if (type === "text") {
+            icon.classList.remove("fa-eye");
+            icon.classList.add("fa-eye-slash");
+          } else {
+            icon.classList.remove("fa-eye-slash");
+            icon.classList.add("fa-eye");
+          }
+        });
+
+        /* --------------------------------------------------------------------------
+           3. PASSWORD STRENGTH VALIDATION (WEAK PASSWORD DETECTOR)
+           -------------------------------------------------------------------------- */
+
+        passwordInput.addEventListener("input", function () {
+          const password = this.value;
+
+          rules.length = password.length >= 8;
+          rules.uppercase = /[A-Z]/.test(password);
+          rules.lowercase = /[a-z]/.test(password);
+          rules.number = /[0-9]/.test(password);
+          rules.special = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+          updateChecklistItem("rule-length", rules.length);
+          updateChecklistItem("rule-uppercase", rules.uppercase);
+          updateChecklistItem("rule-lowercase", rules.lowercase);
+          updateChecklistItem("rule-number", rules.number);
+          updateChecklistItem("rule-special", rules.special);
+
+          // Calculate strength percentage
+          const totalRules = Object.keys(rules).length;
+          const passedRules = Object.values(rules).filter(Boolean).length;
+
+          let percent = 0;
+          let color = "#ef4444";
+          let label = "Strength: ";
+
+          if (password.length > 0) {
+            percent = (passedRules / totalRules) * 100;
+
+            if (passedRules <= 2) {
+              color = "#ef4444"; // Red
+              label +=
+                "Weak (Needs " + (totalRules - passedRules) + " more rules)";
+            } else if (passedRules <= 4) {
+              color = "#f59e0b"; // Orange
+              label +=
+                "Medium (Needs " + (totalRules - passedRules) + " more rules)";
+            } else {
+              color = "#10b981"; // Emerald
+              label += "Strong";
+            }
+          } else {
+            percent = 0;
+            label = "Password Strength";
+          }
+
+          strengthMeterFill.style.width = percent + "%";
+          strengthMeterFill.style.backgroundColor = color;
+          strengthText.innerText = label;
+
+          // Also trigger confirm password match check
+          validateConfirmPassword();
+        });
+
+        function updateChecklistItem(elementId, isValid) {
+          const item = document.getElementById(elementId);
+          if (!item) return;
+
+          const icon = item.querySelector("i");
+          if (isValid) {
+            item.classList.add("valid");
+            if (icon) {
+              icon.className = checkIcon;
+            }
+          } else {
+            item.classList.remove("valid");
+            if (icon) {
+              icon.className = circleDotIcon;
+            }
+          }
+        }
+
+        /* --------------------------------------------------------------------------
+           4. PASSWORD MATCHING CHECK
+           -------------------------------------------------------------------------- */
+
+        function validateConfirmPassword() {
+          const pass = passwordInput.value;
+          const confirmPass = confirmPasswordInput.value;
+
+          if (confirmPass.length === 0) {
+            passwordMatchText.innerText = "";
+            passwordMatchText.className = "form-text";
+            return false;
+          }
+
+          if (pass === confirmPass) {
+            passwordMatchText.innerText = "✓ Passwords match";
+            passwordMatchText.className = "form-text text-success";
+            return true;
+          } else {
+            passwordMatchText.innerText = "✗ Passwords do not match";
+            passwordMatchText.className = "form-text text-danger";
+            return false;
+          }
+        }
+
+        confirmPasswordInput.addEventListener("input", validateConfirmPassword);
+
+        /* --------------------------------------------------------------------------
+           5. FORM SUBMISSION HANDLER
+           -------------------------------------------------------------------------- */
+
+        registerForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Clear previous alert
+          alertBox.style.display = "none";
+          alertBox.className = "validation-alert";
+
+          const username = usernameInput.value.trim();
+          const role = document.getElementById("role").value;
+          const email = document.getElementById("email").value;
+          const password = passwordInput.value;
+          const confirmPassword = confirmPasswordInput.value;
+          const termsChecked = document.getElementById("terms").checked;
+
+          // 1. Check all required fields
+          if (
+            !username ||
+            !role ||
+            !email ||
+            !password ||
+            !confirmPassword ||
+            !termsChecked
+          ) {
+            showAlert(
+              "error",
+              "All fields are required, including agreeing to the Terms & Conditions.",
+            );
+            return;
+          }
+
+          // 2. Validate password strength rules (every rule must be true)
+          const isStrong = Object.values(rules).every(Boolean);
+          if (!isStrong) {
+            showAlert(
+              "error",
+              "Registration rejected: Password is too weak. It must fulfill all security criteria.",
+            );
+            return;
+          }
+
+          // 3. Validate confirm password match
+          if (password !== confirmPassword) {
+            showAlert(
+              "error",
+              "Registration rejected: Passwords do not match.",
+            );
+            return;
+          }
+
+          // 4. Show success animation and redirect
+          submitBtn.disabled = true;
+          submitBtn.innerHTML =
+            '<i class="fa-solid fa-circle-notch fa-spin me-1"></i> Registering...';
+
+          setTimeout(() => {
+            showAlert(
+              "success",
+              "Registration successful! Account created for " +
+                username +
+                " (" +
+                role +
+                "). Redirecting to login...",
+            );
+
+            // Redirect to login page after 1.5 seconds
+            setTimeout(() => {
+              window.location.href = "login.html";
+            }, 1500);
+          }, 1200);
+        });
+
+        // Function to display alerts
+        function showAlert(type, message) {
+          alertBox.style.display = "flex";
+          alertBox.innerText = "";
+
+          const icon = document.createElement("i");
+          if (type === "error") {
+            alertBox.classList.add("validation-alert-error");
+            icon.className = "fa-solid fa-triangle-exclamation me-2";
+          } else {
+            alertBox.classList.add("validation-alert-success");
+            icon.className = "fa-solid fa-circle-check me-2";
+          }
+
+          alertBox.appendChild(icon);
+          alertBox.appendChild(document.createTextNode(message));
+
+          // Scroll alert into view
+          alertBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }
+      });
+    </script>
+  </body>
+</html>

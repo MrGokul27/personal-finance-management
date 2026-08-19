@@ -169,6 +169,7 @@
                       type="text"
                       class="form-control"
                       placeholder="e.g. James Smith"
+                      maxlength="16"
                       required
                       oninput="
                         this.value = this.value.replace(/[^a-zA-Z\s]/g, '')
@@ -184,6 +185,7 @@
                       class="form-control"
                       value="+91 "
                       placeholder="e.g.+91-7911123456"
+                      maxlength="10"
                       required
                       oninput="
                         this.value = this.value.replace(/(?!^\+)[^\d]/g, '')
