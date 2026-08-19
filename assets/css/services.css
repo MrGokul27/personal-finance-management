@@ -1,0 +1,145 @@
+/* Services Grid */
+.service-icon-box {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  background-color: var(--primary-emerald-light);
+  color: var(--primary-emerald);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+.service-hub-card {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 35px 30px;
+  transition: all 0.3s ease;
+  height: 100%;
+}
+.service-hub-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(15, 23, 42, 0.06);
+  border-color: var(--primary-emerald-light);
+}
+.service-hub-card:hover .service-icon-box {
+  background-color: var(--primary-emerald);
+  color: #ffffff;
+}
+
+/* Onboarding checklist styles */
+.checklist-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+}
+.checklist-item i {
+  color: var(--primary-emerald);
+  margin-top: 4px;
+}
+
+/* Plan Selection Table Styling */
+.services-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+.services-table th {
+  background-color: var(--secondary-slate);
+  color: #ffffff;
+  padding: 20px;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  border: none;
+  text-align: center;
+}
+.services-table th:first-child {
+  text-align: left;
+}
+.services-table td {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-color);
+  border-top: none;
+  text-align: center;
+  vertical-align: middle;
+}
+.services-table td:first-child {
+  text-align: left;
+  font-weight: 600;
+}
+.services-table tr:last-child td {
+  border-bottom: none;
+}
+.services-table tr:hover {
+  background-color: rgba(16, 185, 129, 0.02);
+}
+
+/* Service Detail Sidebar Tabs */
+.services-sidebar-nav {
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  background-color: #ffffff;
+  padding: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.01);
+}
+.services-sidebar-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  border-radius: 8px;
+  color: var(--secondary-slate);
+  text-decoration: none;
+  font-weight: 600;
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  margin-bottom: 5px;
+}
+.services-sidebar-link:last-child {
+  margin-bottom: 0;
+}
+.services-sidebar-link:hover,
+.services-sidebar-link.active {
+  background-color: var(--primary-emerald);
+  color: #ffffff;
+}
+.services-sidebar-link i {
+  font-size: 0.8rem;
+  transition: transform 0.2s ease;
+}
+.services-sidebar-link:hover i,
+.services-sidebar-link.active i {
+  transform: translateX(3px);
+}
+
+/* Sidebar Call to Action Box */
+.sidebar-cta-box {
+  background-color: var(--secondary-slate);
+  color: #ffffff;
+  border-radius: 12px;
+  padding: 30px 25px;
+  margin-top: 30px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.sidebar-cta-box::after {
+  content: "";
+  position: absolute;
+  bottom: -50px;
+  right: -50px;
+  width: 150px;
+  height: 150px;
+  background-color: var(--primary-emerald);
+  opacity: 0.1;
+  border-radius: 50%;
+}

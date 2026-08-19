@@ -1,0 +1,376 @@
+document.addEventListener("DOMContentLoaded", function () {
+  // 1. DYNAMIC COMPONENT LOADER
+  const pathname = window.location.pathname;
+  let depth = 0; // Default: root index.html
+
+  if (pathname.includes("/pages/services/")) {
+    depth = 2; // Inside pages/services/
+  } else if (pathname.includes("/pages/")) {
+    depth = 1; // Inside pages/
+  }
+
+  // Determine correct relative paths for header/footer files
+  let headerPath = "pages/components/header.html";
+  let footerPath = "pages/components/footer.html";
+
+  if (depth === 1) {
+    headerPath = "components/header.html";
+    footerPath = "components/footer.html";
+  } else if (depth === 2) {
+    headerPath = "../components/header.html";
+    footerPath = "../components/footer.html";
+  }
+
+  const headerPlaceholder = document.getElementById("header-placeholder");
+  const footerPlaceholder = document.getElementById("footer-placeholder");
+
+  // Load Header
+  if (headerPlaceholder) {
+    fetch(headerPath)
+      .then((response) => {
+        if (!response.ok) throw new Error("Failed to load header component");
+        return response.text();
+      })
+      .then((html) => {
+        headerPlaceholder.innerHTML = html;
+        adjustPaths(headerPlaceholder, depth);
+        highlightActiveNav(headerPlaceholder, depth);
+        fixHeaderPositions();
+      })
+      .catch((err) => console.error("Error loading header:", err));
+  }
+
+  // Load Footer
+  if (footerPlaceholder) {
+    fetch(footerPath)
+      .then((response) => {
+        if (!response.ok) throw new Error("Failed to load footer component");
+        return response.text();
+      })
+      .then((html) => {
+        footerPlaceholder.innerHTML = html;
+        adjustPaths(footerPlaceholder, depth);
+        initScrollToTop();
+      })
+      .catch((err) => console.error("Error loading footer:", err));
+  }
+
+  // Initialize Calculator if on home page
+  initCalculator();
+
+  // Initialize Counters if they exist on the page
+  initCounters();
+
+  // Initialize Project Filters if on projects page
+  initProjectFilters();
+});
+
+/**
+ * 1b. FIX FIXED HEADER POSITIONS & BODY OFFSET
+ */
+function fixHeaderPositions() {
+  const topHeader = document.querySelector(".top-header");
+  const navbar = document.getElementById("mainNavbar");
+  if (!navbar) return;
+
+  const isMobile = window.innerWidth < 992;
+  const topHeaderHeight = !isMobile && topHeader ? topHeader.offsetHeight : 0;
+  navbar.style.top = topHeaderHeight + "px";
+  document.body.style.paddingTop = topHeaderHeight + navbar.offsetHeight + "px";
+}
+
+window.addEventListener("resize", fixHeaderPositions);
+
+/**
+ * 2. PATH NORMALIZER FOR REUSABLE COMPONENTS
+ * Automatically corrects href/src elements depending on file path depth
+ */
+function adjustPaths(container, depth) {
+  if (depth === 0) return; // Root pages remain unchanged
+
+  const links = container.querySelectorAll("a");
+  const images = container.querySelectorAll("img");
+
+  links.forEach((a) => {
+    let href = a.getAttribute("href");
+    if (
+      !href ||
+      href.startsWith("#") ||
+      href.startsWith("tel:") ||
+      href.startsWith("mailto:") ||
+      href.startsWith("javascript:")
+    )
+      return;
+
+    if (depth === 1) {
+      if (href === "index.html") {
+        a.setAttribute("href", "../index.html");
+      } else if (href.startsWith("pages/services/")) {
+        a.setAttribute("href", href.replace("pages/", ""));
+      } else if (href.startsWith("pages/")) {
+        a.setAttribute("href", href.replace("pages/", ""));
+      }
+    } else if (depth === 2) {
+      if (href === "index.html") {
+        a.setAttribute("href", "../../index.html");
+      } else if (href.startsWith("pages/services/")) {
+        a.setAttribute("href", href.replace("pages/services/", ""));
+      } else if (href.startsWith("pages/")) {
+        a.setAttribute("href", href.replace("pages/", "../"));
+      }
+    }
+  });
+
+  images.forEach((img) => {
+    let src = img.getAttribute("src");
+    if (!src) return;
+
+    if (depth === 1) {
+      if (src.startsWith("assets/")) {
+        img.setAttribute("src", "../" + src);
+      }
+    } else if (depth === 2) {
+      if (src.startsWith("assets/")) {
+        img.setAttribute("src", "../../" + src);
+      }
+    }
+  });
+}
+
+/**
+ * 3. NAVBAR ACTIVE STATE HIGHLIGHTING
+ */
+function highlightActiveNav(container, depth) {
+  const pathname = window.location.pathname;
+  let filename = pathname.substring(pathname.lastIndexOf("/") + 1);
+
+  if (filename === "" || filename === "index.html") {
+    setActive(container.querySelector("#nav-home"));
+  } else if (filename === "about.html") {
+    setActive(container.querySelector("#nav-about"));
+  } else if (filename === "services.html" || depth === 2) {
+    setActive(container.querySelector("#nav-services"));
+  } else if (filename === "projects.html") {
+    setActive(container.querySelector("#nav-projects"));
+  } else if (filename === "shop.html") {
+    setActive(container.querySelector("#nav-shop"));
+  } else if (filename === "contact.html") {
+    setActive(container.querySelector("#nav-contact"));
+  }
+
+  function setActive(el) {
+    if (el) {
+      el.classList.add("active");
+      el.style.color = "#10b981"; // Emerald green highlight
+      el.style.borderBottom = "2px solid #10b981";
+    }
+  }
+}
+
+/**
+ * 4. SCROLL TO TOP FUNCTIONALITY
+ */
+function initScrollToTop() {
+  const scrollBtn = document.getElementById("scrollToTop");
+  if (!scrollBtn) return;
+
+  window.addEventListener("scroll", function () {
+    if (window.scrollY > 300) {
+      scrollBtn.style.display = "flex";
+      setTimeout(() => {
+        scrollBtn.style.opacity = "1";
+      }, 10);
+    } else {
+      scrollBtn.style.opacity = "0";
+      setTimeout(() => {
+        if (window.scrollY <= 300) scrollBtn.style.display = "none";
+      }, 300);
+    }
+  });
+
+  scrollBtn.addEventListener("click", function () {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
+}
+
+/**
+ * 5. INTERACTIVE FINANCIAL HEALTH CALCULATOR (Home Page)
+ */
+function initCalculator() {
+  const incomeSlider = document.getElementById("calcIncome");
+  const expensesSlider = document.getElementById("calcExpenses");
+  const investSlider = document.getElementById("calcInvestRate");
+
+  if (!incomeSlider || !expensesSlider || !investSlider) return;
+
+  const incomeVal = document.getElementById("calcIncomeVal");
+  const expensesVal = document.getElementById("calcExpensesVal");
+  const investVal = document.getElementById("calcInvestRateVal");
+
+  const monthlySavingsText = document.getElementById("resMonthlySavings");
+  const amountInvestedText = document.getElementById("resAmountInvested");
+  const wealth5YrText = document.getElementById("resWealth5Yr");
+  const wealth10YrText = document.getElementById("resWealth10Yr");
+  const wealth20YrText = document.getElementById("resWealth20Yr");
+
+  function updateCalculator() {
+    let income = parseInt(incomeSlider.value);
+    let expenses = parseInt(expensesSlider.value);
+    let investRate = parseInt(investSlider.value);
+
+    // Adjust limits so expenses cannot exceed income
+    if (expenses > income) {
+      expensesSlider.value = income;
+      expenses = income;
+    }
+
+    // Update display text values
+    incomeVal.innerText = income.toLocaleString("en-IN");
+    expensesVal.innerText = expenses.toLocaleString("en-IN");
+    investVal.innerText = investRate;
+
+    // Calculations
+    let monthlySavings = income - expenses;
+    let monthlyInvested = Math.round(monthlySavings * (investRate / 100));
+
+    monthlySavingsText.innerText = "₹" + monthlySavings.toLocaleString("en-IN");
+    amountInvestedText.innerText =
+      "₹" + monthlyInvested.toLocaleString("en-IN");
+
+    // Compound Interest projection (12% per annum = 1% per month)
+    const monthlyRate = 0.12 / 12;
+
+    let projection5Yr = calculateCompound(monthlyInvested, monthlyRate, 5 * 12);
+    let projection10Yr = calculateCompound(
+      monthlyInvested,
+      monthlyRate,
+      10 * 12,
+    );
+    let projection20Yr = calculateCompound(
+      monthlyInvested,
+      monthlyRate,
+      20 * 12,
+    );
+
+    wealth5YrText.innerText =
+      "₹" + Math.round(projection5Yr).toLocaleString("en-IN");
+    wealth10YrText.innerText =
+      "₹" + Math.round(projection10Yr).toLocaleString("en-IN");
+    wealth20YrText.innerText =
+      "₹" + Math.round(projection20Yr).toLocaleString("en-IN");
+  }
+
+  function calculateCompound(monthlyContribution, monthlyRate, totalMonths) {
+    if (monthlyContribution <= 0) return 0;
+    // Formula: S = P * (((1 + r)^n - 1) / r) * (1 + r)
+    return (
+      monthlyContribution *
+      ((Math.pow(1 + monthlyRate, totalMonths) - 1) / monthlyRate) *
+      (1 + monthlyRate)
+    );
+  }
+
+  // Add listeners
+  incomeSlider.addEventListener("input", updateCalculator);
+  expensesSlider.addEventListener("input", updateCalculator);
+  investSlider.addEventListener("input", updateCalculator);
+
+  // Run once on load
+  updateCalculator();
+}
+
+/**
+ * 5b. INTERACTIVE STATISTICS COUNTERS (Home Page)
+ */
+function initCounters() {
+  const counters = document.querySelectorAll(".counter");
+  if (counters.length === 0) return;
+
+  const speed = 1500; // Duration of animation in ms
+
+  const countUp = (counter) => {
+    const target = parseFloat(counter.getAttribute("data-target"));
+    const decimals = parseInt(counter.getAttribute("data-decimals")) || 0;
+    const start = 0;
+    let startTime = null;
+
+    const animate = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const progress = timestamp - startTime;
+      const current = Math.min(start + (progress / speed) * target, target);
+
+      if (decimals > 0) {
+        counter.innerText = current.toFixed(decimals);
+      } else {
+        counter.innerText = Math.floor(current).toLocaleString("en-IN");
+      }
+
+      if (progress < speed) {
+        requestAnimationFrame(animate);
+      } else {
+        if (decimals > 0) {
+          counter.innerText = target.toFixed(decimals);
+        } else {
+          counter.innerText = target.toLocaleString("en-IN");
+        }
+      }
+    };
+
+    requestAnimationFrame(animate);
+  };
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          countUp(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.3 },
+  );
+
+  counters.forEach((counter) => observer.observe(counter));
+}
+
+/**
+ * 6. PROJECTS FILTER LOGIC (Projects Page)
+ */
+function initProjectFilters() {
+  const filterContainer = document.querySelector(".portfolio-filter-btns");
+  if (!filterContainer) return;
+
+  const filterBtns = filterContainer.querySelectorAll(".btn-filter");
+  const portfolioItems = document.querySelectorAll(".portfolio-item");
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener("click", function () {
+      // Remove active class from other buttons
+      filterBtns.forEach((b) =>
+        b.classList.remove("btn-emerald", "text-white"),
+      );
+      filterBtns.forEach((b) => b.classList.add("btn-outline-slate"));
+
+      // Add active style to current button
+      this.classList.remove("btn-outline-slate");
+      this.classList.add("btn-emerald", "text-white");
+
+      const filterValue = this.getAttribute("data-filter");
+
+      portfolioItems.forEach((item) => {
+        if (filterValue === "all" || item.classList.contains(filterValue)) {
+          item.style.display = "block";
+          // Trigger fade in animation
+          item.classList.add("animate-fade-in");
+        } else {
+          item.style.display = "none";
+          item.classList.remove("animate-fade-in");
+        }
+      });
+    });
+  });
+}

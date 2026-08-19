@@ -1,0 +1,117 @@
+/* Philosophy & Values section */
+.value-box {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 35px 25px;
+  transition: all 0.3s ease;
+  height: 100%;
+}
+.value-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.05);
+  border-color: var(--primary-emerald-light);
+}
+
+/* Timeline/Milestones Style */
+.timeline-container {
+  position: relative;
+  padding-left: 30px;
+}
+.timeline-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 15px;
+  width: 2px;
+  height: 100%;
+  background-color: var(--border-color);
+}
+.timeline-item {
+  position: relative;
+  padding-bottom: 40px;
+}
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+.timeline-marker {
+  position: absolute;
+  left: -22px;
+  top: 5px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: var(--primary-emerald);
+  border: 3px solid #ffffff;
+  box-shadow: 0 0 0 3px var(--primary-emerald-light);
+  z-index: 2;
+}
+.timeline-content {
+  background-color: var(--bg-light);
+  padding: 20px 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.02);
+}
+
+/* Leadership Team Grid Overlay */
+.team-card {
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #ffffff;
+  box-shadow: 0 5px 20px rgba(15, 23, 42, 0.03);
+  transition: all 0.3s ease;
+}
+.team-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+}
+.team-img-holder {
+  position: relative;
+  overflow: hidden;
+}
+.team-social-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(15, 23, 42, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.team-card:hover .team-social-overlay {
+  opacity: 1;
+}
+.team-social-overlay a {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--primary-emerald);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+.team-social-overlay a:hover {
+  background-color: #ffffff;
+  color: var(--primary-emerald);
+  transform: scale(1.1);
+}
+
+/* Trust Accreditation Icons */
+.accreditation-card {
+  border: 1px solid var(--border-color);
+  padding: 20px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+.accreditation-card:hover {
+  border-color: var(--primary-emerald);
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.08);
+}

@@ -1,0 +1,215 @@
+<!-- Top Info Header -->
+<div
+  class="top-header bg-slate py-2 text-white font-sans text-xs"
+  style="position: fixed; top: 0; left: 0; right: 0; z-index: 1031"
+>
+  <div
+    class="container d-flex flex-wrap justify-content-between align-items-center"
+  >
+    <div class="d-flex align-items-center gap-3 top-header-left">
+      <span
+        ><i class="fa-regular fa-clock text-emerald me-1"></i> Mon - Sat: 9:00
+        AM - 6:00 PM</span
+      >
+      <span class="d-none d-sm-inline">|</span>
+      <span class="d-none d-sm-inline"
+        ><i class="fa-solid fa-location-dot text-emerald me-1"></i> Sector 62,
+        Noida, India</span
+      >
+    </div>
+    <div class="d-flex align-items-center gap-4 top-header-right mt-1 mt-sm-0">
+      <a href="#" class="text-white text-decoration-none transition-all"
+        ><i class="fa-regular fa-envelope text-emerald me-1"></i>
+        support@personalfinance.com</a
+      >
+      <a href="#" class="text-white text-decoration-none transition-all"
+        ><i class="fa-solid fa-phone text-emerald me-1"></i> +91 98765 43210</a
+      >
+    </div>
+  </div>
+</div>
+
+<!-- Main Header Navbar -->
+<nav
+  class="navbar navbar-expand-lg bg-white py-3 shadow-sm"
+  id="mainNavbar"
+  style="position: fixed; left: 0; right: 0; z-index: 1030"
+>
+  <div class="container">
+    <!-- Logo -->
+    <a
+      class="navbar-brand d-flex align-items-center gap-2"
+      href="index.html"
+      id="navbarLogoLink"
+    >
+      <img
+        src="assets/images/logoStackly.webp"
+        alt="Personal Finance Management Logo"
+        height="45"
+        id="navbarLogoImg"
+        style="
+          filter: invert(58%) sepia(72%) saturate(400%) hue-rotate(115deg)
+            brightness(95%) contrast(90%);
+        "
+      />
+    </a>
+
+    <!-- Responsive Hamburger Toggle -->
+    <button
+      class="navbar-toggler border-0 shadow-none"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarContent"
+      aria-controls="navbarContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar Menu Links -->
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <!-- Mobile menu header: logo + close button (hidden on desktop) -->
+      <div
+        class="mobile-menu-header d-flex d-lg-none align-items-center justify-content-between mb-3"
+      >
+        <a href="index.html" id="mobileMenuLogoLink">
+          <img
+            src="assets/images/logoStackly.webp"
+            alt="Logo"
+            height="40"
+            id="mobileMenuLogoImg"
+            style="
+              filter: invert(58%) sepia(72%) saturate(400%) hue-rotate(115deg)
+                brightness(95%) contrast(90%);
+            "
+          />
+        </a>
+        <button
+          class="btn-close-menu border-0 bg-transparent p-0"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarContent"
+          aria-label="Close menu"
+        >
+          <i class="fa-solid fa-xmark fs-4 text-slate"></i>
+        </button>
+      </div>
+
+      <ul
+        class="navbar-nav align-items-center gap-1 mt-3 mt-lg-0 font-montserrat fw-semibold"
+        style="font-size: 0.9rem"
+      >
+        <li class="nav-item">
+          <a
+            class="nav-link px-3 rounded text-slate"
+            href="index.html"
+            id="nav-home"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link px-3 rounded text-slate"
+            href="pages/about.html"
+            id="nav-about"
+            >About Us</a
+          >
+        </li>
+        <!-- Services Dropdown -->
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link px-3 rounded text-slate dropdown-toggle d-flex align-items-center gap-1"
+            href="pages/services.html"
+            id="nav-services"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Services
+          </a>
+          <ul
+            class="dropdown-menu dropdown-menu-end border-0 shadow mt-2 p-2 rounded-3 animate-fade-in"
+            aria-labelledby="nav-services"
+          >
+            <li>
+              <a
+                class="dropdown-item py-2 px-3 rounded text-slate"
+                href="pages/services.html"
+                >Services Hub</a
+              >
+            </li>
+            <li><hr class="dropdown-divider bg-light" /></li>
+            <li>
+              <a
+                class="dropdown-item py-2 px-3 rounded text-slate"
+                href="pages/services/investment-planning.html"
+                >Investment Planning</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item py-2 px-3 rounded text-slate"
+                href="pages/services/childrens-planning.html"
+                >Children's Planning</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item py-2 px-3 rounded text-slate"
+                href="pages/services/retirement-planning.html"
+                >Retirement Planning</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item py-2 px-3 rounded text-slate"
+                href="pages/services/insurance-planning.html"
+                >Insurance Planning</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item py-2 px-3 rounded text-slate"
+                href="pages/services/tax-planning.html"
+                >Tax Planning</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link px-3 rounded text-slate"
+            href="pages/projects.html"
+            id="nav-projects"
+            >Projects</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link px-3 rounded text-slate"
+            href="pages/shop.html"
+            id="nav-shop"
+            >Shop</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link px-3 rounded text-slate"
+            href="pages/contact.html"
+            id="nav-contact"
+            >Contact</a
+          >
+        </li>
+        <!-- Call To Action Button -->
+        <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+          <a
+            class="btn btn-emerald text-white px-4 py-2 rounded-pill shadow-sm transition-all"
+            href="#"
+            id="nav-cta-btn"
+            ><i class="fa-solid fa-calendar-check me-2"></i>Free Consultation</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

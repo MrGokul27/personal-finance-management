@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Projects & Case Studies - Personal Finance Management</title>
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/webp"
+      href="../assets/images/logoStackly.webp"
+    />
+
+    <!-- Bootstrap 5.3 CSS CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome 6 CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Shared Stylesheets -->
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+    <!-- Page Specific Stylesheet -->
+    <link rel="stylesheet" href="../assets/css/projects.css" />
+  </head>
+  <body>
+    <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
+
+    <!-- SECTION 1: INNER BANNER WITH BREADCRUMBS -->
+    <section
+      class="inner-page-banner"
+      style="
+        background-image: url(&quot;https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=1920&q=80&quot;);
+      "
+    >
+      <div class="container text-center">
+        <nav aria-label="breadcrumb" class="banner-breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Projects</li>
+          </ol>
+        </nav>
+        <div class="inner-page-banner-content">
+          <h1 class="display-4 fw-bold text-light">
+            Case Studies & Portfolios
+          </h1>
+          <p class="lead text-light opacity-90 mx-auto max-width-600 mb-0">
+            Discover real-world examples of how our fee-only advisors
+            restructured portfolios, cut commissions, and accelerated client
+            wealth.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: CATEGORY FILTER BUTTONS -->
+    <section class="pt-5 pb-3">
+      <div class="container">
+        <div class="portfolio-filter-btns">
+          <button
+            class="btn btn-filter btn-emerald text-white"
+            data-filter="all"
+          >
+            All Portfolios
+          </button>
+          <button
+            class="btn btn-filter btn-outline-slate text-slate"
+            data-filter="category-wealth"
+          >
+            Wealth Creation
+          </button>
+          <button
+            class="btn btn-filter btn-outline-slate text-slate"
+            data-filter="category-debt"
+          >
+            Debt Reduction
+          </button>
+          <button
+            class="btn btn-filter btn-outline-slate text-slate"
+            data-filter="category-retirement"
+          >
+            Retirement nest
+          </button>
+          <button
+            class="btn btn-filter btn-outline-slate text-slate"
+            data-filter="category-tax"
+          >
+            Tax optimization
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: PROJECT CARD GRID (Interactive Filtering) -->
+    <section class="py-4">
+      <div class="container">
+        <div class="row g-4" id="portfolioGrid">
+          <!-- Project 1 -->
+          <div class="col-lg-4 col-md-6 portfolio-item category-wealth">
+            <div class="portfolio-card">
+              <div class="portfolio-img-wrapper">
+                <span class="portfolio-badge">Wealth Creation</span>
+                <img
+                  src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=600&q=80"
+                  alt="Corporate Equity"
+                  class="img-fluid w-100"
+                />
+              </div>
+              <div class="p-4">
+                <h5 class="fw-bold text-slate mb-2">
+                  ₹1.5Cr Corporate Equity Corpus
+                </h5>
+                <p class="text-muted small">
+                  Helper program for an IT executive to restructure concentrated
+                  ESOP exposure and build a diversified index fund portfolio
+                  yielding 13.8% CAGR.
+                </p>
+                <span class="text-emerald small fw-bold"
+                  >13.8% CAGR Yielded</span
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Project 2 -->
+          <div class="col-lg-4 col-md-6 portfolio-item category-debt">
+            <div class="portfolio-card">
+              <div class="portfolio-img-wrapper">
+                <span class="portfolio-badge">Debt Reduction</span>
+                <img
+                  src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=600&q=80"
+                  alt="Debt payoff"
+                  class="img-fluid w-100"
+                />
+              </div>
+              <div class="p-4">
+                <h5 class="fw-bold text-slate mb-2">
+                  Debt-Free in 36 Months Blueprint
+                </h5>
+                <p class="text-muted small">
+                  Created a structured debt-avalanche plan for a family,
+                  reducing interest overheads by 40% and clearing ₹25 Lakhs home
+                  loan early.
+                </p>
+                <span class="text-emerald small fw-bold"
+                  >₹25L debt cleared</span
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Project 3 -->
+          <div class="col-lg-4 col-md-6 portfolio-item category-retirement">
+            <div class="portfolio-card">
+              <div class="portfolio-img-wrapper">
+                <span class="portfolio-badge">Retirement nest</span>
+                <img
+                  src="https://images.unsplash.com/photo-1508847154043-be12a26c86c5?auto=format&fit=crop&w=600&q=80"
+                  alt="Retirement SWP"
+                  class="img-fluid w-100"
+                />
+              </div>
+              <div class="p-4">
+                <h5 class="fw-bold text-slate mb-2">
+                  Anil's Safe SWP Pension Plan
+                </h5>
+                <p class="text-muted small">
+                  Designed a multi-bucket distribution plan for a retired PSU
+                  officer, creating a inflation-adjusted monthly pension with
+                  zero tax liability.
+                </p>
+                <span class="text-emerald small fw-bold"
+                  >Inflation-adjusted flow</span
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Project 4 -->
+          <div class="col-lg-4 col-md-6 portfolio-item category-tax">
+            <div class="portfolio-card">
+              <div class="portfolio-img-wrapper">
+                <span class="portfolio-badge">Tax optimization</span>
+                <img
+                  src="https://images.unsplash.com/photo-1544377193-33dcf4d68fb5?auto=format&fit=crop&w=600&q=80"
+                  alt="Salary tax"
+                  class="img-fluid w-100"
+                />
+              </div>
+              <div class="p-4">
+                <h5 class="fw-bold text-slate mb-2">
+                  Restructuring Senior Manager CTC
+                </h5>
+                <p class="text-muted small">
+                  Restructured salary allowances and added Section 80C, 80D,
+                  NPS, and home loan rebates, shaving ₹4.5 Lakhs off annual
+                  income tax.
+                </p>
+                <span class="text-emerald small fw-bold"
+                  >₹4.5L Saved Annually</span
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Project 5 -->
+          <div class="col-lg-4 col-md-6 portfolio-item category-wealth">
+            <div class="portfolio-card">
+              <div class="portfolio-img-wrapper">
+                <span class="portfolio-badge">Wealth Creation</span>
+                <img
+                  src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=600&q=80"
+                  alt="Multi asset"
+                  class="img-fluid w-100"
+                />
+              </div>
+              <div class="p-4">
+                <h5 class="fw-bold text-slate mb-2">
+                  Multi-Asset Family Portfolio
+                </h5>
+                <p class="text-muted small">
+                  Reallocated a client's traditional physical assets (idle land,
+                  gold) into a liquid paper portfolio (equity/debt), boosting
+                  net returns.
+                </p>
+                <span class="text-emerald small fw-bold"
+                  >Liquid asset growth</span
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Project 6 -->
+          <div class="col-lg-4 col-md-6 portfolio-item category-retirement">
+            <div class="portfolio-card">
+              <div class="portfolio-img-wrapper">
+                <span class="portfolio-badge">Retirement nest</span>
+                <img
+                  src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80"
+                  alt="Early retirement"
+                  class="img-fluid w-100"
+                />
+              </div>
+              <div class="p-4">
+                <h5 class="fw-bold text-slate mb-2">
+                  Early Retirement at Age 45
+                </h5>
+                <p class="text-muted small">
+                  Mapped out the "Rule of 25" and built a safe corpus of ₹5Cr,
+                  enabling early exit for a software architect with lifetime
+                  security.
+                </p>
+                <span class="text-emerald small fw-bold"
+                  >₹5.0Cr Corpus Built</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: MAJOR PROJECT SPOTLIGHT -->
+    <section class="py-5 bg-light-gray">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span
+            class="text-emerald fw-bold text-uppercase tracking-wider mb-2 d-block"
+            style="font-size: 0.8rem"
+            ><i class="fa-solid fa-star me-2"></i>Featured Project</span
+          >
+          <h2 class="fw-bold text-slate">
+            Case Spotlight: The Sen Family Estate Blueprint
+          </h2>
+        </div>
+        <div class="spotlight-wrapper bg-white shadow-sm">
+          <div class="row g-0">
+            <div class="col-lg-6">
+              <img
+                src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=700&q=80"
+                alt="Estate consulting"
+                class="img-fluid w-100 h-100 object-fit-cover"
+              />
+            </div>
+            <div class="col-lg-6 p-5 d-flex flex-column justify-content-center">
+              <h4 class="fw-bold text-slate mb-3">
+                Legacy and Estate Structuring for HNI Family
+              </h4>
+              <p class="text-muted small mb-3">
+                **Client Situation:** A multi-generational business family in
+                Noida holding fragmented real estate, traditional insurance
+                products, and massive tax overheads.
+              </p>
+              <p class="text-muted small mb-4">
+                **Our Solution:** Restructured land assets, established a
+                private family trust for smooth succession, eliminated
+                high-commission insurance plans, and redirected capital to
+                tax-exempt capital bonds and indices.
+              </p>
+              <div class="row g-3 mb-4">
+                <div class="col-6 border-start border-emerald border-3 ps-3">
+                  <h6 class="fw-bold mb-0">Total Asset Scope</h6>
+                  <p class="text-emerald fw-bold mb-0">₹45 Crores</p>
+                </div>
+                <div class="col-6 border-start border-emerald border-3 ps-3">
+                  <h6 class="fw-bold mb-0">Annual Tax Saved</h6>
+                  <p class="text-emerald fw-bold mb-0">₹24 Lakhs</p>
+                </div>
+              </div>
+              <a href="#" class="btn btn-emerald align-self-start px-4"
+                >Request Custom Blueprint</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: PERFORMANCE STATS COUNTERS -->
+    <section class="py-5 bg-slate text-white text-center">
+      <div class="container">
+        <div class="row g-4">
+          <!-- Stat 1 -->
+          <div class="col-lg-3 col-sm-6">
+            <div class="performance-stat-box bg-dark text-white border-0 py-4">
+              <div class="stat-percentage">14.2%</div>
+              <div class="stat-label">Average Annualized Portfolio CAGR</div>
+            </div>
+          </div>
+          <!-- Stat 2 -->
+          <div class="col-lg-3 col-sm-6">
+            <div class="performance-stat-box bg-dark text-white border-0 py-4">
+              <div class="stat-percentage">98.2%</div>
+              <div class="stat-label">Client Goal Achievement Rate</div>
+            </div>
+          </div>
+          <!-- Stat 3 -->
+          <div class="col-lg-3 col-sm-6">
+            <div class="performance-stat-box bg-dark text-white border-0 py-4">
+              <div class="stat-percentage">4.2 Yrs</div>
+              <div class="stat-label">Average Home Loan Payoff Period</div>
+            </div>
+          </div>
+          <!-- Stat 4 -->
+          <div class="col-lg-3 col-sm-6">
+            <div class="performance-stat-box bg-dark text-white border-0 py-4">
+              <div class="stat-percentage">₹18 Lakhs</div>
+              <div class="stat-label">Average Lifetime Commissions Saved</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: PORTFOLIO RISK MANAGEMENT -->
+    <section class="py-5">
+      <div class="container">
+        <div class="row g-5 align-items-center">
+          <div class="col-lg-6">
+            <span
+              class="text-emerald fw-bold text-uppercase tracking-wider mb-2 d-block"
+              style="font-size: 0.8rem"
+              ><i class="fa-solid fa-chart-pie me-2"></i>Risk Mitigation</span
+            >
+            <h3 class="fw-bold text-slate mb-3">
+              How We Protect & Manage Client Portfolios
+            </h3>
+            <p class="text-muted mb-4">
+              Higher returns are meaningless without strong downside risk
+              management. We employ quantitative portfolio strategies to keep
+              your capital safe and robust across changing market regimes.
+            </p>
+            <ul
+              class="list-unstyled mb-0 d-flex flex-column gap-3 small text-muted"
+            >
+              <li>
+                <i class="fa-solid fa-circle-check text-emerald me-2"></i
+                >**Strategic Rebalancing:** Rebalancing assets automatically
+                when equity allocations drift by more than 5%.
+              </li>
+              <li>
+                <i class="fa-solid fa-circle-check text-emerald me-2"></i
+                >**Dynamic Cash Hedging:** Maintaining 6-12 months of core
+                expenses in liquid funds, protecting you from panic selling.
+              </li>
+              <li>
+                <i class="fa-solid fa-circle-check text-emerald me-2"></i
+                >**Diversification Audits:** Restricting any single mutual fund
+                house exposure to under 15% of your total net worth.
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-6">
+            <img
+              src="https://images.unsplash.com/photo-1544377193-33dcf4d68fb5?auto=format&fit=crop&w=600&q=80"
+              alt="Risk management"
+              class="img-fluid rounded-3 shadow"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: CASE STUDY TESTIMONIALS -->
+    <section class="py-5 bg-light-gray">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span
+            class="text-emerald fw-bold text-uppercase tracking-wider mb-2 d-block"
+            style="font-size: 0.8rem"
+            ><i class="fa-solid fa-heart me-2"></i>Client Reviews</span
+          >
+          <h2 class="fw-bold section-title">Feedback on Case Studies</h2>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="card border-0 p-4 h-100">
+              <p class="text-muted italic mb-3">
+                "We cleared our high-interest home loan five years ahead of
+                schedule using the surplus mapping designed by Personal Finance
+                Management. It saved us lakhs in interest payables."
+              </p>
+              <h6 class="fw-bold text-slate mb-1">Ramesh & Kavitha Iyer</h6>
+              <span class="text-secondary small"
+                >Case Study Subject: Debt-Free Blueprint</span
+              >
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card border-0 p-4 h-100">
+              <p class="text-muted italic mb-3">
+                "Seeing a clear ESOP liquidation road-map gave me the courage to
+                move my concentrated equity into diversified indices. My
+                portfolio CAGR is currently a steady 13.5%."
+              </p>
+              <h6 class="fw-bold text-slate mb-1">Amit K., Tech Lead</h6>
+              <span class="text-secondary small"
+                >Case Study Subject: ₹1.5Cr Corporate Equity</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 8: PORTFOLIO & SECURITY FAQS -->
+    <section class="py-5">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span
+            class="text-emerald fw-bold text-uppercase tracking-wider mb-2 d-block"
+            style="font-size: 0.8rem"
+            ><i class="fa-solid fa-question me-2"></i>Security</span
+          >
+          <h2 class="fw-bold section-title">Portfolio Privacy FAQs</h2>
+        </div>
+        <div
+          class="accordion accordion-flush max-width-700 mx-auto"
+          id="portfolioFAQ"
+        >
+          <!-- Q1 -->
+          <div class="accordion-item border-bottom">
+            <h2 class="accordion-header" id="p-h1">
+              <button
+                class="accordion-button collapsed fw-bold text-slate py-3"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#p-f1"
+              >
+                Are these case studies based on real clients?
+              </button>
+            </h2>
+            <div
+              id="p-f1"
+              class="accordion-collapse collapse"
+              data-bs-parent="#portfolioFAQ"
+            >
+              <div class="accordion-body text-muted small">
+                Yes, all case studies listed here are based on actual client
+                engagements. However, to preserve strict confidentiality and
+                comply with SEBI advisor guidelines, all client names and
+                identifying corporate designations have been changed.
+              </div>
+            </div>
+          </div>
+          <!-- Q2 -->
+          <div class="accordion-item border-bottom">
+            <h2 class="accordion-header" id="p-h2">
+              <button
+                class="accordion-button collapsed fw-bold text-slate py-3"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#p-f2"
+              >
+                How do you verify the portfolio annualized returns?
+              </button>
+            </h2>
+            <div
+              id="p-f2"
+              class="accordion-collapse collapse"
+              data-bs-parent="#portfolioFAQ"
+            >
+              <div class="accordion-body text-muted small">
+                All returns are verified using verified mutual fund and equity
+                ledger statements. Annualized returns (XIRR/CAGR) are computed
+                net of transaction fees and taxes, giving a true picture of
+                portfolio compounding performance.
+              </div>
+            </div>
+          </div>
+          <!-- Q3 -->
+          <div class="accordion-item border-bottom">
+            <h2 class="accordion-header" id="p-h3">
+              <button
+                class="accordion-button collapsed fw-bold text-slate py-3"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#p-f3"
+              >
+                Do you manage the investments directly or guide us?
+              </button>
+            </h2>
+            <div
+              id="p-f3"
+              class="accordion-collapse collapse"
+              data-bs-parent="#portfolioFAQ"
+            >
+              <div class="accordion-body text-muted small">
+                We operate on an advisory-only basis. We formulate your custom
+                strategy, recommend specific direct mutual funds, and guide you
+                during rebalancing. You execute the trades on your preferred
+                secure platform (like Coin, Kuvera, etc.) so that you retain
+                100% control over your capital.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 9: PROJECT CTA -->
+    <section class="py-5 bg-slate text-white text-center">
+      <div class="container">
+        <h2 class="fw-bold mb-3">Let's Design Your Wealth Blueprint</h2>
+        <p class="text-secondary mb-4 mx-auto max-width-600">
+          Request a complete financial health audit today. Discover commission
+          leaks, optimize tax channels, and size your long-term wealth targets.
+        </p>
+        <a href="#" class="btn btn-emerald px-4 py-2"
+          ><i class="fa-solid fa-chart-pie me-2"></i>Request Portfolio Audit</a
+        >
+      </div>
+    </section>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Bootstrap 5.3 JS Bundle CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom script controller -->
+    <script src="../assets/js/script.js"></script>
+  </body>
+</html>

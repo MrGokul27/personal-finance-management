@@ -1,0 +1,1825 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Personal Finance Management - Build Wealth & Achieve Financial Freedom
+    </title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/webp" href="assets/images/logoStackly.webp" />
+
+    <!-- Bootstrap 5.3 CSS CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome 6 CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Custom Theme Stylesheet -->
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <!-- Header Placeholder (Injected via script.js) -->
+    <div id="header-placeholder"></div>
+
+    <!-- SECTION 1: HERO SLIDER CAROUSEL -->
+    <section
+      id="heroSlider"
+      class="carousel slide carousel-fade"
+      data-bs-ride="carousel"
+    >
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#heroSlider"
+          data-bs-slide-to="0"
+          class="active"
+          aria-current="true"
+          aria-label="Slide 1"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#heroSlider"
+          data-bs-slide-to="1"
+          aria-label="Slide 2"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#heroSlider"
+          data-bs-slide-to="2"
+          aria-label="Slide 3"
+        ></button>
+      </div>
+      <div class="carousel-inner">
+        <!-- Slide 1 -->
+        <div
+          class="carousel-item active hero-carousel-item"
+          style="
+            background-image: url(&quot;./assets/images/home/home-hero-carousel-bg-1.webp&quot;);
+          "
+        >
+          <div class="container h-100 d-flex align-items-center">
+            <div class="row w-100 align-items-center">
+              <div
+                class="col-lg-6 hero-caption py-5 animate-fade-in mb-4 mb-lg-0"
+              >
+                <span
+                  class="text-emerald text-uppercase tracking-wider fw-bold mb-2 d-inline-block"
+                  style="font-size: 0.85rem"
+                  ><i class="fa-solid fa-chart-line me-2"></i>Strategic Wealth
+                  Creation</span
+                >
+                <h1 class="display-4 fw-bold mb-3 text-light">
+                  Empowering You To Secure Your Financial Future
+                </h1>
+                <p class="lead text-light opacity-90 mb-4">
+                  Get custom wealth planning, investment blueprints, and
+                  dedicated fee-only financial advice designed to help you
+                  succeed.
+                </p>
+                <div class="d-flex gap-3 flex-wrap">
+                  <a href="#" class="btn btn-emerald px-4 py-3"
+                    ><i class="fa-solid fa-calendar-check me-2"></i>Book
+                    Consultation</a
+                  >
+                  <a
+                    href="#"
+                    class="btn btn-outline-light rounded-pill px-4 py-3 transition-all"
+                    ><i class="fa-solid fa-circle-info me-2"></i>Explore
+                    Services</a
+                  >
+                </div>
+              </div>
+              <div
+                class="col-lg-6 d-none d-lg-block animate-fade-in hero-graphic-wrapper"
+                style="animation-delay: 0.2s"
+              >
+                <div class="hero-dashboard-card">
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-4"
+                  >
+                    <h5
+                      class="fw-bold mb-0 text-white font-montserrat"
+                      style="font-size: 0.95rem"
+                    >
+                      <i class="fa-solid fa-wallet text-emerald me-2"></i>Wealth
+                      Growth
+                    </h5>
+                    <span
+                      class="badge bg-emerald rounded-pill px-2 py-1 text-white"
+                      style="font-size: 0.7rem; font-weight: 400"
+                      >+18.4% YTD</span
+                    >
+                  </div>
+                  <div class="dashboard-stat-box mb-3">
+                    <span class="text-secondary small d-block"
+                      >Portfolio Value</span
+                    >
+                    <span class="fs-3 fw-bold text-white font-montserrat"
+                      >₹84,52,000</span
+                    >
+                  </div>
+                  <div class="row g-2 mb-4">
+                    <div class="col-6">
+                      <div
+                        class="p-2 border border-secondary border-opacity-25 rounded bg-dark bg-opacity-20 text-center"
+                      >
+                        <span
+                          class="text-secondary small d-block"
+                          style="font-size: 0.7rem"
+                          >Equities</span
+                        >
+                        <span class="fw-bold text-white small">65%</span>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div
+                        class="p-2 border border-secondary border-opacity-25 rounded bg-dark bg-opacity-20 text-center"
+                      >
+                        <span
+                          class="text-secondary small d-block"
+                          style="font-size: 0.7rem"
+                          >Debt & Gold</span
+                        >
+                        <span class="fw-bold text-white small">35%</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="progress-bar-custom mb-3">
+                    <div class="progress-fill-emerald" style="width: 70%"></div>
+                  </div>
+                  <div
+                    class="d-flex justify-content-between text-secondary small"
+                    style="font-size: 0.75rem"
+                  >
+                    <span>Goal: ₹1.2 Cr</span>
+                    <span>70.4% Completed</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Slide 2 -->
+        <div
+          class="carousel-item hero-carousel-item"
+          style="
+            background-image: url(&quot;./assets/images/home/home-hero-carousel-bg-2.webp&quot;);
+          "
+        >
+          <div class="container h-100 d-flex align-items-center">
+            <div class="row w-100 align-items-center">
+              <div class="col-lg-6 hero-caption py-5 animate-fade-in">
+                <span
+                  class="text-emerald text-uppercase tracking-wider fw-bold mb-2 d-inline-block"
+                  style="font-size: 0.85rem"
+                  ><i class="fa-solid fa-umbrella me-2"></i>Retirement &
+                  Protection</span
+                >
+                <h1 class="display-4 fw-bold mb-3 text-light">
+                  Build a Retirement Strategy You Can Trust
+                </h1>
+                <p class="lead text-light opacity-90 mb-4">
+                  Ensure absolute security for your golden years with early
+                  retirement mapping, robust life planning, and tax
+                  minimization.
+                </p>
+                <div class="d-flex gap-3 flex-wrap">
+                  <a href="#" class="btn btn-emerald px-4 py-3"
+                    ><i class="fa-solid fa-calendar-check me-2"></i>Start
+                    Planning Today</a
+                  >
+                  <a
+                    href="#"
+                    class="btn btn-outline-light rounded-pill px-4 py-3 transition-all"
+                    ><i class="fa-solid fa-circle-arrow-right me-2"></i
+                    >Retirement Hub</a
+                  >
+                </div>
+              </div>
+              <div
+                class="col-lg-6 d-none d-lg-block animate-fade-in hero-graphic-wrapper"
+                style="animation-delay: 0.2s"
+              >
+                <div class="hero-dashboard-card">
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-4"
+                  >
+                    <h5
+                      class="fw-bold mb-0 text-white font-montserrat"
+                      style="font-size: 0.95rem"
+                    >
+                      <i
+                        class="fa-solid fa-umbrella-beach text-emerald me-2"
+                      ></i
+                      >Retirement Tracker
+                    </h5>
+                    <span class="text-emerald small" style="font-size: 0.8rem"
+                      ><i class="fa-solid fa-heart me-1"></i>Secure</span
+                    >
+                  </div>
+                  <div class="dashboard-stat-box mb-3">
+                    <span class="text-secondary small d-block"
+                      >Required Corpus at Age 50</span
+                    >
+                    <span class="fs-3 fw-bold text-white font-montserrat"
+                      >₹3.50 Crore</span
+                    >
+                  </div>
+                  <div class="mb-3">
+                    <div
+                      class="d-flex justify-content-between text-secondary small mb-1"
+                      style="font-size: 0.75rem"
+                    >
+                      <span>Current Progress: ₹2.24 Cr</span>
+                      <span>64% Completed</span>
+                    </div>
+                    <div class="progress-bar-custom">
+                      <div
+                        class="progress-fill-emerald"
+                        style="width: 64%"
+                      ></div>
+                    </div>
+                  </div>
+                  <div
+                    class="p-3 bg-dark bg-opacity-30 rounded border border-secondary border-opacity-10"
+                  >
+                    <span
+                      class="text-secondary small d-block mb-1"
+                      style="font-size: 0.7rem"
+                      ><i class="fa-solid fa-lightbulb text-gold me-1"></i
+                      >Tax-Efficient Tip</span
+                    >
+                    <p
+                      class="text-white small mb-0"
+                      style="line-height: 1.4; font-size: 0.75rem"
+                    >
+                      Structured SWP models can generate a regular monthly
+                      income of ₹1.5L with less than 2% effective tax liability.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Slide 3 -->
+        <div
+          class="carousel-item hero-carousel-item"
+          style="
+            background-image: url(&quot;./assets/images/home/home-hero-carousel-bg-3.webp&quot;);
+          "
+        >
+          <div class="container h-100 d-flex align-items-center">
+            <div class="row w-100 align-items-center">
+              <div class="col-lg-6 hero-caption py-5 animate-fade-in">
+                <span
+                  class="text-emerald text-uppercase tracking-wider fw-bold mb-2 d-inline-block"
+                  style="font-size: 0.85rem"
+                  ><i class="fa-solid fa-sack-dollar me-2"></i>Objective
+                  Fee-Only Counsel</span
+                >
+                <h1 class="display-4 fw-bold mb-3 text-light">
+                  100% Conflict-Free Personal Financial Advice
+                </h1>
+                <p class="lead text-light opacity-90 mb-4">
+                  No commissions, no hidden product pushes. Just objective,
+                  professional advisory aligned entirely with your wealth
+                  growth.
+                </p>
+                <div class="d-flex gap-3 flex-wrap">
+                  <a href="#" class="btn btn-emerald px-4 py-3"
+                    ><i class="fa-solid fa-user-tie me-2"></i>Meet Advisors</a
+                  >
+                  <a
+                    href="#"
+                    class="btn btn-outline-light rounded-pill px-4 py-3 transition-all"
+                    ><i class="fa-solid fa-briefcase me-2"></i>See Portfolios</a
+                  >
+                </div>
+              </div>
+              <div
+                class="col-lg-6 d-none d-lg-block animate-fade-in hero-graphic-wrapper"
+                style="animation-delay: 0.2s"
+              >
+                <div class="hero-dashboard-card">
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-4"
+                  >
+                    <h5
+                      class="fw-bold mb-0 text-white font-montserrat"
+                      style="font-size: 0.95rem"
+                    >
+                      <i class="fa-solid fa-user-shield text-emerald me-2"></i
+                      >Fiduciary Promise
+                    </h5>
+                    <span
+                      class="badge bg-gold text-light rounded-pill px-2 py-1 fw-bold"
+                      style="font-size: 0.7rem"
+                      ><i class="fa-solid fa-star me-1 text-light"></i
+                      >Conflict-Free</span
+                    >
+                  </div>
+                  <div class="d-flex flex-column gap-3">
+                    <div
+                      class="fiduciary-badge d-flex align-items-center gap-3"
+                    >
+                      <div
+                        class="icon-circle-emerald bg-emerald bg-opacity-20 text-emerald"
+                        style="width: 40px; height: 40px"
+                      >
+                        <i
+                          class="fa-solid fa-percent text-light"
+                          style="font-size: 0.9rem"
+                        ></i>
+                      </div>
+                      <div>
+                        <h6 class="fw-bold mb-0 text-white small">
+                          0% Commission Model
+                        </h6>
+                        <span class="text-light" style="font-size: 0.75rem"
+                          >We only recommend direct plans.</span
+                        >
+                      </div>
+                    </div>
+                    <div
+                      class="fiduciary-badge d-flex align-items-center gap-3"
+                    >
+                      <div
+                        class="icon-circle-emerald bg-emerald bg-opacity-20 text-emerald"
+                        style="width: 40px; height: 40px"
+                      >
+                        <i
+                          class="fa-solid fa-scale-balanced text-light"
+                          style="font-size: 0.9rem"
+                        ></i>
+                      </div>
+                      <div>
+                        <h6 class="fw-bold mb-0 text-white small">
+                          SEBI Compliant RIA
+                        </h6>
+                        <span class="text-light" style="font-size: 0.75rem"
+                          >Standardized fiduciary regulations.</span
+                        >
+                      </div>
+                    </div>
+                    <div
+                      class="fiduciary-badge d-flex align-items-center gap-3"
+                    >
+                      <div
+                        class="icon-circle-emerald bg-emerald bg-opacity-20 text-emerald"
+                        style="width: 40px; height: 40px"
+                      >
+                        <i
+                          class="fa-solid fa-signature text-light"
+                          style="font-size: 0.9rem"
+                        ></i>
+                      </div>
+                      <div>
+                        <h6 class="fw-bold mb-0 text-white small">
+                          Customized Solutions
+                        </h6>
+                        <span class="text-light" style="font-size: 0.75rem"
+                          >Tailored to your budget constraints.</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#heroSlider"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#heroSlider"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </section>
+
+    <!-- SECTION 2: VALUE PROPS / KEY PILLARS -->
+    <section class="py-5 bg-light-gray">
+      <div class="container">
+        <div class="row g-4 justify-content-center">
+          <!-- Pillar 1 -->
+          <div class="col-lg-3 col-md-6">
+            <div class="pillar-card text-center">
+              <div class="icon-circle-emerald mb-3">
+                <i class="fa-solid fa-shield-halved fs-4"></i>
+              </div>
+              <h5 class="fw-bold mb-2">Uncompromising Safety</h5>
+              <p class="text-muted small mb-0">
+                SEBI-registered compliance standards to protect your hard-earned
+                assets.
+              </p>
+            </div>
+          </div>
+          <!-- Pillar 2 -->
+          <div class="col-lg-3 col-md-6">
+            <div class="pillar-card text-center">
+              <div class="icon-circle-emerald mb-3">
+                <i class="fa-solid fa-coins fs-4"></i>
+              </div>
+              <h5 class="fw-bold mb-2">Fee-Only Advisory</h5>
+              <p class="text-muted small mb-0">
+                We never accept commissions. Our guidance is objective and
+                transparent.
+              </p>
+            </div>
+          </div>
+          <!-- Pillar 3 -->
+          <div class="col-lg-3 col-md-6">
+            <div class="pillar-card text-center">
+              <div class="icon-circle-emerald mb-3">
+                <i class="fa-solid fa-sliders fs-4"></i>
+              </div>
+              <h5 class="fw-bold mb-2">Custom Strategies</h5>
+              <p class="text-muted small mb-0">
+                No cookie-cutter models. Every savings and tax strategy is
+                tailored to you.
+              </p>
+            </div>
+          </div>
+          <!-- Pillar 4 -->
+          <div class="col-lg-3 col-md-6">
+            <div class="pillar-card text-center">
+              <div class="icon-circle-emerald mb-3">
+                <i class="fa-solid fa-award fs-4"></i>
+              </div>
+              <h5 class="fw-bold mb-2">Certified Planners</h5>
+              <p class="text-muted small mb-0">
+                Direct access to experienced planners holding CFP and CFA
+                credentials.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: CORE STATISTICS COUNTER -->
+    <section class="py-5 bg-slate text-white text-center">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-3 col-sm-6">
+            <h2 class="display-5 fw-bold text-emerald mb-1">
+              ₹<span class="counter" data-target="5000">0</span>Cr+
+            </h2>
+            <p
+              class="text-secondary small text-uppercase tracking-wider fw-semibold mb-0"
+            >
+              Assets Under Advisory
+            </p>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <h2 class="display-5 fw-bold text-emerald mb-1">
+              <span class="counter" data-target="15000">0</span>+
+            </h2>
+            <p
+              class="text-secondary small text-uppercase tracking-wider fw-semibold mb-0"
+            >
+              Happy Families
+            </p>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <h2 class="display-5 fw-bold text-emerald mb-1">
+              <span class="counter" data-target="98.4" data-decimals="1">0</span
+              >%
+            </h2>
+            <p
+              class="text-secondary small text-uppercase tracking-wider fw-semibold mb-0"
+            >
+              Client Retention Rate
+            </p>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <h2 class="display-5 fw-bold text-emerald mb-1">
+              <span class="counter" data-target="15">0</span>+ Yrs
+            </h2>
+            <p
+              class="text-secondary small text-uppercase tracking-wider fw-semibold mb-0"
+            >
+              Advisory Experience
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: ABOUT US MINI-INTRO -->
+    <section class="py-5">
+      <div class="container">
+        <div class="row g-5 align-items-center">
+          <div class="col-lg-6">
+            <img
+              src="./assets/images/home/home-personal-financial-advisor-img.webp"
+              alt="Personal Financial Advisor"
+              class="img-fluid rounded-3 shadow-lg"
+            />
+          </div>
+          <div class="col-lg-6">
+            <span
+              class="text-emerald fw-bold text-uppercase tracking-wider mb-2 d-block"
+              style="font-size: 0.8rem"
+              ><i class="fa-solid fa-users me-2"></i>About Our Practice</span
+            >
+            <h2 class="fw-bold mb-3">
+              Putting Clients First With Conflict-Free Guidance
+            </h2>
+            <p class="text-muted mb-4">
+              Founded on the principle of absolute integrity, Personal Finance
+              Management helps individuals and business owners navigate the
+              complexities of wealth accumulation, preservation, and retirement
+              income planning. We offer objective fiduciary counsel, ensuring
+              your interests are always prioritized.
+            </p>
+            <div class="row g-3 mb-4">
+              <div class="col-sm-6">
+                <ul class="list-unstyled mb-0 d-flex flex-column gap-2">
+                  <li>
+                    <i class="fa-solid fa-circle-check text-emerald me-2"></i
+                    >SEBI Registered Advisory
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-circle-check text-emerald me-2"></i
+                    >Fiduciary Standard Service
+                  </li>
+                </ul>
+              </div>
+              <div class="col-sm-6">
+                <ul class="list-unstyled mb-0 d-flex flex-column gap-2">
+                  <li>
+                    <i class="fa-solid fa-circle-check text-emerald me-2"></i
+                    >100% Fee-Only Structure
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-circle-check text-emerald me-2"></i
+                    >Customized Wealth Portfolios
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="d-flex align-items-center gap-3">
+              <a href="#" class="btn btn-emerald px-4 py-2">Learn Our Story</a>
+              <div class="border-start ps-3 py-1">
+                <p class="fw-bold text-slate mb-0" style="font-size: 0.9rem">
+                  Rohan Sharma, CFP
+                </p>
+                <p class="text-muted small mb-0">Managing Director & Founder</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: INTERACTIVE BUDGET & SAVINGS CALCULATOR -->
+    <section class="py-5 bg-light-gray">
+      <div class="container">
+        <div class="text-center mb-5 max-width-600">
+          <span
+            class="text-emerald fw-bold text-uppercase tracking-wider mb-2 d-block"
+            style="font-size: 0.8rem"
+            ><i class="fa-solid fa-calculator me-2"></i>Grow Your Money</span
+          >
+          <h2 class="fw-bold section-title">
+            Interactive Wealth Projection Planner
+          </h2>
+          <p class="text-muted mb-0">
+            See how investing a portion of your monthly savings can build a
+            substantial wealth corpus over time with compound growth.
+          </p>
+        </div>
+        <div class="calculator-container shadow">
+          <div class="row g-0">
+            <!-- Inputs -->
+            <div class="col-lg-7 calc-input-pane">
+              <h4 class="fw-bold text-slate mb-4">
+                <i class="fa-solid fa-sliders text-emerald me-2"></i>Adjust Your
+                Plan
+              </h4>
+              <div class="mb-4">
+                <div class="d-flex justify-content-between mb-2">
+                  <label for="calcIncome" class="fw-semibold text-slate"
+                    >Monthly Net Income</label
+                  >
+                  <span class="text-emerald fw-bold"
+                    >₹<span id="calcIncomeVal">50,000</span></span
+                  >
+                </div>
+                <input
+                  type="range"
+                  class="form-range"
+                  id="calcIncome"
+                  min="10000"
+                  max="500000"
+                  step="5000"
+                  value="75000"
+                />
+              </div>
+              <div class="mb-4">
+                <div class="d-flex justify-content-between mb-2">
+                  <label for="calcExpenses" class="fw-semibold text-slate"
+                    >Monthly Net Expenses</label
+                  >
+                  <span class="text-emerald fw-bold"
+                    >₹<span id="calcExpensesVal">20,000</span></span
+                  >
+                </div>
+                <input
+                  type="range"
+                  class="form-range"
+                  id="calcExpenses"
+                  min="5000"
+                  max="300000"
+                  step="5000"
+                  value="35000"
+                />
+              </div>
+              <div class="mb-3">
+                <div class="d-flex justify-content-between mb-2">
+                  <label for="calcInvestRate" class="fw-semibold text-slate"
+                    >% of Savings to Invest</label
+                  >
+                  <span class="text-emerald fw-bold"
+                    ><span id="calcInvestRateVal">50</span>%</span
+                  >
+                </div>
+                <input
+                  type="range"
+                  class="form-range"
+                  id="calcInvestRate"
+                  min="10"
+                  max="100"
+                  step="5"
+                  value="60"
+                />
+              </div>
+              <p class="text-secondary small mt-3">
+                <i class="fa-solid fa-circle-info text-emerald me-1"></i>
+                Calculations assume a projected conservative rate of
+                <strong>12% CAGR</strong> compounded monthly on investments.
+              </p>
+            </div>
+            <!-- Results -->
+            <div
+              class="col-lg-5 calc-result-pane bg-slate text-white d-flex flex-column justify-content-between"
+            >
+              <div>
+                <h4 class="fw-bold mb-4">
+                  <i class="fa-solid fa-chart-pie text-emerald me-2"></i
+                  >Projection Summary
+                </h4>
+                <div
+                  class="d-flex justify-content-between mb-3 border-bottom border-secondary pb-2"
+                >
+                  <span class="text-secondary">Monthly Savings:</span>
+                  <span class="fw-bold" id="resMonthlySavings">₹0</span>
+                </div>
+                <div
+                  class="d-flex justify-content-between mb-4 border-bottom border-secondary pb-2"
+                >
+                  <span class="text-secondary">Monthly Invested:</span>
+                  <span class="fw-bold text-emerald" id="resAmountInvested"
+                    >₹0</span
+                  >
+                </div>
+              </div>
+              <div class="d-flex flex-column gap-3 my-3">
+                <div class="d-flex justify-content-between">
+                  <span class="text-secondary">Corpus in 5 Years:</span>
+                  <span class="fw-bold text-white fs-5" id="resWealth5Yr"
+                    >₹0</span
+                  >
+                </div>
+                <div class="d-flex justify-content-between">
+                  <span class="text-secondary">Corpus in 10 Years:</span>
+                  <span class="fw-bold text-white fs-4" id="resWealth10Yr"
+                    >₹0</span
+                  >
+                </div>
+                <div
+                  class="d-flex justify-content-between border-top border-secondary pt-3"
+                >
+                  <span class="text-secondary">Corpus in 20 Years:</span>
+                  <span class="fw-bold text-emerald fs-3" id="resWealth20Yr"
+                    >₹0</span
+                  >
+                </div>
+              </div>
+              <a href="#" class="btn btn-emerald w-100 py-2 mt-3"
+                ><i class="fa-solid fa-bullseye me-2"></i>Schedule Advisory
+                Meeting</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: CORE SERVICES SHOWCASE -->
+    <section class="py-5">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span
+            class="text-emerald fw-bold text-uppercase tracking-wider mb-2 d-block"
+            style="font-size: 0.8rem"
+            ><i class="fa-solid fa-toolbox me-2"></i>Our Services</span
+          >
+          <h2 class="fw-bold section-title">Strategic Financial Solutions</h2>
+          <p class="text-muted max-width-600 mx-auto">
+            We provide dynamic advisory structures targeting all stages of your
+            personal finance life cycle.
+          </p>
+        </div>
+        <div class="row g-4">
+          <!-- Service 1 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="service-home-card h-100">
+              <div class="icon-circle-emerald mb-3">
+                <i class="fa-solid fa-chart-simple fs-4"></i>
+              </div>
+              <h4 class="fw-bold text-slate mb-2">Investment Planning</h4>
+              <p class="text-muted small mb-3">
+                Tailored asset allocation strategies to match your risk profile
+                and accelerate asset compounding.
+              </p>
+              <a
+                href="#"
+                class="text-emerald fw-bold text-decoration-none small hover-emerald"
+                >Learn More <i class="fa-solid fa-arrow-right-long ms-1"></i
+              ></a>
+            </div>
+          </div>
+          <!-- Service 2 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="service-home-card h-100">
+              <div class="icon-circle-emerald mb-3">
+                <i class="fa-solid fa-child-reaching fs-4"></i>
+              </div>
+              <h4 class="fw-bold text-slate mb-2">Children's Planning</h4>
+              <p class="text-muted small mb-3">
+                Build dedicated college and future security pools to protect
+                your children's educational aspirations.
+              </p>
+              <a
+                href="#"
+                class="text-emerald fw-bold text-decoration-none small hover-emerald"
+                >Learn More <i class="fa-solid fa-arrow-right-long ms-1"></i
+              ></a>
+            </div>
+          </div>
+          <!-- Service 3 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="service-home-card h-100">
+              <div class="icon-circle-emerald mb-3">
+                <i class="fa-solid fa-umbrella-beach fs-4"></i>
+              </div>
+              <h4 class="fw-bold text-slate mb-2">Retirement Planning</h4>
+              <p class="text-muted small mb-3">
+                Optimize pre-retirement wealth accumulation and post-retirement
+                tax-efficient regular income flow.
+              </p>
+              <a
+                href="#"
+                class="text-emerald fw-bold text-decoration-none small hover-emerald"
+                >Learn More <i class="fa-solid fa-arrow-right-long ms-1"></i
+              ></a>
+            </div>
+          </div>
+          <!-- Service 4 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="service-home-card h-100">
+              <div class="icon-circle-emerald mb-3">
+                <i class="fa-solid fa-file-invoice-dollar fs-4"></i>
+              </div>
+              <h4 class="fw-bold text-slate mb-2">Tax planning</h4>
+              <p class="text-muted small mb-3">
+                Completely legal structuring to minimize income tax liability
+                and maximize post-tax savings.
+              </p>
+              <a
+                href="#"
+                class="text-emerald fw-bold text-decoration-none small hover-emerald"
+                >Learn More <i class="fa-solid fa-arrow-right-long ms-1"></i
+              ></a>
+            </div>
+          </div>
+          <!-- Service 5 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="service-home-card h-100">
+              <div class="icon-circle-emerald mb-3">
+                <i class="fa-solid fa-shield-heart fs-4"></i>
+              </div>
+              <h4 class="fw-bold text-slate mb-2">Insurance Planning</h4>
+              <p class="text-muted small mb-3">
+                Secure comprehensive term-life, disability, and critical health
+                hedges to shield against catastrophes.
+              </p>
+              <a
+                href="#"
+                class="text-emerald fw-bold text-decoration-none small hover-emerald"
+                >Learn More <i class="fa-solid fa-arrow-right-long ms-1"></i
+              ></a>
+            </div>
+          </div>
+          <!-- Service 6 -->
+          <div class="col-lg-4 col-md-6">
+            <div
+              class="service-home-card h-100 bg-light-gray d-flex flex-column justify-content-center p-4 align-items-center text-center"
+            >
+              <h5 class="fw-bold mb-2">Need a Comprehensive Plan?</h5>
+              <p class="text-muted small mb-3">
+                Integrate all planning aspects into a single, unified Financial
+                Freedom Roadmap.
+              </p>
+              <a href="#" class="btn btn-emerald px-4 py-2"
+                >View All Services</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: ADVISORY PROCESS WORKFLOW -->
+    <section class="py-5 bg-light-gray text-center">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span
+            class="text-emerald fw-bold text-uppercase tracking-wider mb-2 d-block"
+            style="font-size: 0.8rem"
+            ><i class="fa-solid fa-route me-2"></i>How We Work</span
+          >
+          <h2 class="fw-bold section-title">Your Path to Wealth Creation</h2>
+          <p class="text-muted max-width-600 mx-auto">
+            We follow a structured, objective timeline to transform your
+            financial trajectory in four simple stages.
+          </p>
+        </div>
+        <div class="row g-4 position-relative">
+          <!-- Step 1 -->
+          <div class="col-lg-3 col-md-6 process-step">
+            <div
+              class="process-card p-4 h-100 position-relative border-0 shadow-sm rounded-4"
+            >
+              <div
+                class="process-step-num bg-emerald text-white rounded-circle d-flex align-items-center justify-content-center border border-4 border-white shadow-sm"
+                style="width: 50px; height: 50px; margin: 0 auto 15px"
+              >
+                1
+              </div>
+              <h5 class="fw-bold mt-2 text-slate">Discovery Call</h5>
+              <p class="text-muted small mb-0">
+                We clarify your financial goals, timelines, and current budget
+                constraints.
+              </p>
+            </div>
+          </div>
+          <!-- Step 2 -->
+          <div class="col-lg-3 col-md-6 process-step">
+            <div
+              class="process-card p-4 h-100 position-relative border-0 shadow-sm rounded-4"
+            >
+              <div
+                class="process-step-num bg-emerald text-white rounded-circle d-flex align-items-center justify-content-center border border-4 border-white shadow-sm"
+                style="width: 50px; height: 50px; margin: 0 auto 15px"
+              >
+                2
+              </div>
+              <h5 class="fw-bold mt-2 text-slate">Risk Assessment</h5>
+              <p class="text-muted small mb-0">
+                We analyze your risk tolerance and compute assets and existing
+                insurance coverage.
+              </p>
+            </div>
+          </div>
+          <!-- Step 3 -->
+          <div class="col-lg-3 col-md-6 process-step">
+            <div
+              class="process-card p-4 h-100 position-relative border-0 shadow-sm rounded-4"
+            >
+              <div
+                class="process-step-num bg-emerald text-white rounded-circle d-flex align-items-center justify-content-center border border-4 border-white shadow-sm"
+                style="width: 50px; height: 50px; margin: 0 auto 15px"
+              >
+                3
+              </div>
+              <h5 class="fw-bold mt-2 text-slate">Custom Design</h5>
+              <p class="text-muted small mb-0">
+                We build custom blueprints mapping your tax plan and investment
+                asset mix.
+              </p>
+            </div>
+          </div>
+          <!-- Step 4 -->
+          <div class="col-lg-3 col-md-6 process-step">
+            <div
+              class="process-card p-4 h-100 position-relative border-0 shadow-sm rounded-4"
+            >
+              <div
+                class="process-step-num bg-emerald text-white rounded-circle d-flex align-items-center justify-content-center border border-4 border-white shadow-sm"
+                style="width: 50px; height: 50px; margin: 0 auto 15px"
+              >
+                4
+              </div>
+              <h5 class="fw-bold mt-2 text-slate">Active Advisory</h5>
+              <p class="text-muted small mb-0">
+                Ongoing annual portfolio adjustments and regular reviews to keep
+                you on target.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 8: CASE STUDIES / SUCCESS PORTFOLIOS -->
+    <section class="py-5 bg-slate cs-section">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span
+            class="text-emerald fw-bold text-uppercase tracking-wider mb-2 d-block"
+            style="font-size: 0.85rem"
+          >
+            <i class="fa-solid fa-briefcase me-2"></i>Client Success Stories
+          </span>
+          <h2 class="fw-bold section-title text-white">
+            Real Portfolios, Proven Growth
+          </h2>
+          <p class="max-width-600 mx-auto" style="color: #94a3b8">
+            See how structured personal finance planning transformed the net
+            worth of our clients.
+          </p>
+        </div>
+        <div class="row g-4">
+          <!-- Case Study 1 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="cs-card h-100">
+              <div class="cs-img-wrap">
+                <span class="case-study-badge">Education Planning</span>
+                <img
+                  src="./assets/images/home/home-case-study-img-1.webp"
+                  alt="Education Fund"
+                />
+                <div class="cs-img-overlay">
+                  <div class="cs-result-pill">
+                    <i class="fa-solid fa-arrow-trend-up me-1"></i>₹80L Corpus
+                    Built
+                  </div>
+                </div>
+              </div>
+              <div class="cs-body">
+                <h5 class="fw-bold cs-title">
+                  Secure College Corpus for Twins
+                </h5>
+                <p class="cs-text">
+                  Created an aggressive, tax-efficient mutual fund grid that
+                  accumulated ₹80 Lakhs in 12 years for higher studies.
+                </p>
+                <div class="cs-stats-row">
+                  <div class="cs-stat">
+                    <span class="cs-stat-val">12 Yrs</span>
+                    <span class="cs-stat-label">Timeline</span>
+                  </div>
+                  <div class="cs-stat">
+                    <span class="cs-stat-val">₹80L</span>
+                    <span class="cs-stat-label">Corpus</span>
+                  </div>
+                  <div class="cs-stat">
+                    <span class="cs-stat-val">14.2%</span>
+                    <span class="cs-stat-label">CAGR</span>
+                  </div>
+                </div>
+                <a href="#" class="cs-link"
+                  >View Case Study <i class="fa-solid fa-arrow-right ms-1"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <!-- Case Study 2 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="cs-card h-100">
+              <div class="cs-img-wrap">
+                <span class="case-study-badge">Retirement Strategy</span>
+                <img
+                  src="./assets/images/home/home-case-study-img-2.webp"
+                  alt="Retirement"
+                />
+                <div class="cs-img-overlay">
+                  <div class="cs-result-pill">
+                    <i class="fa-solid fa-arrow-trend-up me-1"></i>Retired at 48
+                  </div>
+                </div>
+              </div>
+              <div class="cs-body">
+                <h5 class="fw-bold cs-title">Early Retirement at Age 48</h5>
+                <p class="cs-text">
+                  Transitioned standard savings into high-yielding equity-debt
+                  plans, allowing retirement with ₹3.5Cr safe corpus.
+                </p>
+                <div class="cs-stats-row">
+                  <div class="cs-stat">
+                    <span class="cs-stat-val">8 Yrs</span>
+                    <span class="cs-stat-label">Timeline</span>
+                  </div>
+                  <div class="cs-stat">
+                    <span class="cs-stat-val">₹3.5Cr</span>
+                    <span class="cs-stat-label">Corpus</span>
+                  </div>
+                  <div class="cs-stat">
+                    <span class="cs-stat-val">16.8%</span>
+                    <span class="cs-stat-label">CAGR</span>
+                  </div>
+                </div>
+                <a href="#" class="cs-link"
+                  >View Case Study <i class="fa-solid fa-arrow-right ms-1"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <!-- Case Study 3 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="cs-card h-100">
+              <div class="cs-img-wrap">
+                <span class="case-study-badge">Tax Optimization</span>
+                <img
+                  src="./assets/images/home/home-case-study-img-3.webp"
+                  alt="Tax Savings"
+                />
+                <div class="cs-img-overlay">
+                  <div class="cs-result-pill">
+                    <i class="fa-solid fa-arrow-trend-up me-1"></i>₹4.5L Saved
+                    Yearly
+                  </div>
+                </div>
+              </div>
+              <div class="cs-body">
+                <h5 class="fw-bold cs-title">₹4.5L Annual Tax Savings</h5>
+                <p class="cs-text">
+                  Restructured salary components and optimized Section 80C, 80D,
+                  and NPS channels for a senior corporate manager.
+                </p>
+                <div class="cs-stats-row">
+                  <div class="cs-stat">
+                    <span class="cs-stat-val">1 Yr</span>
+                    <span class="cs-stat-label">Timeline</span>
+                  </div>
+                  <div class="cs-stat">
+                    <span class="cs-stat-val">₹4.5L</span>
+                    <span class="cs-stat-label">Tax Saved</span>
+                  </div>
+                  <div class="cs-stat">
+                    <span class="cs-stat-val">30%</span>
+                    <span class="cs-stat-label">Tax Bracket</span>
+                  </div>
+                </div>
+                <a href="#" class="cs-link"
+                  >View Case Study <i class="fa-solid fa-arrow-right ms-1"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Bottom CTA strip -->
+        <div class="cs-cta-strip mt-5">
+          <div
+            class="d-flex flex-wrap align-items-center justify-content-between gap-3"
+          >
+            <div>
+              <p class="fw-bold text-white mb-1" style="font-size: 1.05rem">
+                Ready to write your own success story?
+              </p>
+              <p class="mb-0" style="color: #94a3b8; font-size: 0.88rem">
+                Join 15,000+ clients who transformed their financial future with
+                us.
+              </p>
+            </div>
+            <div class="d-flex gap-3 flex-wrap">
+              <a href="#" class="btn btn-emerald px-4 py-2"
+                ><i class="fa-solid fa-calendar-check me-2"></i>Book Free
+                Consultation</a
+              >
+              <a href="#" class="btn btn-outline-light rounded-pill px-4 py-2"
+                >View All Case Studies</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 9: CLIENT TESTIMONIAL CAROUSEL -->
+    <section class="py-5 bg-light-gray">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span
+            class="text-emerald fw-bold text-uppercase tracking-wider mb-2 d-block"
+            style="font-size: 0.85rem"
+            ><i class="fa-solid fa-comments me-2"></i>Reviews</span
+          >
+          <h2 class="fw-bold section-title">What Our Clients Say</h2>
+        </div>
+        <div
+          id="testimonialCarousel"
+          class="carousel slide"
+          data-bs-ride="carousel"
+        >
+          <div class="carousel-inner py-3">
+            <!-- Review 1 -->
+            <div class="carousel-item active">
+              <div
+                class="testimonial-card bg-white p-5 rounded-4 shadow-sm text-center border-0"
+              >
+                <div class="quote-icon mb-3">
+                  <i class="fa-solid fa-quote-left text-emerald opacity-25"></i>
+                </div>
+                <div
+                  class="rating-stars text-gold mb-3"
+                  style="font-size: 0.9rem"
+                >
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </div>
+                <p class="fs-5 text-slate mb-4">
+                  "The fee-only advisory model is a breath of fresh air.
+                  Personal Finance Management helped us restructure our
+                  high-risk portfolio into index funds and saved us lakhs in
+                  commissions."
+                </p>
+                <div class="client-info">
+                  <h6 class="fw-bold text-slate mb-1">Anil & Sunita Mehta</h6>
+                  <span
+                    class="text-emerald small fw-semibold text-uppercase"
+                    style="font-size: 0.75rem"
+                    >IT Directors, Bangalore</span
+                  >
+                </div>
+              </div>
+            </div>
+            <!-- Review 2 -->
+            <div class="carousel-item">
+              <div
+                class="testimonial-card bg-white p-5 rounded-4 shadow-sm text-center border-0"
+              >
+                <div class="quote-icon mb-3">
+                  <i class="fa-solid fa-quote-left text-emerald opacity-25"></i>
+                </div>
+                <div
+                  class="rating-stars text-gold mb-3"
+                  style="font-size: 0.9rem"
+                >
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </div>
+                <p class="fs-5 text-slate mb-4">
+                  "Thanks to their comprehensive retirement strategy, I was able
+                  to transition out of my corporate job early. The tax planning
+                  advice alone paid for their fees tenfold."
+                </p>
+                <div class="client-info">
+                  <h6 class="fw-bold text-slate mb-1">Dr. Rajesh Patel</h6>
+                  <span
+                    class="text-emerald small fw-semibold text-uppercase"
+                    style="font-size: 0.75rem"
+                    >Senior Surgeon, Ahmedabad</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#testimonialCarousel"
+            data-bs-slide="prev"
+          >
+            <span
+              class="carousel-control-prev-icon bg-emerald rounded-circle"
+              aria-hidden="true"
+              style="padding: 1.2rem"
+            ></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#testimonialCarousel"
+            data-bs-slide="next"
+          >
+            <span
+              class="carousel-control-next-icon bg-emerald rounded-circle"
+              aria-hidden="true"
+              style="padding: 1.2rem"
+            ></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 10: EXPERT TEAM GRID -->
+    <section class="py-5">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span
+            class="text-emerald fw-bold text-uppercase tracking-wider mb-2 d-block"
+            style="font-size: 0.8rem"
+            ><i class="fa-solid fa-user-tie me-2"></i>Expert Advisors</span
+          >
+          <h2 class="fw-bold section-title">Meet Our Financial Planners</h2>
+          <p class="text-muted max-width-600 mx-auto">
+            Access direct support from qualified and certified financial
+            planners with global certifications.
+          </p>
+        </div>
+        <div class="row g-4 justify-content-center">
+          <!-- Advisor 1 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="card border-0 shadow-sm text-center p-4">
+              <div
+                class="mb-3 mx-auto"
+                style="
+                  width: 120px;
+                  height: 120px;
+                  border-radius: 50%;
+                  overflow: hidden;
+                "
+              >
+                <img
+                  src="./assets/images/home/home-expert-advisors-1.webp"
+                  alt="Rohan Sharma"
+                  class="img-fluid w-100 h-100 object-fit-cover"
+                />
+              </div>
+              <h5 class="fw-bold text-slate mb-1">Rohan Sharma</h5>
+              <span
+                class="text-emerald small fw-semibold text-uppercase mb-3 d-block"
+                >Founder & Chief Advisor, CFP</span
+              >
+              <p class="text-muted small mb-3">
+                15+ years experience advising business leaders on wealth
+                management and legacy planning strategies.
+              </p>
+              <div class="d-flex justify-content-center gap-2 social-icons">
+                <a
+                  href="#"
+                  class="btn btn-sm btn-outline-slate rounded-circle"
+                  style="
+                    width: 32px;
+                    height: 32px;
+                    padding: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                  ><i class="fa-brands fa-linkedin-in"></i
+                ></a>
+                <a
+                  href="#"
+                  class="btn btn-sm btn-outline-slate rounded-circle"
+                  style="
+                    width: 32px;
+                    height: 32px;
+                    padding: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                  ><i class="fa-brands fa-x-twitter"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <!-- Advisor 2 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="card border-0 shadow-sm text-center p-4">
+              <div
+                class="mb-3 mx-auto"
+                style="
+                  width: 120px;
+                  height: 120px;
+                  border-radius: 50%;
+                  overflow: hidden;
+                "
+              >
+                <img
+                  src="./assets/images/home/home-expert-advisors-2.webp"
+                  alt="Preeti Iyer"
+                  class="img-fluid w-100 h-100 object-fit-cover"
+                />
+              </div>
+              <h5 class="fw-bold text-slate mb-1">Preeti Iyer</h5>
+              <span
+                class="text-emerald small fw-semibold text-uppercase mb-3 d-block"
+                >Head of Retirement, CFP</span
+              >
+              <p class="text-muted small mb-3">
+                Expert in retirement income optimization, annuities, and
+                comprehensive tax restructuring blueprints.
+              </p>
+              <div class="d-flex justify-content-center gap-2 social-icons">
+                <a
+                  href="#"
+                  class="btn btn-sm btn-outline-slate rounded-circle"
+                  style="
+                    width: 32px;
+                    height: 32px;
+                    padding: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                  ><i class="fa-brands fa-linkedin-in"></i
+                ></a>
+                <a
+                  href="#"
+                  class="btn btn-sm btn-outline-slate rounded-circle"
+                  style="
+                    width: 32px;
+                    height: 32px;
+                    padding: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                  ><i class="fa-brands fa-x-twitter"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 11: PRICING PLANS / PACKAGES -->
+    <section class="py-5 bg-light-gray">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span
+            class="text-emerald fw-bold text-uppercase tracking-wider mb-2 d-block"
+            style="font-size: 0.8rem"
+            ><i class="fa-solid fa-credit-card me-2"></i>Pricing
+            Structures</span
+          >
+          <h2 class="fw-bold section-title">Transparent Advisory Plans</h2>
+          <p class="text-muted max-width-600 mx-auto">
+            No commissions. No hidden product pushes. Choose the plan that
+            aligns with your wealth status.
+          </p>
+        </div>
+        <div class="row g-4 justify-content-center">
+          <!-- Package 1 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="pricing-card h-100">
+              <h5 class="fw-bold text-slate mb-2">Starter Budgeting</h5>
+              <p class="text-muted small mb-3">
+                Ideal for early-career professionals setting up their initial
+                wealth foundation.
+              </p>
+              <h2 class="fw-bold text-emerald mb-4">
+                ₹15,000<span class="fs-6 text-muted font-normal"> / year</span>
+              </h2>
+              <hr class="border-secondary opacity-10 mb-4" />
+              <ul
+                class="list-unstyled d-flex flex-column gap-2 mb-4 small text-slate"
+              >
+                <li>
+                  <i class="fa-solid fa-check text-emerald me-2"></i>Budgeting &
+                  Expense Review
+                </li>
+                <li>
+                  <i class="fa-solid fa-check text-emerald me-2"></i>Initial
+                  Emergency Pool Setup
+                </li>
+                <li>
+                  <i class="fa-solid fa-check text-emerald me-2"></i>Basic Tax
+                  Minimization Advice
+                </li>
+                <li class="text-muted">
+                  <i class="fa-solid fa-xmark me-2"></i>Direct Investment
+                  Portfolios
+                </li>
+                <li class="text-muted">
+                  <i class="fa-solid fa-xmark me-2"></i>Quarterly Review
+                  Meetings
+                </li>
+              </ul>
+              <a href="#" class="btn btn-outline-emerald w-100 py-2"
+                >Get Started</a
+              >
+            </div>
+          </div>
+          <!-- Package 2 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="pricing-card popular h-100">
+              <div class="popular-badge">Popular</div>
+              <h5 class="fw-bold text-slate mb-2">Wealth Builder</h5>
+              <p class="text-muted small mb-3">
+                Comprehensive asset allocations and active annual tax
+                optimization strategy.
+              </p>
+              <h2 class="fw-bold text-emerald mb-4">
+                ₹35,000<span class="fs-6 text-muted font-normal"> / year</span>
+              </h2>
+              <hr class="border-secondary opacity-10 mb-4" />
+              <ul
+                class="list-unstyled d-flex flex-column gap-2 mb-4 small text-slate"
+              >
+                <li>
+                  <i class="fa-solid fa-check text-emerald me-2"></i
+                  >Comprehensive Financial Mapping
+                </li>
+                <li>
+                  <i class="fa-solid fa-check text-emerald me-2"></i>Mutual Fund
+                  & Equity Selections
+                </li>
+                <li>
+                  <i class="fa-solid fa-check text-emerald me-2"></i>Advance Tax
+                  Planning (Sec 80C/D)
+                </li>
+                <li>
+                  <i class="fa-solid fa-check text-emerald me-2"></i>Retirement
+                  & College Goal Sizing
+                </li>
+                <li>
+                  <i class="fa-solid fa-check text-emerald me-2"></i>Two Review
+                  Calls per year
+                </li>
+              </ul>
+              <a href="#" class="btn btn-emerald w-100 py-2">Select Builder</a>
+            </div>
+          </div>
+          <!-- Package 3 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="pricing-card h-100">
+              <h5 class="fw-bold text-slate mb-2">Family Office (HNIs)</h5>
+              <p class="text-muted small mb-3">
+                Advanced legacy planning, estate setups, and full scale family
+                asset management.
+              </p>
+              <h2 class="fw-bold text-emerald mb-4">
+                ₹75,000<span class="fs-6 text-muted font-normal"> / year</span>
+              </h2>
+              <hr class="border-secondary opacity-10 mb-4" />
+              <ul
+                class="list-unstyled d-flex flex-column gap-2 mb-4 small text-slate"
+              >
+                <li>
+                  <i class="fa-solid fa-check text-emerald me-2"></i>Unlimited
+                  Advisor Queries
+                </li>
+                <li>
+                  <i class="fa-solid fa-check text-emerald me-2"></i>Custom Will
+                  & Estate Structuring
+                </li>
+                <li>
+                  <i class="fa-solid fa-check text-emerald me-2"></i>Business
+                  Succession Advising
+                </li>
+                <li>
+                  <i class="fa-solid fa-check text-emerald me-2"></i>High Net
+                  Worth Asset Allocation
+                </li>
+                <li>
+                  <i class="fa-solid fa-check text-emerald me-2"></i>Quarterly
+                  In-Person Audits
+                </li>
+              </ul>
+              <a href="#" class="btn btn-outline-emerald w-100 py-2"
+                >Contact Us</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 12: FAQ ACCORDIONS -->
+    <section class="py-5">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span
+            class="text-emerald fw-bold text-uppercase tracking-wider mb-2 d-block"
+            style="font-size: 0.8rem"
+            ><i class="fa-solid fa-circle-question me-2"></i>FAQ</span
+          >
+          <h2 class="fw-bold section-title">Frequently Asked Questions</h2>
+          <p class="text-muted max-width-600 mx-auto">
+            Get direct answers on how fee-only financial planning functions and
+            benefits you.
+          </p>
+        </div>
+        <div
+          class="accordion accordion-flush max-width-800 mx-auto"
+          id="homeFAQ"
+        >
+          <!-- Q1 -->
+          <div class="accordion-item border-bottom">
+            <h2 class="accordion-header" id="flush-headingOne">
+              <button
+                class="accordion-button collapsed fw-bold text-slate py-3"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#faq1"
+                aria-expanded="false"
+                aria-controls="faq1"
+              >
+                What does "fee-only financial advisory" mean?
+              </button>
+            </h2>
+            <div
+              id="faq1"
+              class="accordion-collapse collapse"
+              aria-labelledby="flush-headingOne"
+              data-bs-parent="#homeFAQ"
+            >
+              <div class="accordion-body text-muted small">
+                Fee-only means that our sole source of compensation is the flat
+                advisory fee paid directly by you. We do not sell financial
+                products, mutual funds, or insurance policies, and we receive
+                zero commission from third-party institutions. This ensures 100%
+                objective advice.
+              </div>
+            </div>
+          </div>
+          <!-- Q2 -->
+          <div class="accordion-item border-bottom">
+            <h2 class="accordion-header" id="flush-headingTwo">
+              <button
+                class="accordion-button collapsed fw-bold text-slate py-3"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#faq2"
+                aria-expanded="false"
+                aria-controls="faq2"
+              >
+                Are you SEBI registered financial planners?
+              </button>
+            </h2>
+            <div
+              id="faq2"
+              class="accordion-collapse collapse"
+              aria-labelledby="flush-headingTwo"
+              data-bs-parent="#homeFAQ"
+            >
+              <div class="accordion-body text-muted small">
+                Yes, all our plans are executed and overseen by SEBI Registered
+                Investment Advisors (RIA). We adhere strictly to the compliance
+                guidelines and fiduciary duties laid down under the SEBI
+                Investment Advisers Regulations.
+              </div>
+            </div>
+          </div>
+          <!-- Q3 -->
+          <div class="accordion-item border-bottom">
+            <h2 class="accordion-header" id="flush-headingThree">
+              <button
+                class="accordion-button collapsed fw-bold text-slate py-3"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#faq3"
+                aria-expanded="false"
+                aria-controls="faq3"
+              >
+                How do we begin the onboarding process?
+              </button>
+            </h2>
+            <div
+              id="faq3"
+              class="accordion-collapse collapse"
+              aria-labelledby="flush-headingThree"
+              data-bs-parent="#homeFAQ"
+            >
+              <div class="accordion-body text-muted small">
+                You can start by booking a free discovery call through our
+                contact form. We will schedule a virtual meeting to understand
+                your goals, and if there is a match, we will proceed with asset
+                collecting and outline your custom blueprint.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 13: LATEST ARTICLES / BLOG FEED -->
+    <section class="py-5 bg-light-gray">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span
+            class="text-emerald fw-bold text-uppercase tracking-wider mb-2 d-block"
+            style="font-size: 0.85rem"
+            ><i class="fa-solid fa-newspaper me-2"></i>Financial Insights</span
+          >
+          <h2 class="fw-bold section-title">Latest Articles & Wealth Hacks</h2>
+          <p class="text-muted max-width-600 mx-auto">
+            Educate yourself on money management, investment practices, and the
+            latest income tax regulations.
+          </p>
+        </div>
+        <div class="row g-4">
+          <!-- Blog 1 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="blog-card h-100">
+              <div class="blog-img-wrapper">
+                <img
+                  src="./assets/images/home/home-blog-img-wrapper-1.webp"
+                  alt="Budgeting"
+                />
+              </div>
+              <div class="card-body">
+                <span
+                  class="text-emerald fw-bold small text-uppercase d-block mb-2"
+                  style="font-size: 0.75rem"
+                  >Budgeting</span
+                >
+                <h5 class="fw-bold text-slate mb-2 card-title">
+                  How to Save 30% of Income in Metro Cities
+                </h5>
+                <p class="text-muted small mb-3">
+                  Simple adjustments in renting patterns and auto-investing
+                  routines that make saving friction-free.
+                </p>
+                <span
+                  class="read-more-link text-slate small font-montserrat cursor-pointer"
+                  >Read Insight
+                  <i
+                    class="fa-solid fa-chevron-right ms-1"
+                    style="font-size: 0.7rem"
+                  ></i
+                ></span>
+              </div>
+            </div>
+          </div>
+          <!-- Blog 2 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="blog-card h-100">
+              <div class="blog-img-wrapper">
+                <img
+                  src="./assets/images/home/home-blog-img-wrapper-2.webp"
+                  alt="Income Tax"
+                />
+              </div>
+              <div class="card-body">
+                <span
+                  class="text-emerald fw-bold small text-uppercase d-block mb-2"
+                  style="font-size: 0.75rem"
+                  >Income Tax</span
+                >
+                <h5 class="fw-bold text-slate mb-2 card-title">
+                  New Tax Regime vs Old Tax Regime in 2026
+                </h5>
+                <p class="text-muted small mb-3">
+                  A thorough breakdown comparing standard deductions to help you
+                  choose the lowest tax channel.
+                </p>
+                <span
+                  class="read-more-link text-slate small font-montserrat cursor-pointer"
+                  >Read Insight
+                  <i
+                    class="fa-solid fa-chevron-right ms-1"
+                    style="font-size: 0.7rem"
+                  ></i
+                ></span>
+              </div>
+            </div>
+          </div>
+          <!-- Blog 3 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="blog-card h-100">
+              <div class="blog-img-wrapper">
+                <img
+                  src="./assets/images/home/home-blog-img-wrapper-3.webp"
+                  alt="Retirement"
+                />
+              </div>
+              <div class="card-body">
+                <span
+                  class="text-emerald fw-bold small text-uppercase d-block mb-2"
+                  style="font-size: 0.75rem"
+                  >Retirement</span
+                >
+                <h5 class="fw-bold text-slate mb-2 card-title">
+                  The FIRE Movement: Retire at 35 in India
+                </h5>
+                <p class="text-muted small mb-3">
+                  Understand the mechanics of the 25X rule and dynamic
+                  withdrawal rates for early retirement.
+                </p>
+                <span
+                  class="read-more-link text-slate small font-montserrat cursor-pointer"
+                  >Read Insight
+                  <i
+                    class="fa-solid fa-chevron-right ms-1"
+                    style="font-size: 0.7rem"
+                  ></i
+                ></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 14: TRUST BANNER & NEWSLETTER CTA -->
+    <section class="py-5 bg-slate text-white text-center">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <h2 class="fw-bold mb-3">
+              Take Charge Of Your Financial Future Today
+            </h2>
+            <p class="text-secondary mb-4">
+              Join over 15,000+ individuals who receive our monthly financial
+              planning newsletter. Enter your email to begin your wealth
+              journey.
+            </p>
+            <form
+              action="#"
+              class="mb-4 max-width-500 mx-auto"
+              onsubmit="
+                event.preventDefault();
+                alert('Subscribed successfully!');
+              "
+            >
+              <div class="input-group">
+                <input
+                  type="email"
+                  class="form-control rounded-start-pill py-2 px-3 border-0 bg-dark text-white"
+                  placeholder="Enter your email address"
+                  required
+                />
+                <button
+                  type="submit"
+                  class="btn btn-emerald rounded-end-pill px-4 text-white font-montserrat fw-semibold"
+                >
+                  Subscribe Now
+                </button>
+              </div>
+            </form>
+            <div
+              class="d-flex flex-wrap justify-content-center gap-4 text-secondary small opacity-75 mt-3"
+            >
+              <span
+                ><i class="fa-solid fa-circle-check text-emerald me-1"></i> SEBI
+                Registered Advisor</span
+              >
+              <span
+                ><i class="fa-solid fa-circle-check text-emerald me-1"></i>
+                Secure Data Encryption</span
+              >
+              <span
+                ><i class="fa-solid fa-circle-check text-emerald me-1"></i> Zero
+                Commissions Basis</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Placeholder (Injected via script.js) -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Bootstrap 5.3 JS Bundle CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom script controller -->
+    <script src="assets/js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,110 @@
+/* Contact info cards */
+.contact-info-card {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 30px 25px;
+  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.02);
+  transition: all 0.3s ease;
+  height: 100%;
+}
+.contact-info-card:hover {
+  border-color: var(--primary-emerald);
+  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.08);
+}
+
+/* Contact Form Input Glow */
+.contact-form .form-control,
+.contact-form .form-select {
+  border: 1px solid var(--border-color);
+  padding: 12px 18px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+.contact-form .form-control:focus,
+.contact-form .form-select:focus {
+  border-color: var(--primary-emerald);
+  box-shadow: 0 0 0 3px var(--primary-emerald-light);
+}
+
+/* Stylized Google Maps Embed Area */
+.map-wrapper {
+  border-radius: 15px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.05);
+}
+
+/* Scheduler / Booking calendar component */
+.booking-calendar {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 5px 20px rgba(15, 23, 42, 0.02);
+}
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  text-align: center;
+  margin-top: 15px;
+}
+.calendar-day-header {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  padding-bottom: 8px;
+}
+.calendar-date-cell {
+  padding: 10px 0;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: var(--bg-light);
+  color: var(--secondary-slate);
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+.calendar-date-cell:hover:not(.disabled) {
+  background-color: var(--primary-emerald-light);
+  color: var(--primary-emerald);
+}
+.calendar-date-cell.selected {
+  background-color: var(--primary-emerald);
+  color: #ffffff;
+  font-weight: 600;
+}
+.calendar-date-cell.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Time Slot Booking Pill buttons */
+.time-slots-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+.time-slot-pill {
+  padding: 8px 16px;
+  border-radius: 50px;
+  border: 1px solid var(--border-color);
+  background-color: #ffffff;
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+.time-slot-pill:hover {
+  border-color: var(--primary-emerald);
+  color: var(--primary-emerald);
+}
+.time-slot-pill.active {
+  background-color: var(--primary-emerald);
+  border-color: var(--primary-emerald);
+  color: #ffffff;
+}

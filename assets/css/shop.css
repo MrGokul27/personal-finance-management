@@ -1,0 +1,109 @@
+/* Filter Bar & Search */
+.shop-filter-bar {
+  background-color: var(--bg-light);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 15px 25px;
+}
+
+/* Product Cards */
+.product-card {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+  border-color: var(--primary-emerald-light);
+}
+
+.product-img-holder {
+  background-color: var(--bg-light);
+  padding: 30px 15px;
+  text-align: center;
+  position: relative;
+  border-bottom: 1px solid var(--border-color);
+}
+.product-img-holder i {
+  font-size: 4rem;
+  color: var(--primary-emerald);
+}
+
+.product-tag {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background-color: var(--accent-gold);
+  color: #ffffff;
+  padding: 3px 10px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.product-details {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.rating-stars {
+  color: var(--accent-gold);
+  font-size: 0.8rem;
+}
+
+.product-price {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--secondary-slate);
+}
+.product-price .original-price {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  text-decoration: line-through;
+  font-weight: 400;
+}
+
+/* Shopping Bundle Promotion banner */
+.shop-promo-banner {
+  background-color: var(--secondary-slate);
+  border-radius: 16px;
+  overflow: hidden;
+  color: #ffffff;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+}
+
+/* Product Reviews grid */
+.review-card {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+/* Trust Checkout Badges list */
+.payment-trust-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--bg-light);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+.payment-trust-badge i {
+  font-size: 1.2rem;
+  color: var(--primary-emerald);
+}

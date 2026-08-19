@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us - Personal Finance Management</title>
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/webp"
+      href="../assets/images/logoStackly.webp"
+    />
+
+    <!-- Bootstrap 5.3 CSS CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome 6 CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Shared Stylesheets -->
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+    <!-- Page Specific Stylesheet -->
+    <link rel="stylesheet" href="../assets/css/contact.css" />
+  </head>
+  <body>
+    <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
+
+    <!-- SECTION 1: INNER BANNER WITH BREADCRUMBS -->
+    <section
+      class="inner-page-banner"
+      style="
+        background-image: url(&quot;https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1920&q=80&quot;);
+      "
+    >
+      <div class="container text-center">
+        <nav aria-label="breadcrumb" class="banner-breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Contact</li>
+          </ol>
+        </nav>
+        <div class="inner-page-banner-content">
+          <h1 class="display-4 fw-bold text-light">Contact Us</h1>
+          <p class="lead text-light opacity-90 mx-auto max-width-600 mb-0">
+            Have questions about your retirement or tax strategies? Connect with
+            our certified Noida team today.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: CONTACT INFO CARDS -->
+    <section class="py-5">
+      <div class="container">
+        <div class="row g-4 text-center">
+          <!-- Address Card -->
+          <div class="col-md-4">
+            <div class="contact-info-card">
+              <div class="icon-circle-emerald mb-3">
+                <i class="fa-solid fa-location-dot fs-4"></i>
+              </div>
+              <h5 class="fw-bold text-slate mb-2">Our Office Address</h5>
+              <p class="text-muted small mb-0">
+                Plot 45, Sector 62, Financial Hub, Noida, Uttar Pradesh, PIN
+                201301
+              </p>
+            </div>
+          </div>
+          <!-- Phone Card -->
+          <div class="col-md-4">
+            <div class="contact-info-card">
+              <div class="icon-circle-emerald mb-3">
+                <i class="fa-solid fa-phone fs-4"></i>
+              </div>
+              <h5 class="fw-bold text-slate mb-2">Call/WhatsApp Us</h5>
+              <p class="text-muted small mb-1">
+                General Queries: +91 98765 43210
+              </p>
+              <p class="text-muted small mb-0">Support Team: +91 98765 43211</p>
+            </div>
+          </div>
+          <!-- Email Card -->
+          <div class="col-md-4">
+            <div class="contact-info-card">
+              <div class="icon-circle-emerald mb-3">
+                <i class="fa-solid fa-envelope fs-4"></i>
+              </div>
+              <h5 class="fw-bold text-slate mb-2">Official Email</h5>
+              <p class="text-muted small mb-1">support@personalfinance.com</p>
+              <p class="text-muted small mb-0">advisory@personalfinance.com</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: INTERACTIVE CONTACT FORM -->
+    <section class="py-5 bg-light-gray">
+      <div class="container">
+        <div class="row g-5">
+          <div class="col-lg-6">
+            <span
+              class="text-emerald fw-bold text-uppercase tracking-wider mb-2 d-block"
+              style="font-size: 0.8rem"
+              ><i class="fa-solid fa-envelope-open-text me-2"></i>Send
+              Message</span
+            >
+            <h2 class="fw-bold mb-3 text-slate">
+              Let's Discuss Your Financial Goals
+            </h2>
+            <p class="text-muted mb-4">
+              Complete our form to initiate your wealth management process. Our
+              certified planning advisors will evaluate your message and respond
+              within 24 business hours.
+            </p>
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <i class="fa-solid fa-circle-check text-emerald fs-5"></i>
+              <span class="text-slate small fw-semibold"
+                >Zero Commission & Conflict-Free Advisory</span
+              >
+            </div>
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <i class="fa-solid fa-circle-check text-emerald fs-5"></i>
+              <span class="text-slate small fw-semibold"
+                >Strict Client Data Privacy Guaranteed</span
+              >
+            </div>
+            <div class="d-flex align-items-center gap-3">
+              <i class="fa-solid fa-circle-check text-emerald fs-5"></i>
+              <span class="text-slate small fw-semibold"
+                >SEBI Investment Advisor Regulatory Standards</span
+              >
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="card border-0 p-4 shadow-sm contact-form">
+              <form
+                action="#"
+                onsubmit="
+                  event.preventDefault();
+                  alert(
+                    'Message sent successfully! Our planners will contact you shortly.',
+                  );
+                  this.reset();
+                "
+              >
+                <div class="row g-3">
+                  <div class="col-sm-6">
+                    <label class="form-label small fw-semibold text-slate"
+                      >Full Name</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="e.g. Anil Kumar"
+                      required
+                    />
+                  </div>
+                  <div class="col-sm-6">
+                    <label class="form-label small fw-semibold text-slate"
+                      >Mobile Number</label
+                    >
+                    <input
+                      type="tel"
+                      class="form-control"
+                      value="+91 "
+                      placeholder="e.g. 9876543210"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-12">
+                    <label class="form-label small fw-semibold text-slate"
+                      >Email Address</label
+                    >
+                    <input
+                      type="email"
+                      class="form-control"
+                      placeholder="e.g. anil@gmail.com"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-12">
+                    <label class="form-label small fw-semibold text-slate"
+                      >Service of Interest</label
+                    >
+                    <select class="form-select" required>
+                      <option value="" disabled selected>
+                        Select a Financial Service
+                      </option>
+                      <option value="investment">Investment Planning</option>
+                      <option value="childrens">
+                        Children's Future Planning
+                      </option>
+                      <option value="retirement">Retirement Planning</option>
+                      <option value="insurance">Insurance Planning</option>
+                      <option value="tax">Tax Planning & Minimization</option>
+                      <option value="all">Comprehensive Financial Plan</option>
+                    </select>
+                  </div>
+                  <div class="col-md-12">
+                    <label class="form-label small fw-semibold text-slate"
+                      >Your Message</label
+                    >
+                    <textarea
+                      class="form-control"
+                      rows="4"
+                      placeholder="Briefly describe your financial questions or current assets..."
+                      required
+                    ></textarea>
+                  </div>
+                  <div class="col-md-12 mt-4">
+                    <button type="submit" class="btn btn-emerald w-100 py-3">
+                      <i class="fa-solid fa-paper-plane me-2"></i>Send Message
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: OFFICE LOCATION MAP -->
+    <section class="py-5">
+      <div class="container">
+        <div class="text-center mb-4">
+          <h3 class="fw-bold text-slate">Visit Our Head Office</h3>
+          <p class="text-muted small">
+            Our office is situated in the Noida sector 62 financial
+            institutional corridor, easily accessible by Delhi Metro.
+          </p>
+        </div>
+        <div class="map-wrapper shadow-sm">
+          <!-- Fallback Map representation using standard stylized iframe -->
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.4048434685375!2d77.3615457150824!3d28.617627482424056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce544aaaaaaab%3A0xc3cf3341b5a2bbd2!2sSector%2062%2C%20Noida%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1691234567890!5m2!1sen!2sin"
+            width="100%"
+            height="400"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: APPOINTMENT SCHEDULER -->
+    <section class="py-5 bg-light-gray">
+      <div class="container">
+        <div class="text-center mb-5 max-width-600 mx-auto">
+          <span
+            class="text-emerald fw-bold text-uppercase tracking-wider mb-2 d-block"
+            style="font-size: 0.8rem"
+            ><i class="fa-solid fa-calendar-days me-2"></i>Book
+            Consultation</span
+          >
+          <h2 class="fw-bold section-title">Select Virtual Appointment Slot</h2>
+          <p class="text-muted mb-0">
+            Select a date and hour for a free 30-minute introductory Zoom
+            meeting with a certified planner.
+          </p>
+        </div>
+        <div class="row g-4 justify-content-center">
+          <!-- Calendar Card -->
+          <div class="col-lg-6">
+            <div class="booking-calendar">
+              <div
+                class="d-flex justify-content-between align-items-center mb-3"
+              >
+                <h5 class="fw-bold text-slate mb-0">
+                  <i class="fa-regular fa-calendar-check text-emerald me-2"></i
+                  >August 2026
+                </h5>
+                <div class="d-flex gap-2">
+                  <button
+                    class="btn btn-sm btn-outline-secondary rounded-circle"
+                    style="width: 30px; height: 30px; padding: 0"
+                  >
+                    <i class="fa-solid fa-chevron-left"></i>
+                  </button>
+                  <button
+                    class="btn btn-sm btn-outline-secondary rounded-circle"
+                    style="width: 30px; height: 30px; padding: 0"
+                  >
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="calendar-grid">
+                <!-- Headers -->
+                <div class="calendar-day-header">M</div>
+                <div class="calendar-day-header">T</div>
+                <div class="calendar-day-header">W</div>
+                <div class="calendar-day-header">T</div>
+                <div class="calendar-day-header">F</div>
+                <div class="calendar-day-header">S</div>
+                <div class="calendar-day-header">S</div>
+                <!-- Dates (Simulated) -->
+                <div class="calendar-date-cell disabled">10</div>
+                <div class="calendar-date-cell disabled">11</div>
+                <div class="calendar-date-cell disabled">12</div>
+                <div class="calendar-date-cell disabled">13</div>
+                <div class="calendar-date-cell disabled">14</div>
+                <div class="calendar-date-cell disabled">15</div>
+                <div class="calendar-date-cell disabled">16</div>
+                <div class="calendar-date-cell disabled">17</div>
+                <div class="calendar-date-cell selected">18</div>
+                <div class="calendar-date-cell">19</div>
+                <div class="calendar-date-cell">20</div>
+                <div class="calendar-date-cell">21</div>
+                <div class="calendar-date-cell disabled">22</div>
+                <div class="calendar-date-cell disabled">23</div>
+                <div class="calendar-date-cell">24</div>
+                <div class="calendar-date-cell">25</div>
+                <div class="calendar-date-cell">26</div>
+                <div class="calendar-date-cell">27</div>
+                <div class="calendar-date-cell">28</div>
+                <div class="calendar-date-cell disabled">29</div>
+                <div class="calendar-date-cell disabled">30</div>
+              </div>
+            </div>
+          </div>
+          <!-- Time slots -->
+          <div class="col-lg-5">
+            <div class="card border-0 p-4 shadow-sm h-100">
+              <h5 class="fw-bold text-slate mb-3">
+                <i class="fa-solid fa-clock text-emerald me-2"></i>Available
+                Time Slots
+              </h5>
+              <p class="text-muted small">
+                Dates marked in green are open. Select an available slot:
+              </p>
+              <div class="time-slots-wrapper mb-4">
+                <span class="time-slot-pill active">10:00 AM - 10:30 AM</span>
+                <span class="time-slot-pill">11:30 AM - 12:00 PM</span>
+                <span class="time-slot-pill">02:00 PM - 02:30 PM</span>
+                <span class="time-slot-pill">04:00 PM - 04:30 PM</span>
+              </div>
+              <button
+                class="btn btn-emerald w-100 py-2 mt-auto"
+                onclick="
+                  alert('Slot booked! We have sent a Zoom link to your email.')
+                "
+              >
+                <i class="fa-solid fa-check-double me-2"></i>Confirm Time Slot
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: OFFICE HOURS & WEEKLY SCHEDULE -->
+    <section class="py-5">
+      <div class="container">
+        <div class="row g-5 align-items-center">
+          <div class="col-lg-6">
+            <h3 class="fw-bold text-slate mb-3">
+              Operating Hours & Accessibility
+            </h3>
+            <p class="text-muted">
+              We provide both in-person consultations at our Noida Sector 62
+              office and fully virtual sessions via Google Meet/Zoom for clients
+              across other cities. Our office is open six days a week.
+            </p>
+            <ul
+              class="list-unstyled mb-0 d-flex flex-column gap-2 small text-muted"
+            >
+              <li>
+                <i class="fa-solid fa-circle-check text-emerald me-2"></i>Prior
+                appointment mandatory for in-office consults.
+              </li>
+              <li>
+                <i class="fa-solid fa-circle-check text-emerald me-2"></i
+                >Virtual calls can be booked between 9:00 AM and 8:00 PM IST.
+              </li>
+              <li>
+                <i class="fa-solid fa-circle-check text-emerald me-2"></i>Free
+                visitor parking is available at the basement.
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-6">
+            <div class="card border-0 shadow-sm overflow-hidden">
+              <table class="table mb-0 small text-slate">
+                <thead class="table-dark">
+                  <tr>
+                    <th class="py-3 px-4">Day</th>
+                    <th class="py-3 px-4">Office Hours</th>
+                    <th class="py-3 px-4">Virtual Hours</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="py-3 px-4 fw-bold">Monday - Friday</td>
+                    <td class="py-3 px-4">9:00 AM - 6:00 PM</td>
+                    <td class="py-3 px-4">9:00 AM - 8:00 PM</td>
+                  </tr>
+                  <tr>
+                    <td class="py-3 px-4 fw-bold">Saturday</td>
+                    <td class="py-3 px-4">9:00 AM - 4:00 PM</td>
+                    <td class="py-3 px-4">9:00 AM - 6:00 PM</td>
+                  </tr>
+                  <tr>
+                    <td class="py-3 px-4 fw-bold">Sunday</td>
+                    <td class="py-3 px-4 text-danger fw-semibold">Closed</td>
+                    <td class="py-3 px-4 text-danger fw-semibold">Closed</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: FREQUENTLY ASKED CONTACT QUESTIONS -->
+    <section class="py-5 bg-light-gray">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span
+            class="text-emerald fw-bold text-uppercase tracking-wider mb-2 d-block"
+            style="font-size: 0.8rem"
+            ><i class="fa-solid fa-question me-2"></i>Queries</span
+          >
+          <h2 class="fw-bold section-title">Appointment FAQs</h2>
+        </div>
+        <div
+          class="accordion accordion-flush max-width-700 mx-auto"
+          id="contactFAQ"
+        >
+          <!-- Q1 -->
+          <div class="accordion-item border-bottom bg-transparent">
+            <h2 class="accordion-header" id="c-h1">
+              <button
+                class="accordion-button collapsed fw-bold text-slate py-3 bg-transparent"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#c-f1"
+                aria-expanded="false"
+              >
+                Is the first consultation call free?
+              </button>
+            </h2>
+            <div
+              id="c-f1"
+              class="accordion-collapse collapse"
+              data-bs-parent="#contactFAQ"
+            >
+              <div class="accordion-body text-muted small">
+                Yes, the first 30-minute discovery call is completely free. We
+                use this session to understand your financial goals, explain our
+                fee structure, and see if our services match your requirements.
+              </div>
+            </div>
+          </div>
+          <!-- Q2 -->
+          <div class="accordion-item border-bottom bg-transparent">
+            <h2 class="accordion-header" id="c-h2">
+              <button
+                class="accordion-button collapsed fw-bold text-slate py-3 bg-transparent"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#c-f2"
+                aria-expanded="false"
+              >
+                What papers should I bring for the first meeting?
+              </button>
+            </h2>
+            <div
+              id="c-f2"
+              class="accordion-collapse collapse"
+              data-bs-parent="#contactFAQ"
+            >
+              <div class="accordion-body text-muted small">
+                For the discovery call, you do not need any documents. If we
+                proceed with structural planning, we will request details of
+                your current investments (EPF, PPF, mutual funds, equity),
+                insurance policies, and annual tax filings.
+              </div>
+            </div>
+          </div>
+          <!-- Q3 -->
+          <div class="accordion-item border-bottom bg-transparent">
+            <h2 class="accordion-header" id="c-h3">
+              <button
+                class="accordion-button collapsed fw-bold text-slate py-3 bg-transparent"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#c-f3"
+                aria-expanded="false"
+              >
+                Can I purchase the shop products during a call?
+              </button>
+            </h2>
+            <div
+              id="c-f3"
+              class="accordion-collapse collapse"
+              data-bs-parent="#contactFAQ"
+            >
+              <div class="accordion-body text-muted small">
+                No, our shop spreadsheets and planning resources are separate
+                digital items and must be downloaded directly from our Shop
+                page. However, our advisors can guide you on how to use them.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 8: SOCIAL HUB CONNECT -->
+    <section class="py-5 text-center">
+      <div class="container">
+        <h3 class="fw-bold text-slate mb-3">Connect With Our Communities</h3>
+        <p class="text-muted small max-width-600 mx-auto mb-4">
+          We actively post tax updates, mutual fund reviews, and budgeting
+          strategies across all social channels. Follow us to stay updated.
+        </p>
+        <div class="row g-4 justify-content-center">
+          <!-- X -->
+          <div class="col-lg-2 col-md-4 col-6">
+            <a
+              href="#"
+              class="card border-0 shadow-sm p-4 text-decoration-none text-slate hover-emerald transition-all"
+            >
+              <i class="fa-brands fa-x-twitter fs-2 text-emerald mb-2"></i>
+              <h6 class="fw-bold mb-0">Follow on X</h6>
+            </a>
+          </div>
+          <!-- LinkedIn -->
+          <div class="col-lg-2 col-md-4 col-6">
+            <a
+              href="#"
+              class="card border-0 shadow-sm p-4 text-decoration-none text-slate hover-emerald transition-all"
+            >
+              <i class="fa-brands fa-linkedin fs-2 text-emerald mb-2"></i>
+              <h6 class="fw-bold mb-0">LinkedIn</h6>
+            </a>
+          </div>
+          <!-- YouTube -->
+          <div class="col-lg-2 col-md-4 col-6">
+            <a
+              href="#"
+              class="card border-0 shadow-sm p-4 text-decoration-none text-slate hover-emerald transition-all"
+            >
+              <i class="fa-brands fa-youtube fs-2 text-emerald mb-2"></i>
+              <h6 class="fw-bold mb-0">YouTube Channel</h6>
+            </a>
+          </div>
+          <!-- Instagram -->
+          <div class="col-lg-2 col-md-4 col-6">
+            <a
+              href="#"
+              class="card border-0 shadow-sm p-4 text-decoration-none text-slate hover-emerald transition-all"
+            >
+              <i class="fa-brands fa-instagram fs-2 text-emerald mb-2"></i>
+              <h6 class="fw-bold mb-0">Instagram</h6>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 9: NEWSLETTER SUBSCRIBE -->
+    <section class="py-5 bg-slate text-white text-center">
+      <div class="container">
+        <h2 class="fw-bold mb-3">Subscribe to Our Wealth Letter</h2>
+        <p class="text-secondary mb-4 mx-auto max-width-500">
+          Get monthly updates on tax laws, retirement schemes, and direct mutual
+          fund reviews.
+        </p>
+        <form
+          action="#"
+          class="max-width-500 mx-auto"
+          onsubmit="
+            event.preventDefault();
+            alert('Subscribed successfully!');
+          "
+        >
+          <div class="input-group">
+            <input
+              type="email"
+              class="form-control rounded-start-pill py-2 px-3 border-0 bg-dark text-white"
+              placeholder="Enter your email address"
+              required
+            />
+            <button
+              type="submit"
+              class="btn btn-emerald rounded-end-pill px-4 text-white font-montserrat fw-semibold"
+            >
+              Subscribe
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Bootstrap 5.3 JS Bundle CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom script controller -->
+    <script src="../assets/js/script.js"></script>
+  </body>
+</html>

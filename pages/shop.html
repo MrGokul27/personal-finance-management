@@ -1,0 +1,675 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Financial Shop - Personal Finance Management</title>
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/webp"
+      href="../assets/images/logoStackly.webp"
+    />
+
+    <!-- Bootstrap 5.3 CSS CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome 6 CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Shared Stylesheets -->
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+    <!-- Page Specific Stylesheet -->
+    <link rel="stylesheet" href="../assets/css/shop.css" />
+  </head>
+  <body>
+    <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
+
+    <!-- SECTION 1: INNER BANNER WITH BREADCRUMBS -->
+    <section
+      class="inner-page-banner"
+      style="
+        background-image: url(&quot;https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1920&q=80&quot;);
+      "
+    >
+      <div class="container text-center">
+        <nav aria-label="breadcrumb" class="banner-breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Shop</li>
+          </ol>
+        </nav>
+        <div class="inner-page-banner-content">
+          <h1 class="display-4 fw-bold text-light">Financial Resources Shop</h1>
+          <p class="lead text-light opacity-90 mx-auto max-width-600 mb-0">
+            Download premium Excel planning templates, budgeting sheets,
+            financial e-books, and masterclass courses directly.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: SEARCH & FILTER BAR -->
+    <section class="pt-5 pb-3">
+      <div class="container">
+        <div
+          class="shop-filter-bar d-flex flex-wrap justify-content-between align-items-center gap-3"
+        >
+          <div class="d-flex gap-2 filter-btn-group">
+            <button class="btn btn-sm btn-emerald text-white px-3 rounded-pill">
+              All Items
+            </button>
+            <button class="btn btn-sm btn-outline-secondary px-3 rounded-pill">
+              Spreadsheets
+            </button>
+            <button class="btn btn-sm btn-outline-secondary px-3 rounded-pill">
+              E-Books
+            </button>
+            <button class="btn btn-sm btn-outline-secondary px-3 rounded-pill">
+              Video Courses
+            </button>
+          </div>
+          <div class="search-box max-width-300">
+            <div class="input-group input-group-sm">
+              <input
+                type="text"
+                class="form-control rounded-start-pill border-secondary shadow-none px-3"
+                placeholder="Search resources..."
+              />
+              <button class="btn btn-emerald rounded-end-pill px-3">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: PRODUCT GRID (6 Products) -->
+    <section class="py-4">
+      <div class="container">
+        <div class="row g-4">
+          <!-- Product 1 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="product-card">
+              <div class="product-img-holder">
+                <span class="product-tag">Bestseller</span>
+                <i class="fa-solid fa-file-excel"></i>
+              </div>
+              <div class="product-details">
+                <span class="text-emerald small fw-bold mb-1">Spreadsheet</span>
+                <h5 class="fw-bold text-slate mb-2">
+                  Advanced Net Worth Tracker
+                </h5>
+                <div class="rating-stars mb-2">
+                  <i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i>
+                  <span class="text-muted small ms-1">(142 reviews)</span>
+                </div>
+                <p class="text-muted small mb-4">
+                  Complete asset-liability tracking dashboard in Excel and
+                  Google Sheets with automated compounding graphs.
+                </p>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-auto"
+                >
+                  <span class="product-price"
+                    >₹1,499 <span class="original-price">₹2,499</span></span
+                  >
+                  <button
+                    class="btn btn-emerald btn-sm px-3 py-1"
+                    onclick="alert('Item added to cart!')"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Product 2 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="product-card">
+              <div class="product-img-holder">
+                <i class="fa-solid fa-calculator"></i>
+              </div>
+              <div class="product-details">
+                <span class="text-emerald small fw-bold mb-1"
+                  >Google Sheet</span
+                >
+                <h5 class="fw-bold text-slate mb-2">
+                  Early Retirement / FIRE Estimator
+                </h5>
+                <div class="rating-stars mb-2">
+                  <i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star-half-stroke"></i>
+                  <span class="text-muted small ms-1">(89 reviews)</span>
+                </div>
+                <p class="text-muted small mb-4">
+                  Simulate 40-year withdrawal dynamics, inflation-adjusted
+                  expenses, and sizing your net worth targets.
+                </p>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-auto"
+                >
+                  <span class="product-price"
+                    >₹999 <span class="original-price">₹1,499</span></span
+                  >
+                  <button
+                    class="btn btn-emerald btn-sm px-3 py-1"
+                    onclick="alert('Item added to cart!')"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Product 3 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="product-card">
+              <div class="product-img-holder">
+                <i class="fa-solid fa-file-invoice"></i>
+              </div>
+              <div class="product-details">
+                <span class="text-emerald small fw-bold mb-1">Spreadsheet</span>
+                <h5 class="fw-bold text-slate mb-2">
+                  Strategic Tax Optimization Excel
+                </h5>
+                <div class="rating-stars mb-2">
+                  <i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i>
+                  <span class="text-muted small ms-1">(64 reviews)</span>
+                </div>
+                <p class="text-muted small mb-4">
+                  Side-by-side comparison matrix of New vs Old tax slabs.
+                  Automated Section deductions checker.
+                </p>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-auto"
+                >
+                  <span class="product-price"
+                    >₹799 <span class="original-price">₹1,200</span></span
+                  >
+                  <button
+                    class="btn btn-emerald btn-sm px-3 py-1"
+                    onclick="alert('Item added to cart!')"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Product 4 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="product-card">
+              <div class="product-img-holder">
+                <i class="fa-solid fa-book-open-reader"></i>
+              </div>
+              <div class="product-details">
+                <span class="text-emerald small fw-bold mb-1"
+                  >E-Book (PDF)</span
+                >
+                <h5 class="fw-bold text-slate mb-2">
+                  The Financial Freedom Manifesto
+                </h5>
+                <div class="rating-stars mb-2">
+                  <i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star-half-stroke"></i>
+                  <span class="text-muted small ms-1">(211 reviews)</span>
+                </div>
+                <p class="text-muted small mb-4">
+                  Our comprehensive 12-step guidebook covering budget
+                  allocations, mutual fund filters, and debt resolution models.
+                </p>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-auto"
+                >
+                  <span class="product-price"
+                    >₹499 <span class="original-price">₹899</span></span
+                  >
+                  <button
+                    class="btn btn-emerald btn-sm px-3 py-1"
+                    onclick="alert('Item added to cart!')"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Product 5 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="product-card">
+              <div class="product-img-holder">
+                <i class="fa-solid fa-chart-pie"></i>
+              </div>
+              <div class="product-details">
+                <span class="text-emerald small fw-bold mb-1"
+                  >Google Sheet</span
+                >
+                <h5 class="fw-bold text-slate mb-2">
+                  Smart Monthly Budget Planner
+                </h5>
+                <div class="rating-stars mb-2">
+                  <i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i>
+                  <span class="text-muted small ms-1">(178 reviews)</span>
+                </div>
+                <p class="text-muted small mb-4">
+                  An easy-to-use 50/30/20 budget framework template with
+                  auto-generated categories and pie charts.
+                </p>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-auto"
+                >
+                  <span class="product-price"
+                    >₹399 <span class="original-price">₹699</span></span
+                  >
+                  <button
+                    class="btn btn-emerald btn-sm px-3 py-1"
+                    onclick="alert('Item added to cart!')"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Product 6 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="product-card">
+              <div class="product-img-holder">
+                <span
+                  class="product-tag"
+                  style="background-color: var(--primary-emerald)"
+                  >New</span
+                >
+                <i class="fa-solid fa-video"></i>
+              </div>
+              <div class="product-details">
+                <span class="text-emerald small fw-bold mb-1"
+                  >Video Course</span
+                >
+                <h5 class="fw-bold text-slate mb-2">
+                  Direct Mutual Fund Selection Course
+                </h5>
+                <div class="rating-stars mb-2">
+                  <i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i>
+                  <span class="text-muted small ms-1">(52 reviews)</span>
+                </div>
+                <p class="text-muted small mb-4">
+                  3 hours of targeted video modules showing how to analyze
+                  rolling returns, standard deviations, and fund overlaps.
+                </p>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-auto"
+                >
+                  <span class="product-price"
+                    >₹2,499 <span class="original-price">₹3,999</span></span
+                  >
+                  <button
+                    class="btn btn-emerald btn-sm px-3 py-1"
+                    onclick="alert('Item added to cart!')"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: BEST SELLER SPOTLIGHT -->
+    <section class="py-5 bg-light-gray">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span
+            class="text-emerald fw-bold text-uppercase tracking-wider mb-2 d-block"
+            style="font-size: 0.8rem"
+            ><i class="fa-solid fa-star me-2"></i>Product Focus</span
+          >
+          <h2 class="fw-bold text-slate">
+            Bestseller: The Advanced Net Worth Tracker
+          </h2>
+        </div>
+        <div class="row g-5 align-items-center bg-white p-4 rounded-3 border">
+          <div class="col-lg-6 text-center">
+            <i
+              class="fa-solid fa-file-excel text-emerald"
+              style="font-size: 10rem"
+            ></i>
+          </div>
+          <div class="col-lg-6">
+            <h3 class="fw-bold text-slate mb-3">
+              Master Your Assets and Liabilities
+            </h3>
+            <p class="text-muted small">
+              Our flagship net worth model aggregates all accounts (EPF, PPF,
+              NPS, mutual funds, gold, home loans) into a single, clean
+              dashboard, showing monthly net worth progress charts
+              automatically.
+            </p>
+            <ul class="list-unstyled mb-4 small text-muted">
+              <li>
+                <i class="fa-solid fa-check text-emerald me-2"></i>Includes
+                automated retirement and CAGR compound calculators.
+              </li>
+              <li>
+                <i class="fa-solid fa-check text-emerald me-2"></i>Comes with a
+                15-minute screenwalk tutorial video.
+              </li>
+              <li>
+                <i class="fa-solid fa-check text-emerald me-2"></i>Lifetime
+                updates and new versions delivered to mail.
+              </li>
+            </ul>
+            <div class="d-flex align-items-center gap-3">
+              <span class="product-price fs-3"
+                >₹1,499
+                <span class="original-price text-muted fs-6">₹2,499</span></span
+              >
+              <button
+                class="btn btn-emerald px-4"
+                onclick="alert('Item added to cart!')"
+              >
+                <i class="fa-solid fa-cart-plus me-2"></i>Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: WHY FINANCIAL TOOLS MATTER -->
+    <section class="py-5 text-center">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span
+            class="text-emerald fw-bold text-uppercase tracking-wider mb-2 d-block"
+            style="font-size: 0.8rem"
+            ><i class="fa-solid fa-lightbulb me-2"></i>Benefits</span
+          >
+          <h3 class="fw-bold text-slate">Why Invest in Financial Tools?</h3>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card border-0 bg-light-gray p-4 h-100">
+              <i class="fa-solid fa-clock text-emerald fs-2 mb-3"></i>
+              <h5 class="fw-bold text-slate mb-2">Frictionless Tracking</h5>
+              <p class="text-muted small mb-0">
+                Pre-built formulas save hours of manual arithmetic. Just enter
+                values and see metrics change.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card border-0 bg-light-gray p-4 h-100">
+              <i class="fa-solid fa-brain text-emerald fs-2 mb-3"></i>
+              <h5 class="fw-bold text-slate mb-2">Build Clear Habits</h5>
+              <p class="text-muted small mb-0">
+                A visual net worth tracker incentivizes regular savings, showing
+                long-term targets getting closer.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card border-0 bg-light-gray p-4 h-100">
+              <i class="fa-solid fa-circle-nodes text-emerald fs-2 mb-3"></i>
+              <h5 class="fw-bold text-slate mb-2">Factual Auditing</h5>
+              <p class="text-muted small mb-0">
+                Visual charts easily expose high-cost loans or underperforming
+                mutual funds dragging your portfolio.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: CUSTOMER REVIEWS -->
+    <section class="py-5 bg-light-gray">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span
+            class="text-emerald fw-bold text-uppercase tracking-wider mb-2 d-block"
+            style="font-size: 0.8rem"
+            ><i class="fa-solid fa-comments me-2"></i>Tool Feedback</span
+          >
+          <h2 class="fw-bold section-title">Ratings from Tool Buyers</h2>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="card border-0 p-4 h-100 shadow-sm">
+              <div class="rating-stars mb-2">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+                ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+                ><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="text-muted italic mb-3">
+                "The Net Worth tracker spreadsheet is incredible. It finally
+                unified my EPF, index investments, and home loan balance into a
+                single page. Setting it up took under 10 minutes."
+              </p>
+              <h6 class="fw-bold text-slate mb-0">Rohan M., Analyst</h6>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card border-0 p-4 h-100 shadow-sm">
+              <div class="rating-stars mb-2">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+                ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+                ><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="text-muted italic mb-3">
+                "Using the retirement compound simulator opened my eyes to the
+                impact of inflation. The spreadsheet is beautifully designed,
+                clean, and has no complex macros."
+              </p>
+              <h6 class="fw-bold text-slate mb-0">Shreya S., Professor</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: SPECIAL BUNDLE PROMO BANNER -->
+    <section class="py-5">
+      <div class="container">
+        <div class="shop-promo-banner p-5 text-center text-md-start">
+          <div class="row align-items-center g-4">
+            <div class="col-md-8">
+              <span
+                class="text-emerald fw-bold text-uppercase tracking-wider d-block mb-1"
+                >Limited Period Offer</span
+              >
+              <h2 class="fw-bold mb-3">Complete Financial Freedom Bundle</h2>
+              <p class="text-secondary small mb-0">
+                Get the Net Worth Tracker, Early Retirement Estimator, Monthly
+                Budget Sheet, and Tax optimization spreadsheet together. Save
+                40% on purchase.
+              </p>
+            </div>
+            <div class="col-md-4 text-md-end">
+              <div class="mb-3">
+                <span class="fs-2 fw-bold text-white">₹2,199</span>
+                <span
+                  class="text-secondary text-decoration-line-through small ms-2"
+                  >₹3,697</span
+                >
+              </div>
+              <button
+                class="btn btn-emerald px-4 py-2"
+                onclick="alert('Bundle added to cart!')"
+              >
+                Get Bundle Pack
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 8: SHOP FAQS -->
+    <section class="py-5 bg-light-gray">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span
+            class="text-emerald fw-bold text-uppercase tracking-wider mb-2 d-block"
+            style="font-size: 0.8rem"
+            ><i class="fa-solid fa-circle-question me-2"></i>Download FAQ</span
+          >
+          <h2 class="fw-bold section-title">Shop and Files FAQ</h2>
+        </div>
+        <div
+          class="accordion accordion-flush max-width-700 mx-auto"
+          id="shopFAQ"
+        >
+          <div class="accordion-item border-bottom bg-transparent">
+            <h2 class="accordion-header" id="shop-h1">
+              <button
+                class="accordion-button collapsed fw-bold text-slate py-3 bg-transparent"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#shop-f1"
+              >
+                Are these files compatible with Microsoft Excel and Google
+                Sheets?
+              </button>
+            </h2>
+            <div
+              id="shop-f1"
+              class="accordion-collapse collapse"
+              data-bs-parent="#shopFAQ"
+            >
+              <div class="accordion-body text-muted small">
+                Yes, all spreadsheets are designed to work natively in Microsoft
+                Excel (version 2016 or later) and Google Sheets. Upon purchase,
+                you will receive links for both file formats.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item border-bottom bg-transparent">
+            <h2 class="accordion-header" id="shop-h2">
+              <button
+                class="accordion-button collapsed fw-bold text-slate py-3 bg-transparent"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#shop-f2"
+              >
+                How do I receive my purchased spreadsheets?
+              </button>
+            </h2>
+            <div
+              id="shop-f2"
+              class="accordion-collapse collapse"
+              data-bs-parent="#shopFAQ"
+            >
+              <div class="accordion-body text-muted small">
+                Immediately upon completing payment, a download page will open
+                with your access links. Additionally, our system will email a
+                copy of the download links and video tutorials to your
+                registered email address.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item border-bottom bg-transparent">
+            <h2 class="accordion-header" id="shop-h3">
+              <button
+                class="accordion-button collapsed fw-bold text-slate py-3 bg-transparent"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#shop-f3"
+              >
+                Do the files require monthly subscriptions?
+              </button>
+            </h2>
+            <div
+              id="shop-f3"
+              class="accordion-collapse collapse"
+              data-bs-parent="#shopFAQ"
+            >
+              <div class="accordion-body text-muted small">
+                No, all resources are one-time payments only. Once downloaded,
+                the spreadsheets are yours to use forever without any
+                subscription limits.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 9: TRUST & CHECKOUT BADGES -->
+    <section class="py-5 text-center">
+      <div class="container">
+        <h5 class="fw-bold text-slate mb-4">Guaranteed Secure Checkout</h5>
+        <div class="row g-4 justify-content-center max-width-800 mx-auto">
+          <div class="col-md-4">
+            <div class="payment-trust-badge">
+              <i class="fa-solid fa-shield-halved"></i>
+              <span>SSL Secure Payments</span>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="payment-trust-badge">
+              <i class="fa-solid fa-circle-down"></i>
+              <span>Instant File Downloads</span>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="payment-trust-badge">
+              <i class="fa-solid fa-rotate-left"></i>
+              <span>30-Day Money Back Guarantee</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Bootstrap 5.3 JS Bundle CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom script controller -->
+    <script src="../assets/js/script.js"></script>
+  </body>
+</html>
