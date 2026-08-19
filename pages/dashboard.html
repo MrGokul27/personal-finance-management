@@ -60,7 +60,6 @@
       /* ── Responsive Sidebar Layout ── */
       .sidebar {
         min-height: 100vh;
-        z-index: 1040;
         box-shadow: 4px 0 15px rgba(0, 0, 0, 0.08);
         background-color: var(--bg-dark);
         border-right: 1px solid rgba(255, 255, 255, 0.05);
@@ -79,6 +78,7 @@
           height: 100vh;
           overflow-y: auto;
           overflow-x: hidden;
+          z-index: 1040;
         }
         .main-content-wrapper {
           margin-left: 260px;
@@ -1409,6 +1409,7 @@
                                   id="meetNotes"
                                   rows="3"
                                   placeholder="e.g. portfolio review, tax queries..."
+                                  required
                                 ></textarea>
                               </div>
                               <button
@@ -1637,7 +1638,7 @@
                         "
                       >
                         <i
-                          class="fa-solid fa-user-tie text-primary fs-4 me-2 vertical-middle"
+                          class="fa-solid fa-user-tie text-emerald fs-4 me-2 vertical-middle"
                         ></i>
                         <strong>Advisor Desk Active.</strong> Currently advising
                         38 portfolios totaling ₹24.8 Crore. You have 3 pending
@@ -2286,6 +2287,7 @@
                                   id="recNotes"
                                   rows="3"
                                   placeholder="Explain the reasons behind this rebalancing..."
+                                  required
                                 ></textarea>
                               </div>
                               <button
@@ -3132,6 +3134,7 @@
                                     class="custom-checkbox-input"
                                     id="enableAutoRebalance"
                                     checked
+                                    required
                                   />
                                   Enable portfolio drift automated emails
                                 </label>
@@ -3264,7 +3267,9 @@
           this.classList.add("active");
 
           const targetTabId = this.getAttribute("data-tab");
-          const roleViewsContainer = document.getElementById("views-" + userRole);
+          const roleViewsContainer = document.getElementById(
+            "views-" + userRole,
+          );
           roleViewsContainer.querySelectorAll(".view-pane").forEach((pane) => {
             pane.classList.add("d-none");
           });
@@ -3274,33 +3279,70 @@
 
           // Auto-close offcanvas on mobile
           const offcanvasElement = document.getElementById("sidebarMenu");
-          const bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvasElement);
+          const bsOffcanvas =
+            bootstrap.Offcanvas.getOrCreateInstance(offcanvasElement);
           if (bsOffcanvas) bsOffcanvas.hide();
         });
       });
 
       // ── Form Submissions ──
-      ["expenseForm", "consultationForm", "openSlotForm", "recommendationForm", "addUserForm", "settingsForm"]
-        .forEach((formId) => {
-          const form = document.getElementById(formId);
-          if (form) {
-            form.addEventListener("submit", function (e) {
-              e.preventDefault();
-              alert("Data saved successfully!");
-              form.reset();
-            });
-          }
-        });
+      [
+        "expenseForm",
+        "consultationForm",
+        "openSlotForm",
+        "recommendationForm",
+        "addUserForm",
+        "settingsForm",
+      ].forEach((formId) => {
+        const form = document.getElementById(formId);
+        if (form) {
+          form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            window.location.href = "404.html";
+          });
+        }
+      });
 
       // ── EMPTY LINK & PLACEHOLDER INTERCEPTOR REDIRECTING TO 404.html ──
       document.addEventListener("click", function (e) {
         const target = e.target.closest("a, button");
         if (!target) return;
 
-        // Skip sidebar nav-links — they are handled by data-tab tab switching
-        if (target.tagName === "A" && target.hasAttribute("data-tab")) return;
+        // Exclusions: logout button, logo, and sidebar menu (including toggles and close buttons)
 
-        // Anchor Link Interception
+        // 1. Exclude Logout Button
+        const isLogout =
+          target.id === "logoutBtn" ||
+          target.getAttribute("onclick") === "handleLogout()";
+        if (isLogout) return;
+
+        // 2. Exclude Logo
+        const isLogo =
+          target.tagName === "A" &&
+          (target.getAttribute("href") === "../index.html" ||
+            target.querySelector('img[alt="Logo"]') ||
+            target.querySelector('img[src*="logoStackly"]') ||
+            target.closest(".sidebar-brand"));
+        if (isLogo) return;
+
+        // 3. Exclude Sidebar Menu and its mobile toggles / dismiss elements
+        const isSidebarMenu =
+          target.closest("#sidebarMenu") ||
+          target.getAttribute("data-bs-target") === "#sidebarMenu" ||
+          target.getAttribute("aria-controls") === "sidebarMenu" ||
+          target.hasAttribute("data-bs-dismiss");
+        if (isSidebarMenu) return;
+
+        // 4. Exclude form submit buttons so standard form validation runs and the submit handler handles the redirect.
+        const isFormSubmit =
+          target.tagName === "BUTTON" &&
+          (target.getAttribute("type") === "submit" ||
+            (target.closest("form") &&
+              (!target.hasAttribute("type") ||
+                target.getAttribute("type") === "submit")));
+        if (isFormSubmit) return;
+
+        // For all other links/buttons:
         if (target.tagName === "A") {
           const href = target.getAttribute("href");
           if (
@@ -3312,40 +3354,10 @@
             e.preventDefault();
             window.location.href = "404.html";
           }
-          return;
+        } else if (target.tagName === "BUTTON") {
+          e.preventDefault();
+          window.location.href = "404.html";
         }
-
-        // Button Click Interception
-        if (target.tagName === "BUTTON") {
-          // Identify if the button is functional (part of layout, switching tabs, logging out, submitting real forms, etc.)
-          const isSidebarToggle =
-            target.hasAttribute("data-bs-toggle") &&
-            target.getAttribute("data-bs-toggle") === "offcanvas";
-          const isDismiss = target.hasAttribute("data-bs-dismiss");
-          const isSubmit = target.type === "submit";
-          const isTabButton =
-            target.classList.contains("tab-btn") ||
-            target.closest(".nav-tabs") ||
-            target.classList.contains("nav-link");
-          const isLogout =
-            target.id === "logoutBtn" ||
-            target.getAttribute("onclick") === "handleLogout()";
-          const isCloseBtn = target.classList.contains("btn-close");
-
-          // If the button clicked is not one of our functional UI components, redirect to 404.html
-          if (
-            !isSidebarToggle &&
-            !isDismiss &&
-            !isSubmit &&
-            !isTabButton &&
-            !isLogout &&
-            !isCloseBtn
-          ) {
-            e.preventDefault();
-            window.location.href = "404.html";
-          }
-        }
-
       });
     </script>
   </body>
