@@ -559,7 +559,10 @@ footer .text-muted,
 .bg-dark::-moz-placeholder,
 .bg-dark:-ms-input-placeholder,
 footer input::placeholder,
-section input::placeholder {
+section input::placeholder,
+footer .form-control::placeholder,
+.bg-slate .form-control::placeholder,
+.bg-slate input::placeholder {
   color: #94a3b8 !important;
   opacity: 1 !important;
 }
