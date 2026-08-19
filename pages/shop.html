@@ -44,7 +44,7 @@
     <section
       class="inner-page-banner"
       style="
-        background-image: url(&quot;https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1920&q=80&quot;);
+        background-image: url(&quot;../assets/images/home/home-hero-carousel-bg-2.webp&quot;);
       "
     >
       <div class="container text-center">
@@ -71,27 +71,43 @@
           class="shop-filter-bar d-flex flex-wrap justify-content-between align-items-center gap-3"
         >
           <div class="d-flex gap-2 filter-btn-group">
-            <button class="btn btn-sm btn-emerald text-white px-3 rounded-pill">
+            <button
+              class="btn btn-sm btn-emerald text-white px-3 rounded-pill"
+              data-filter="all"
+            >
               All Items
             </button>
-            <button class="btn btn-sm btn-outline-secondary px-3 rounded-pill">
+            <button
+              class="btn btn-sm btn-outline-secondary px-3 rounded-pill"
+              data-filter="spreadsheet"
+            >
               Spreadsheets
             </button>
-            <button class="btn btn-sm btn-outline-secondary px-3 rounded-pill">
+            <button
+              class="btn btn-sm btn-outline-secondary px-3 rounded-pill"
+              data-filter="ebook"
+            >
               E-Books
             </button>
-            <button class="btn btn-sm btn-outline-secondary px-3 rounded-pill">
+            <button
+              class="btn btn-sm btn-outline-secondary px-3 rounded-pill"
+              data-filter="course"
+            >
               Video Courses
             </button>
           </div>
           <div class="search-box max-width-300">
             <div class="input-group input-group-sm">
               <input
+                id="shop-search"
                 type="text"
                 class="form-control rounded-start-pill border-secondary shadow-none px-3"
                 placeholder="Search resources..."
               />
-              <button class="btn btn-emerald rounded-end-pill px-3">
+              <button
+                class="btn btn-emerald rounded-end-pill px-3"
+                id="shop-search-btn"
+              >
                 <i class="fa-solid fa-magnifying-glass"></i>
               </button>
             </div>
@@ -103,13 +119,20 @@
     <!-- SECTION 3: PRODUCT GRID (6 Products) -->
     <section class="py-4">
       <div class="container">
-        <div class="row g-4">
+        <div class="row g-4" id="product-grid-row">
           <!-- Product 1 -->
-          <div class="col-lg-4 col-md-6">
+          <div
+            class="col-lg-4 col-md-6 product-item"
+            data-category="spreadsheet"
+          >
             <div class="product-card">
-              <div class="product-img-holder">
+              <div class="product-img-holder p-0">
                 <span class="product-tag">Bestseller</span>
-                <i class="fa-solid fa-file-excel"></i>
+                <img
+                  src="../assets/images/services/services-investment-planning-image.webp"
+                  alt="Advanced Net Worth Tracker"
+                  class="product-img"
+                />
               </div>
               <div class="product-details">
                 <span class="text-emerald small fw-bold mb-1">Spreadsheet</span>
@@ -134,21 +157,27 @@
                   <span class="product-price"
                     >₹1,499 <span class="original-price">₹2,499</span></span
                   >
-                  <button
-                    class="btn btn-emerald btn-sm px-3 py-1"
-                    onclick="alert('Item added to cart!')"
+                  <a href="#"
+                    ><button class="btn btn-emerald btn-sm px-3 py-1">
+                      Add to Cart
+                    </button></a
                   >
-                    Add to Cart
-                  </button>
                 </div>
               </div>
             </div>
           </div>
           <!-- Product 2 -->
-          <div class="col-lg-4 col-md-6">
+          <div
+            class="col-lg-4 col-md-6 product-item"
+            data-category="spreadsheet"
+          >
             <div class="product-card">
-              <div class="product-img-holder">
-                <i class="fa-solid fa-calculator"></i>
+              <div class="product-img-holder p-0">
+                <img
+                  src="../assets/images/home/home-blog-img-wrapper-3.webp"
+                  alt="Early Retirement / FIRE Estimator"
+                  class="product-img"
+                />
               </div>
               <div class="product-details">
                 <span class="text-emerald small fw-bold mb-1"
@@ -175,21 +204,27 @@
                   <span class="product-price"
                     >₹999 <span class="original-price">₹1,499</span></span
                   >
-                  <button
-                    class="btn btn-emerald btn-sm px-3 py-1"
-                    onclick="alert('Item added to cart!')"
+                  <a href="#"
+                    ><button class="btn btn-emerald btn-sm px-3 py-1">
+                      Add to Cart
+                    </button></a
                   >
-                    Add to Cart
-                  </button>
                 </div>
               </div>
             </div>
           </div>
           <!-- Product 3 -->
-          <div class="col-lg-4 col-md-6">
+          <div
+            class="col-lg-4 col-md-6 product-item"
+            data-category="spreadsheet"
+          >
             <div class="product-card">
-              <div class="product-img-holder">
-                <i class="fa-solid fa-file-invoice"></i>
+              <div class="product-img-holder p-0">
+                <img
+                  src="../assets/images/services/services-tax-planner-image.webp"
+                  alt="Strategic Tax Optimization Excel"
+                  class="product-img"
+                />
               </div>
               <div class="product-details">
                 <span class="text-emerald small fw-bold mb-1">Spreadsheet</span>
@@ -214,21 +249,24 @@
                   <span class="product-price"
                     >₹799 <span class="original-price">₹1,200</span></span
                   >
-                  <button
-                    class="btn btn-emerald btn-sm px-3 py-1"
-                    onclick="alert('Item added to cart!')"
+                  <a href="#"
+                    ><button class="btn btn-emerald btn-sm px-3 py-1">
+                      Add to Cart
+                    </button></a
                   >
-                    Add to Cart
-                  </button>
                 </div>
               </div>
             </div>
           </div>
           <!-- Product 4 -->
-          <div class="col-lg-4 col-md-6">
+          <div class="col-lg-4 col-md-6 product-item" data-category="ebook">
             <div class="product-card">
-              <div class="product-img-holder">
-                <i class="fa-solid fa-book-open-reader"></i>
+              <div class="product-img-holder p-0">
+                <img
+                  src="../assets/images/about/about-who-we-are-img.webp"
+                  alt="The Financial Freedom Manifesto"
+                  class="product-img"
+                />
               </div>
               <div class="product-details">
                 <span class="text-emerald small fw-bold mb-1"
@@ -255,21 +293,27 @@
                   <span class="product-price"
                     >₹499 <span class="original-price">₹899</span></span
                   >
-                  <button
-                    class="btn btn-emerald btn-sm px-3 py-1"
-                    onclick="alert('Item added to cart!')"
+                  <a href="#"
+                    ><button class="btn btn-emerald btn-sm px-3 py-1">
+                      Add to Cart
+                    </button></a
                   >
-                    Add to Cart
-                  </button>
                 </div>
               </div>
             </div>
           </div>
           <!-- Product 5 -->
-          <div class="col-lg-4 col-md-6">
+          <div
+            class="col-lg-4 col-md-6 product-item"
+            data-category="spreadsheet"
+          >
             <div class="product-card">
-              <div class="product-img-holder">
-                <i class="fa-solid fa-chart-pie"></i>
+              <div class="product-img-holder p-0">
+                <img
+                  src="../assets/images/home/home-blog-img-wrapper-1.webp"
+                  alt="Smart Monthly Budget Planner"
+                  class="product-img"
+                />
               </div>
               <div class="product-details">
                 <span class="text-emerald small fw-bold mb-1"
@@ -296,26 +340,29 @@
                   <span class="product-price"
                     >₹399 <span class="original-price">₹699</span></span
                   >
-                  <button
-                    class="btn btn-emerald btn-sm px-3 py-1"
-                    onclick="alert('Item added to cart!')"
+                  <a href="#"
+                    ><button class="btn btn-emerald btn-sm px-3 py-1">
+                      Add to Cart
+                    </button></a
                   >
-                    Add to Cart
-                  </button>
                 </div>
               </div>
             </div>
           </div>
           <!-- Product 6 -->
-          <div class="col-lg-4 col-md-6">
+          <div class="col-lg-4 col-md-6 product-item" data-category="course">
             <div class="product-card">
-              <div class="product-img-holder">
+              <div class="product-img-holder p-0">
                 <span
                   class="product-tag"
                   style="background-color: var(--primary-emerald)"
                   >New</span
                 >
-                <i class="fa-solid fa-video"></i>
+                <img
+                  src="../assets/images/project/project-portfolio-img-wrapper-4.webp"
+                  alt="Direct Mutual Fund Selection Course"
+                  class="product-img"
+                />
               </div>
               <div class="product-details">
                 <span class="text-emerald small fw-bold mb-1"
@@ -342,16 +389,28 @@
                   <span class="product-price"
                     >₹2,499 <span class="original-price">₹3,999</span></span
                   >
-                  <button
-                    class="btn btn-emerald btn-sm px-3 py-1"
-                    onclick="alert('Item added to cart!')"
+                  <a href="#"
+                    ><button class="btn btn-emerald btn-sm px-3 py-1">
+                      Add to Cart
+                    </button></a
                   >
-                    Add to Cart
-                  </button>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+
+        <!-- No Products Found Message -->
+        <div
+          id="no-products-message"
+          class="text-center py-5 d-none animate-fade-in"
+        >
+          <i class="fa-solid fa-box-open text-muted display-4 mb-3"></i>
+          <h4 class="fw-bold text-slate">No Resources Found</h4>
+          <p class="text-muted max-width-400 mx-auto small">
+            We couldn't find any resources matching your search. Try checking
+            your spelling or changing the filter.
+          </p>
         </div>
       </div>
     </section>
@@ -365,52 +424,72 @@
             style="font-size: 0.8rem"
             ><i class="fa-solid fa-star me-2"></i>Product Focus</span
           >
-          <h2 class="fw-bold text-slate">
+          <h2 class="fw-bold text-slate pb-4">
             Bestseller: The Advanced Net Worth Tracker
           </h2>
         </div>
-        <div class="row g-5 align-items-center bg-white p-4 rounded-3 border">
+        <div
+          class="row g-5 align-items-center p-4 p-md-5 spotlight-container shadow-sm mx-auto"
+          style="max-width: 1000px"
+        >
           <div class="col-lg-6 text-center">
-            <i
-              class="fa-solid fa-file-excel text-emerald"
-              style="font-size: 10rem"
-            ></i>
+            <div class="spotlight-image-wrapper">
+              <img
+                src="../assets/images/services/services-investment-planning-image.webp"
+                alt="Advanced Net Worth Tracker"
+                class="img-fluid"
+              />
+              <span
+                class="spotlight-overlay-badge position-absolute top-0 start-0 m-3"
+              >
+                <i class="fa-solid fa-fire me-1"></i> Bestseller
+              </span>
+            </div>
           </div>
           <div class="col-lg-6">
+            <div class="d-flex align-items-center gap-2 mb-2">
+              <div class="rating-stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+                ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+                ><i class="fa-solid fa-star"></i>
+              </div>
+              <span class="text-muted small fw-semibold"
+                >4.9/5 (142 reviews)</span
+              >
+            </div>
             <h3 class="fw-bold text-slate mb-3">
               Master Your Assets and Liabilities
             </h3>
-            <p class="text-muted small">
+            <p class="text-muted small mb-4">
               Our flagship net worth model aggregates all accounts (EPF, PPF,
               NPS, mutual funds, gold, home loans) into a single, clean
               dashboard, showing monthly net worth progress charts
               automatically.
             </p>
-            <ul class="list-unstyled mb-4 small text-muted">
+            <ul class="list-unstyled mb-4 spotlight-checklist">
               <li>
-                <i class="fa-solid fa-check text-emerald me-2"></i>Includes
-                automated retirement and CAGR compound calculators.
+                <i class="fa-solid fa-check"></i>Includes automated retirement
+                and CAGR compound calculators.
               </li>
               <li>
-                <i class="fa-solid fa-check text-emerald me-2"></i>Comes with a
-                15-minute screenwalk tutorial video.
+                <i class="fa-solid fa-check"></i>Comes with a 15-minute
+                screenwalk tutorial video.
               </li>
               <li>
-                <i class="fa-solid fa-check text-emerald me-2"></i>Lifetime
-                updates and new versions delivered to mail.
+                <i class="fa-solid fa-check"></i>Lifetime updates and new
+                versions delivered to mail.
               </li>
             </ul>
-            <div class="d-flex align-items-center gap-3">
+            <div class="d-flex align-items-center gap-3 pt-2">
               <span class="product-price fs-3"
                 >₹1,499
                 <span class="original-price text-muted fs-6">₹2,499</span></span
               >
-              <button
-                class="btn btn-emerald px-4"
-                onclick="alert('Item added to cart!')"
-              >
-                <i class="fa-solid fa-cart-plus me-2"></i>Add to Cart
-              </button>
+              <a href="#">
+                <button class="btn btn-emerald px-4 py-2">
+                  <i class="fa-solid fa-cart-plus me-2"></i>Add to Cart
+                </button>
+              </a>
             </div>
           </div>
         </div>
@@ -430,7 +509,7 @@
         </div>
         <div class="row g-4">
           <div class="col-md-4">
-            <div class="card border-0 bg-light-gray p-4 h-100">
+            <div class="card border-0 bg-light-gray p-4 h-100 benefit-card">
               <i class="fa-solid fa-clock text-emerald fs-2 mb-3"></i>
               <h5 class="fw-bold text-slate mb-2">Frictionless Tracking</h5>
               <p class="text-muted small mb-0">
@@ -440,7 +519,7 @@
             </div>
           </div>
           <div class="col-md-4">
-            <div class="card border-0 bg-light-gray p-4 h-100">
+            <div class="card border-0 bg-light-gray p-4 h-100 benefit-card">
               <i class="fa-solid fa-brain text-emerald fs-2 mb-3"></i>
               <h5 class="fw-bold text-slate mb-2">Build Clear Habits</h5>
               <p class="text-muted small mb-0">
@@ -450,7 +529,7 @@
             </div>
           </div>
           <div class="col-md-4">
-            <div class="card border-0 bg-light-gray p-4 h-100">
+            <div class="card border-0 bg-light-gray p-4 h-100 benefit-card">
               <i class="fa-solid fa-circle-nodes text-emerald fs-2 mb-3"></i>
               <h5 class="fw-bold text-slate mb-2">Factual Auditing</h5>
               <p class="text-muted small mb-0">
@@ -476,7 +555,7 @@
         </div>
         <div class="row g-4">
           <div class="col-md-6">
-            <div class="card border-0 p-4 h-100 shadow-sm">
+            <div class="card border-0 p-4 h-100 shadow-sm review-card">
               <div class="rating-stars mb-2">
                 <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
                 ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
@@ -491,7 +570,7 @@
             </div>
           </div>
           <div class="col-md-6">
-            <div class="card border-0 p-4 h-100 shadow-sm">
+            <div class="card border-0 p-4 h-100 shadow-sm review-card">
               <div class="rating-stars mb-2">
                 <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
                 ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
@@ -534,12 +613,11 @@
                   >₹3,697</span
                 >
               </div>
-              <button
-                class="btn btn-emerald px-4 py-2"
-                onclick="alert('Bundle added to cart!')"
+              <a href="#"
+                ><button class="btn btn-emerald px-4 py-2">
+                  Get Bundle Pack
+                </button></a
               >
-                Get Bundle Pack
-              </button>
             </div>
           </div>
         </div>
