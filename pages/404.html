@@ -331,6 +331,27 @@
         }
       }
 
+      /* ── Fixed logo ── */
+      .page-logo {
+        position: fixed;
+        top: 16px;
+        left: 20px;
+        z-index: 999;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+      }
+      .page-logo img {
+        height: 40px;
+        filter: invert(58%) sepia(72%) saturate(400%) hue-rotate(115deg)
+          brightness(95%) contrast(90%);
+      }
+      @media (max-width: 576px) {
+        .page-logo img {
+          height: 32px;
+        }
+      }
+
       /* ── Status badge ── */
       .status-badge {
         display: inline-flex;
@@ -367,6 +388,11 @@
     </style>
   </head>
   <body>
+    <!-- Fixed Logo -->
+    <a href="../index.html" class="page-logo">
+      <img src="../assets/images/logoStackly.webp" alt="StacklyWealth Logo" />
+    </a>
+
     <section class="error-section">
       <!-- Background layers -->
       <div class="dot-grid"></div>
