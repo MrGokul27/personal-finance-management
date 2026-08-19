@@ -170,6 +170,9 @@
                       class="form-control"
                       placeholder="e.g. James Smith"
                       required
+                      oninput="
+                        this.value = this.value.replace(/[^a-zA-Z\s]/g, '')
+                      "
                     />
                   </div>
                   <div class="col-sm-6">
@@ -179,9 +182,12 @@
                     <input
                       type="tel"
                       class="form-control"
-                      value="+44 "
+                      value="+91 "
                       placeholder="e.g.+91-7911123456"
                       required
+                      oninput="
+                        this.value = this.value.replace(/(?!^\+)[^\d]/g, '')
+                      "
                     />
                   </div>
                   <div class="col-md-12">
@@ -323,17 +329,125 @@
                 <div class="calendar-date-cell disabled">15</div>
                 <div class="calendar-date-cell disabled">16</div>
                 <div class="calendar-date-cell disabled">17</div>
-                <div class="calendar-date-cell selected">18</div>
-                <div class="calendar-date-cell">19</div>
-                <div class="calendar-date-cell">20</div>
-                <div class="calendar-date-cell">21</div>
+                <div
+                  class="calendar-date-cell selected"
+                  onclick="
+                    if (!this.classList.contains('disabled')) {
+                      document
+                        .querySelectorAll('.calendar-date-cell')
+                        .forEach((c) => c.classList.remove('selected'));
+                      this.classList.add('selected');
+                    }
+                  "
+                >
+                  18
+                </div>
+                <div
+                  class="calendar-date-cell"
+                  onclick="
+                    if (!this.classList.contains('disabled')) {
+                      document
+                        .querySelectorAll('.calendar-date-cell')
+                        .forEach((c) => c.classList.remove('selected'));
+                      this.classList.add('selected');
+                    }
+                  "
+                >
+                  19
+                </div>
+                <div
+                  class="calendar-date-cell"
+                  onclick="
+                    if (!this.classList.contains('disabled')) {
+                      document
+                        .querySelectorAll('.calendar-date-cell')
+                        .forEach((c) => c.classList.remove('selected'));
+                      this.classList.add('selected');
+                    }
+                  "
+                >
+                  20
+                </div>
+                <div
+                  class="calendar-date-cell"
+                  onclick="
+                    if (!this.classList.contains('disabled')) {
+                      document
+                        .querySelectorAll('.calendar-date-cell')
+                        .forEach((c) => c.classList.remove('selected'));
+                      this.classList.add('selected');
+                    }
+                  "
+                >
+                  21
+                </div>
                 <div class="calendar-date-cell disabled">22</div>
                 <div class="calendar-date-cell disabled">23</div>
-                <div class="calendar-date-cell">24</div>
-                <div class="calendar-date-cell">25</div>
-                <div class="calendar-date-cell">26</div>
-                <div class="calendar-date-cell">27</div>
-                <div class="calendar-date-cell">28</div>
+                <div
+                  class="calendar-date-cell"
+                  onclick="
+                    if (!this.classList.contains('disabled')) {
+                      document
+                        .querySelectorAll('.calendar-date-cell')
+                        .forEach((c) => c.classList.remove('selected'));
+                      this.classList.add('selected');
+                    }
+                  "
+                >
+                  24
+                </div>
+                <div
+                  class="calendar-date-cell"
+                  onclick="
+                    if (!this.classList.contains('disabled')) {
+                      document
+                        .querySelectorAll('.calendar-date-cell')
+                        .forEach((c) => c.classList.remove('selected'));
+                      this.classList.add('selected');
+                    }
+                  "
+                >
+                  25
+                </div>
+                <div
+                  class="calendar-date-cell"
+                  onclick="
+                    if (!this.classList.contains('disabled')) {
+                      document
+                        .querySelectorAll('.calendar-date-cell')
+                        .forEach((c) => c.classList.remove('selected'));
+                      this.classList.add('selected');
+                    }
+                  "
+                >
+                  26
+                </div>
+                <div
+                  class="calendar-date-cell"
+                  onclick="
+                    if (!this.classList.contains('disabled')) {
+                      document
+                        .querySelectorAll('.calendar-date-cell')
+                        .forEach((c) => c.classList.remove('selected'));
+                      this.classList.add('selected');
+                    }
+                  "
+                >
+                  27
+                </div>
+                <div
+                  class="calendar-date-cell"
+                  onclick="
+                    if (!this.classList.contains('disabled')) {
+                      document
+                        .querySelectorAll('.calendar-date-cell')
+                        .forEach((c) => c.classList.remove('selected'));
+                      this.classList.add('selected');
+                    }
+                  "
+                >
+                  28
+                </div>
                 <div class="calendar-date-cell disabled">29</div>
                 <div class="calendar-date-cell disabled">30</div>
               </div>
@@ -341,7 +455,7 @@
           </div>
           <!-- Time slots -->
           <div class="col-lg-5">
-            <div class="card border-0 p-4 shadow-sm h-100">
+            <div class="card border-0 p-4 shadow-sm h-100 booking-time-card">
               <h5 class="fw-bold text-slate mb-3">
                 <i class="fa-solid fa-clock text-emerald me-2"></i>Available
                 Time Slots
@@ -350,10 +464,46 @@
                 Dates marked in green are open. Select an available slot:
               </p>
               <div class="time-slots-wrapper mb-4">
-                <span class="time-slot-pill active">10:00 AM - 10:30 AM</span>
-                <span class="time-slot-pill">11:30 AM - 12:00 PM</span>
-                <span class="time-slot-pill">02:00 PM - 02:30 PM</span>
-                <span class="time-slot-pill">04:00 PM - 04:30 PM</span>
+                <span
+                  class="time-slot-pill active"
+                  onclick="
+                    document
+                      .querySelectorAll('.time-slot-pill')
+                      .forEach((p) => p.classList.remove('active'));
+                    this.classList.add('active');
+                  "
+                  >10:00 AM - 10:30 AM</span
+                >
+                <span
+                  class="time-slot-pill"
+                  onclick="
+                    document
+                      .querySelectorAll('.time-slot-pill')
+                      .forEach((p) => p.classList.remove('active'));
+                    this.classList.add('active');
+                  "
+                  >11:30 AM - 12:00 PM</span
+                >
+                <span
+                  class="time-slot-pill"
+                  onclick="
+                    document
+                      .querySelectorAll('.time-slot-pill')
+                      .forEach((p) => p.classList.remove('active'));
+                    this.classList.add('active');
+                  "
+                  >02:00 PM - 02:30 PM</span
+                >
+                <span
+                  class="time-slot-pill"
+                  onclick="
+                    document
+                      .querySelectorAll('.time-slot-pill')
+                      .forEach((p) => p.classList.remove('active'));
+                    this.classList.add('active');
+                  "
+                  >04:00 PM - 04:30 PM</span
+                >
               </div>
               <button
                 class="btn btn-emerald w-100 py-2 mt-auto"
@@ -400,7 +550,9 @@
             </ul>
           </div>
           <div class="col-lg-6">
-            <div class="card border-0 shadow-sm overflow-hidden">
+            <div
+              class="card border-0 shadow-sm overflow-hidden office-hours-card"
+            >
               <table class="table mb-0 small text-slate">
                 <thead class="table-dark">
                   <tr>
@@ -541,7 +693,7 @@
           <div class="col-lg-2 col-md-4 col-6">
             <a
               href="#"
-              class="card border-0 shadow-sm p-4 text-decoration-none text-slate hover-emerald transition-all"
+              class="card border-0 shadow-sm p-4 text-decoration-none text-slate transition-all social-card-x"
             >
               <i class="fa-brands fa-x-twitter fs-2 text-emerald mb-2"></i>
               <h6 class="fw-bold mb-0">Follow on X</h6>
@@ -551,7 +703,7 @@
           <div class="col-lg-2 col-md-4 col-6">
             <a
               href="#"
-              class="card border-0 shadow-sm p-4 text-decoration-none text-slate hover-emerald transition-all"
+              class="card border-0 shadow-sm p-4 text-decoration-none text-slate transition-all social-card-linkedin"
             >
               <i class="fa-brands fa-linkedin fs-2 text-emerald mb-2"></i>
               <h6 class="fw-bold mb-0">LinkedIn</h6>
@@ -561,17 +713,17 @@
           <div class="col-lg-2 col-md-4 col-6">
             <a
               href="#"
-              class="card border-0 shadow-sm p-4 text-decoration-none text-slate hover-emerald transition-all"
+              class="card border-0 shadow-sm p-4 text-decoration-none text-slate transition-all social-card-youtube"
             >
               <i class="fa-brands fa-youtube fs-2 text-emerald mb-2"></i>
-              <h6 class="fw-bold mb-0">YouTube Channel</h6>
+              <h6 class="fw-bold mb-0">YouTube</h6>
             </a>
           </div>
           <!-- Instagram -->
           <div class="col-lg-2 col-md-4 col-6">
             <a
               href="#"
-              class="card border-0 shadow-sm p-4 text-decoration-none text-slate hover-emerald transition-all"
+              class="card border-0 shadow-sm p-4 text-decoration-none text-slate transition-all social-card-instagram"
             >
               <i class="fa-brands fa-instagram fs-2 text-emerald mb-2"></i>
               <h6 class="fw-bold mb-0">Instagram</h6>
@@ -582,21 +734,14 @@
     </section>
 
     <!-- SECTION 9: NEWSLETTER SUBSCRIBE -->
-    <section class="py-5 bg-slate text-white text-center">
+    <section class="py-5 bg-slate text-white text-center newsletter-input">
       <div class="container">
-        <h2 class="fw-bold mb-3">Subscribe to Our Wealth Letter</h2>
+        <h2 class="fw-bold mb-3 text-light">Subscribe to Our Wealth Letter</h2>
         <p class="text-secondary mb-4 mx-auto max-width-500">
           Get monthly updates on tax laws, retirement schemes, and direct mutual
           fund reviews.
         </p>
-        <form
-          action="#"
-          class="max-width-500 mx-auto"
-          onsubmit="
-            event.preventDefault();
-            alert('Subscribed successfully!');
-          "
-        >
+        <form action="#" style="max-width: 480px; margin: 0 auto">
           <div class="input-group">
             <input
               type="email"

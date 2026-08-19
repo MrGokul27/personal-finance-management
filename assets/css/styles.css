@@ -156,6 +156,11 @@ h6 {
   transform: translateX(0);
 }
 
+.newsletter-input input.form-control::placeholder {
+  color: #94a3b8 !important;
+  opacity: 1 !important;
+}
+
 /* ==========================================================================
    3. HEADER & NAVIGATION STYLES
    ========================================================================== */

@@ -1,19 +1,59 @@
-/* Contact info cards */
+/* ==========================================================================
+   1. SECTION 2: CONTACT INFO CARDS
+   ========================================================================== */
 .contact-info-card {
   background-color: #ffffff;
   border: 1px solid var(--border-color);
   border-radius: 12px;
   padding: 30px 25px;
   box-shadow: 0 4px 15px rgba(15, 23, 42, 0.02);
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   height: 100%;
+}
+.contact-info-card .icon-circle-emerald {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .contact-info-card:hover {
   border-color: var(--primary-emerald);
-  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.08);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(16, 185, 129, 0.12);
+}
+.contact-info-card:hover .icon-circle-emerald {
+  background-color: var(--primary-emerald);
+  color: #ffffff;
+  transform: scale(1.15) rotate(8deg);
 }
 
-/* Contact Form Input Glow */
+/* ==========================================================================
+   2. SECTION 3: INTERACTIVE CONTACT FORM & FIELDS
+   ========================================================================== */
+.contact-form {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid var(--border-color) !important;
+  position: relative;
+  overflow: hidden;
+}
+.contact-form::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-emerald), #34d399);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.contact-form:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08) !important;
+  border-color: rgba(16, 185, 129, 0.25) !important;
+}
+.contact-form:hover::before {
+  opacity: 1;
+}
+
+/* Form input fields hover & transition */
 .contact-form .form-control,
 .contact-form .form-select {
   border: 1px solid var(--border-color);
@@ -21,14 +61,33 @@
   border-radius: 8px;
   transition: all 0.3s ease;
   font-size: 0.95rem;
+  background-color: #f8fafc;
+}
+.contact-form .form-control:hover,
+.contact-form .form-select:hover {
+  border-color: rgba(16, 185, 129, 0.5);
+  background-color: #ffffff;
 }
 .contact-form .form-control:focus,
 .contact-form .form-select:focus {
   border-color: var(--primary-emerald);
-  box-shadow: 0 0 0 3px var(--primary-emerald-light);
+  background-color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.15);
 }
 
-/* Stylized Google Maps Embed Area */
+/* Submit button tweak */
+.contact-form .btn-emerald {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.contact-form .btn-emerald:hover {
+  letter-spacing: 0.05em;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3) !important;
+}
+
+/* ==========================================================================
+   3. SECTION 4: STYLIZED GOOGLE MAPS
+   ========================================================================== */
 .map-wrapper {
   border-radius: 15px;
   overflow: hidden;
@@ -36,13 +95,24 @@
   box-shadow: 0 8px 30px rgba(15, 23, 42, 0.05);
 }
 
-/* Scheduler / Booking calendar component */
+/* ==========================================================================
+   4. SECTION 5: APPOINTMENT SCHEDULER (CALENDAR & TIME SLOTS)
+   ========================================================================== */
+.booking-calendar,
+.booking-time-card {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid var(--border-color) !important;
+}
+.booking-calendar:hover,
+.booking-time-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(15, 23, 42, 0.08) !important;
+  border-color: rgba(16, 185, 129, 0.25) !important;
+}
 .booking-calendar {
   background-color: #ffffff;
-  border: 1px solid var(--border-color);
   border-radius: 12px;
   padding: 25px;
-  box-shadow: 0 5px 20px rgba(15, 23, 42, 0.02);
 }
 .calendar-grid {
   display: grid;
@@ -65,17 +135,22 @@
   cursor: pointer;
   background-color: var(--bg-light);
   color: var(--secondary-slate);
-  transition: all 0.2s ease;
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   border: 1px solid transparent;
 }
 .calendar-date-cell:hover:not(.disabled) {
   background-color: var(--primary-emerald-light);
   color: var(--primary-emerald);
+  transform: scale(1.15);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
+  z-index: 2;
+  position: relative;
 }
 .calendar-date-cell.selected {
   background-color: var(--primary-emerald);
   color: #ffffff;
   font-weight: 600;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
 }
 .calendar-date-cell.disabled {
   opacity: 0.4;
@@ -97,14 +172,113 @@
   font-size: 0.85rem;
   cursor: pointer;
   font-weight: 600;
-  transition: all 0.2s ease;
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 .time-slot-pill:hover {
   border-color: var(--primary-emerald);
   color: var(--primary-emerald);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 15px rgba(16, 185, 129, 0.15);
 }
 .time-slot-pill.active {
   background-color: var(--primary-emerald);
   border-color: var(--primary-emerald);
   color: #ffffff;
+  box-shadow: 0 6px 15px rgba(16, 185, 129, 0.25);
+}
+
+/* ==========================================================================
+   5. SECTION 6: OFFICE HOURS & WEEKLY SCHEDULE
+   ========================================================================== */
+.office-hours-card {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid var(--border-color) !important;
+}
+.office-hours-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(15, 23, 42, 0.08) !important;
+  border-color: rgba(16, 185, 129, 0.2) !important;
+}
+.office-hours-card table tbody tr {
+  transition: all 0.25s ease;
+}
+.office-hours-card table tbody tr:hover {
+  background-color: rgba(16, 185, 129, 0.05) !important;
+}
+.office-hours-card table tbody tr td {
+  transition: all 0.25s ease;
+}
+.office-hours-card table tbody tr:hover td {
+  color: var(--primary-emerald-hover) !important;
+}
+.office-hours-card table tbody tr:hover td:first-child {
+  padding-left: 2rem !important;
+}
+
+/* ==========================================================================
+   6. SECTION 8: SOCIAL HUB CONNECT
+   ========================================================================== */
+.social-card-x,
+.social-card-linkedin,
+.social-card-youtube,
+.social-card-instagram {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid var(--border-color) !important;
+}
+.social-card-x i,
+.social-card-linkedin i,
+.social-card-youtube i,
+.social-card-instagram i {
+  transition: all 0.3s ease;
+}
+.social-card-x:hover,
+.social-card-linkedin:hover,
+.social-card-youtube:hover,
+.social-card-instagram:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(15, 23, 42, 0.08) !important;
+}
+.social-card-x:hover i,
+.social-card-linkedin:hover i,
+.social-card-youtube:hover i,
+.social-card-instagram:hover i {
+  color: #ffffff !important;
+  transform: scale(1.15) rotate(5deg);
+}
+.social-card-x:hover h6,
+.social-card-linkedin:hover h6,
+.social-card-youtube:hover h6,
+.social-card-instagram:hover h6 {
+  color: #ffffff !important;
+}
+
+/* X Custom brand hover colors */
+.social-card-x:hover {
+  background-color: #0f172a !important;
+  border-color: #0f172a !important;
+}
+
+/* LinkedIn Custom brand hover colors */
+.social-card-linkedin:hover {
+  background-color: #0077b5 !important;
+  border-color: #0077b5 !important;
+}
+
+/* YouTube Custom brand hover colors */
+.social-card-youtube:hover {
+  background-color: #ff0000 !important;
+  border-color: #ff0000 !important;
+}
+
+/* Instagram Custom brand hover colors */
+.social-card-instagram:hover {
+  background: radial-gradient(
+    circle at 30% 107%,
+    #fdf497 0%,
+    #fdf497 5%,
+    #fd5949 45%,
+    #d6249f 60%,
+    #285aeb 90%
+  ) !important;
+  border-color: transparent !important;
 }
