@@ -193,6 +193,8 @@
                       class="form-control"
                       placeholder="e.g. james@gmail.com"
                       required
+                      pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+                      title="Please enter a valid email address (e.g. name@domain.com)"
                     />
                   </div>
                   <div class="col-md-12">
@@ -739,6 +741,8 @@
               class="form-control rounded-start-pill py-2 px-3 border-0 bg-dark text-white"
               placeholder="Enter your email address"
               required
+              pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+              title="Please enter a valid email address (e.g. name@domain.com)"
             />
             <button
               type="submit"

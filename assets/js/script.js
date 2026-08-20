@@ -133,6 +133,25 @@ document.addEventListener("DOMContentLoaded", function () {
     const isContactForm = form.closest(".contact-form");
 
     if (isFooterSubscribe || isNewsletterInput || isContactForm) {
+      // Validate email format if the form has an email input
+      const emailInput = form.querySelector('input[type="email"]');
+      if (emailInput) {
+        const emailValue = emailInput.value.trim();
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!emailPattern.test(emailValue)) {
+          event.preventDefault();
+          emailInput.setCustomValidity("Please enter a valid email address (e.g. name@domain.com).");
+          emailInput.reportValidity();
+          // Clear custom validity when the user types
+          emailInput.addEventListener("input", function() {
+            emailInput.setCustomValidity("");
+          }, { once: true });
+          return;
+        } else {
+          emailInput.setCustomValidity("");
+        }
+      }
+
       event.preventDefault();
 
       // Determine the page depth to resolve correct path to 404.html

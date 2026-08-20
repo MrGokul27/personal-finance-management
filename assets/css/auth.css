@@ -712,3 +712,9 @@ body.auth-page::after {
     display: block;
   }
 }
+
+/* Hide default Edge/IE password reveal eye icon */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+  display: none;
+}
