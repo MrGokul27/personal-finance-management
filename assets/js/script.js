@@ -121,6 +121,37 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Initialize Shop Filters if on shop page
   initShopFilters();
+
+  // Intercept target form submissions and redirect to 404 page
+  document.addEventListener("submit", function (event) {
+    const form = event.target;
+    const isFooterSubscribe = form.closest(".footer-subscribe");
+    const isNewsletterInput = form.closest(".newsletter-input");
+    const isContactForm = form.closest(".contact-form");
+
+    if (isFooterSubscribe || isNewsletterInput || isContactForm) {
+      event.preventDefault();
+
+      // Determine the page depth to resolve correct path to 404.html
+      const pathname = window.location.pathname;
+      let depth = 0; // Default: root directory (index.html)
+
+      if (pathname.includes("/pages/services/")) {
+        depth = 2; // Inside pages/services/
+      } else if (pathname.includes("/pages/")) {
+        depth = 1; // Inside pages/
+      }
+
+      let redirectUrl = "pages/404.html";
+      if (depth === 1) {
+        redirectUrl = "404.html";
+      } else if (depth === 2) {
+        redirectUrl = "../404.html";
+      }
+
+      window.location.href = redirectUrl;
+    }
+  });
 });
 
 /**

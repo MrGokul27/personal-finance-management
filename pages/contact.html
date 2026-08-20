@@ -150,16 +150,7 @@
           </div>
           <div class="col-lg-6">
             <div class="card border-0 p-4 shadow-sm contact-form">
-              <form
-                action="#"
-                onsubmit="
-                  event.preventDefault();
-                  alert(
-                    'Message sent successfully! Our planners will contact you shortly.',
-                  );
-                  this.reset();
-                "
-              >
+              <form action="#">
                 <div class="row g-3">
                   <div class="col-sm-6">
                     <label class="form-label small fw-semibold text-slate"
@@ -183,9 +174,12 @@
                     <input
                       type="tel"
                       class="form-control"
-                      value="+91 "
-                      placeholder="e.g.+91-7911123456"
-                      maxlength="10"
+                      value="+91"
+                      placeholder="e.g.+917911123456"
+                      maxlength="13"
+                      minlength="13"
+                      pattern="\+\d{12,14}"
+                      title="Enter a 10-digit number starting with +91"
                       required
                       oninput="
                         this.value = this.value.replace(/(?!^\+)[^\d]/g, '')
@@ -507,14 +501,11 @@
                   >04:00 PM - 04:30 PM</span
                 >
               </div>
-              <button
-                class="btn btn-emerald w-100 py-2 mt-auto"
-                onclick="
-                  alert('Slot booked! We have sent a Zoom link to your email.')
-                "
+              <a href="#"
+                ><button class="btn btn-emerald w-100 py-2 mt-auto">
+                  <i class="fa-solid fa-check-double me-2"></i>Confirm Time Slot
+                </button></a
               >
-                <i class="fa-solid fa-check-double me-2"></i>Confirm Time Slot
-              </button>
             </div>
           </div>
         </div>
