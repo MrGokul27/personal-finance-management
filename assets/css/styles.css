@@ -1446,3 +1446,30 @@ body.preloader-active {
   left: 125%;
   transition: 0.75s;
 }
+
+/* --- Scroll Reveal Animations --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: opacity, transform;
+}
+
+.reveal.reveal-left {
+  transform: translateX(-50px) translateY(0);
+}
+
+.reveal.reveal-right {
+  transform: translateX(50px) translateY(0);
+}
+
+.reveal.reveal-scale {
+  transform: scale(0.95) translateY(0);
+}
+
+.reveal.reveal-visible {
+  opacity: 1 !important;
+  transform: translate(0, 0) scale(1) !important;
+}

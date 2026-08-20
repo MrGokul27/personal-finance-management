@@ -122,6 +122,9 @@ document.addEventListener("DOMContentLoaded", function () {
   // Initialize Shop Filters if on shop page
   initShopFilters();
 
+  // Initialize Scroll Reveal Animations (for all pages except dashboard)
+  initScrollReveal();
+
   // Intercept target form submissions and redirect to 404 page
   document.addEventListener("submit", function (event) {
     const form = event.target;
@@ -683,4 +686,132 @@ function initShopFilters() {
       filterProducts();
     });
   }
+}
+
+/**
+ * 9. DYNAMIC SCROLL REVEAL ANIMATIONS
+ * Automatically targets key sections and cards across non-dashboard pages,
+ * setting up an IntersectionObserver to trigger smooth transitions.
+ */
+function initScrollReveal() {
+  // Never run on dashboard page
+  if (window.location.pathname.includes("dashboard.html")) return;
+
+  // Respect user preference for reduced motion
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+  if (prefersReducedMotion) return;
+
+  const targets = [];
+
+  // 1. Grab elements explicitly marked with .reveal
+  document.querySelectorAll(".reveal").forEach((el) => targets.push(el));
+
+  // 2. Dynamically auto-target key blocks in standard content sections
+  const sections = document.querySelectorAll("section");
+  sections.forEach((section, index) => {
+    // Skip the top hero/slider section
+    if (
+      index === 0 &&
+      (section.id === "heroSlider" ||
+        section.classList.contains("hero") ||
+        section.classList.contains("carousel") ||
+        section.getBoundingClientRect().top < 100)
+    ) {
+      return;
+    }
+
+    // A. Section Headings (exclude those inside cards or accordions)
+    const headings = section.querySelectorAll(
+      ".section-title, h2, h3:not(.card-title):not(.accordion-header)",
+    );
+    headings.forEach((h) => targets.push(h));
+
+    // B. Cards, pillars, list items, and key visual boxes
+    const cards = section.querySelectorAll(
+      ".pillar-card, .card, .service-card, .project-card, .team-member, .feature-card, .benefit-card, .product-item, .contact-info-card, .about-img-box, .pricing-card",
+    );
+    if (cards.length > 0) {
+      cards.forEach((c) => targets.push(c));
+    } else {
+      // If there are no specific cards, target the grid columns inside rows
+      const rows = section.querySelectorAll(".row");
+      rows.forEach((row) => {
+        const cols = row.querySelectorAll(":scope > [class^='col-']");
+        if (cols.length > 0) {
+          cols.forEach((col) => targets.push(col));
+        } else {
+          targets.push(row);
+        }
+      });
+    }
+
+    // C. Additional visual elements: stand-alone images, charts, and callouts
+    const visuals = section.querySelectorAll(
+      ".img-fluid:not(.avatar):not(.brand-logo), .graphic-wrapper",
+    );
+    visuals.forEach((v) => targets.push(v));
+  });
+
+  // Filter for unique elements to avoid observing same element multiple times
+  const uniqueTargets = [...new Set(targets)];
+
+  // Initialize and observe each target
+  uniqueTargets.forEach((el) => {
+    // Add default reveal style if not already explicitly marked
+    if (
+      !el.classList.contains("reveal") &&
+      !el.classList.contains("reveal-visible")
+    ) {
+      el.classList.add("reveal");
+    }
+  });
+
+  const observerOptions = {
+    root: null, // viewport
+    threshold: 0.1, // trigger when 10% is visible
+    rootMargin: "0px 0px -50px 0px", // trigger slightly before entering the viewport
+  };
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+
+        // Apply dynamic stagger delays for grid columns under the same parent row
+        const parent = el.parentElement;
+        if (parent && parent.classList.contains("row")) {
+          const siblings = Array.from(
+            parent.querySelectorAll(
+              ":scope > [class^='col-'], :scope > .pillar-card, :scope > .card",
+            ),
+          );
+          const index = siblings.indexOf(el);
+          if (index !== -1) {
+            el.style.transitionDelay = `${index * 150}ms`;
+          }
+        }
+
+        // Custom delay via data attribute (e.g. data-reveal-delay="200")
+        const customDelay = el.getAttribute("data-reveal-delay");
+        if (customDelay) {
+          el.style.transitionDelay = `${customDelay}ms`;
+        }
+
+        // Custom duration via data attribute
+        const customDuration = el.getAttribute("data-reveal-duration");
+        if (customDuration) {
+          el.style.transitionDuration = `${customDuration}ms`;
+        }
+
+        el.classList.add("reveal-visible");
+        obs.unobserve(el);
+      }
+    });
+  }, observerOptions);
+
+  uniqueTargets.forEach((el) => {
+    observer.observe(el);
+  });
 }
