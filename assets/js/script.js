@@ -137,15 +137,21 @@ document.addEventListener("DOMContentLoaded", function () {
       const emailInput = form.querySelector('input[type="email"]');
       if (emailInput) {
         const emailValue = emailInput.value.trim();
-        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z.-]+\.[a-zA-Z]{2,}$/;
         if (!emailPattern.test(emailValue)) {
           event.preventDefault();
-          emailInput.setCustomValidity("Please enter a valid email address (e.g. name@domain.com).");
+          emailInput.setCustomValidity(
+            "Please enter a valid email address with a letters-only domain (e.g. name@domain.com).",
+          );
           emailInput.reportValidity();
           // Clear custom validity when the user types
-          emailInput.addEventListener("input", function() {
-            emailInput.setCustomValidity("");
-          }, { once: true });
+          emailInput.addEventListener(
+            "input",
+            function () {
+              emailInput.setCustomValidity("");
+            },
+            { once: true },
+          );
           return;
         } else {
           emailInput.setCustomValidity("");
